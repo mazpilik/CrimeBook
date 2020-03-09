@@ -2,7 +2,7 @@
 -- Creacion de la base de datos ------
 -- -----------------------------------
 drop database if exists crimeBook;
-create database crimeBook;
+create database crimeBook character set utf8 collate utf8_general_ci;
 use crimeBook;
 
 -- -----------------------------------
@@ -16,7 +16,7 @@ apellidos varchar (50) not null,
 contrasenya varchar (30) not null,
 primary key (username),
 unique(email)
-);
+) engine=InnoDB character set=utf8;
 
 create table pruebas (
 id int unsigned not null,
@@ -31,7 +31,7 @@ username varchar (15) not null,
 primary key (id),
 unique(nombre),
 foreign key(username) references usuarios(username)
-);
+) engine=InnoDB character set=utf8;
 
 create table respuestas (
 idPrueba int unsigned not null,
@@ -39,19 +39,19 @@ id int unsigned not null,
 respuesta varchar (200) not null,
 primary key (idPrueba,id),
 foreign key(idPrueba) references pruebas(id)
-);
+) engine=InnoDB character set=utf8;
 
 create table juegos (
 id int unsigned not null,
 nombre varchar (50) not null,
 descExtendida varchar (1000),
 descBreve varchar (200),
-fechaCreacion date not null default(now()),
+fechaCreacion date not null default 0,
 username varchar (15) not null,
 primary key (id),
 unique (nombre),
 foreign key(username) references usuarios(username)
-);
+) engine=InnoDB character set=utf8;
 
 create table pertenencias (
 idJuego int unsigned not null,
@@ -59,21 +59,21 @@ idPrueba int unsigned not null,
 primary key(idJuego,idPrueba),
 foreign key(idJuego) references juegos(id),
 foreign key(idPrueba) references pruebas(id)
-);
+) engine=InnoDB character set=utf8;
 
 create table partidas (
 id int unsigned not null,
 nombre varchar (50) not null,
-fechaCreacion date not null default (now()),
+fechaCreacion date not null default 0,
 duracion int unsigned not null default 0,
-fechaInicio date not null default (now()),
+fechaInicio date not null default 0,
 idJuego int unsigned not null,
 username varchar (15) not null,
 primary key (id),
 unique (nombre),
 foreign key(idJuego) references juegos(id),
 foreign key(username) references usuarios(username)
-);
+) engine=InnoDB character set=utf8;
 
 create table equipos (
 id int unsigned not null,
@@ -84,7 +84,7 @@ idPartida int unsigned not null,
 primary key (id),
 foreign key (idPartida) references partidas(id),
 unique(codigo)
-);
+) engine=InnoDB character set=utf8;
 
 create table pistas (
 idPrueba int unsigned not null,
@@ -94,7 +94,7 @@ tiempo int unsigned,
 intentos int unsigned,
 primary key (idPrueba,id),
 foreign key(idPrueba) references pruebas(id)
-);
+) engine=InnoDB character set=utf8;
 
 create table resoluciones (
 idPrueba int unsigned not null,
@@ -105,7 +105,7 @@ estrellas enum ('0','1','2','3','4','5'),
 primary key(idEquipo,idPrueba),
 foreign key(idEquipo) references equipos(id),
 foreign key(idPrueba) references pruebas(id)
-);
+) engine=InnoDB character set=utf8;
 
 create table peticiones (
 idEquipo int unsigned not null,
@@ -114,7 +114,7 @@ idPista int unsigned not null,
 primary key(idEquipo,idPrueba,idPista),
 foreign key(idEquipo) references equipos(id),
 foreign key(idPrueba,idPista) references pistas(idPrueba,id)
-);
+) engine=InnoDB character set=utf8;
 
 
 
