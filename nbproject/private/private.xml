@@ -4,7 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/crimebook/include/DB.php</file>
-            <file>file:/C:/xampp/htdocs/crimebook/db/usuarioDB.sql</file>
+            <file>file:/C:/xampp/htdocs/crimebook/smarty/templates/editar-juego.tpl</file>
+            <file>file:/C:/xampp/htdocs/crimebook/include/juego.php</file>
+            <file>file:/C:/xampp/htdocs/crimebook/smarty/templates/listado-de-juegos.tpl</file>
+            <file>file:/C:/xampp/htdocs/crimebook/editar-juego.php</file>
         </group>
     </open-files>
 </project-private>
