@@ -4,7 +4,7 @@
   //Destruye toda la información registrada de una sesión
   session_destroy();
   //Redirecciona a la página de login
-  header("Location: principal.php");
+  header("Location: index.php");
   exit;
 
 
