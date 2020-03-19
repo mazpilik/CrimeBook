@@ -1,5 +1,5 @@
 -- Creamos el usuario	
-CREATE USER `cb`@`localhost` IDENTIFIED BY '1234';
+CREATE USER `dwes`@`localhost` IDENTIFIED BY 'abc123.';
 
 -- Asignamos los privilegios
-GRANT ALL PRIVILEGES ON CrimeBook.* TO 'cb'@'localhost';
+GRANT ALL PRIVILEGES ON CrimeBook.* TO 'dwes'@'localhost';
