@@ -1,13 +1,13 @@
 <?php
 
-require_once('Producto.php');
-require_once('Ordenador.php');
+require_once('Partida.php');
+
 class DB {
     protected static function ejecutaConsulta($sql) {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
         $dsn = "mysql:host=localhost;dbname=crimebook";
-        $usuario = 'db';
-        $contrasena = '1234';
+        $usuario = 'dwes';
+        $contrasena = 'abc123.';
         
         $dwes = new PDO($dsn, $usuario, $contrasena, $opc);
         $resultado = null;
@@ -29,21 +29,23 @@ class DB {
 	}     
         return $juegos;
     }
+    /* CARLOS */
     public static function obtienePartidas() {
-        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username FROM producto;";
+        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username FROM partidas;";
         $resultado = self::ejecutaConsulta ($sql);
-        $partidas = array();
+        $partidasArray = Array();
 
 	if($resultado) {
             // Añadimos un elemento por cada producto obtenido
             $row = $resultado->fetch();
             while ($row != null) {
-                $partidas[] = new Producto($row);
+                $partidasArray[] = new Partida($row);
                 $row = $resultado->fetch();
             }
 	}     
-        return $partidas;
+        return $partidasArray;
     }
+    /****************/
     public static function obtienePruebas() {
         $sql = "SELECT cod, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username FROM producto;";
         $resultado = self::ejecutaConsulta ($sql);
