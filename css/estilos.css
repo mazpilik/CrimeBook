@@ -319,4 +319,35 @@ th{
     opacity: 1;
   }
   
+  /* CARLOS */
+  #errorZone{
+    width: 76.8em;
+    height: 2.5em;
+    margin-left: 4.3em;
+    margin-bottom: 2em;
+    text-align: center;
+    background: #999999;
+    padding-top: 0.5em;
+  }
+  
+  #errorZone h1{
+    line-height: 0em;
+    font-size: 1.5em;
+    color: #aa0000;
+  }
+  
+  #editZone{
+    width: 76.8em;
+    height: 10em;
+    margin-left: 4.3em;
+    margin-bottom: 2em;
+    text-align: center;
+    background: #654321;
+    padding-top: 0.5em;
+  }
+  
+  td.titulos{
+      color: #008000;
+  }
+  /****************/
 

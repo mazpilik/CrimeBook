@@ -1,6 +1,8 @@
 <?php
 
 require_once dirname(__FILE__).'/Partida.php';
+require_once dirname(__FILE__).'/Equipo.php';
+require_once dirname(__FILE__).'/juego.php';
 
 class DB {
     protected static function ejecutaConsulta($sql) {
@@ -14,25 +16,27 @@ class DB {
         if (isset($dwes)) $resultado = $dwes->query($sql);
         return $resultado;
     }
-    public static function obtieneJuegos() {
+    /* LUIS */
+     public static function obtieneJuegos() {
         $sql = "SELECT id, nombre, descExtendida, descBreve, fechaCreacion, username FROM juegos;";
         $resultado = self::ejecutaConsulta ($sql);
         $juegos = array();
 
 	if($resultado) {
-            // Añadimos un elemento por cada producto obtenido
+            // Añadimos un elemento por cada registro obtenido
             $row = $resultado->fetch();
             while ($row != null) {
-                $juegos[] = new Producto($row);
+                $juegos[] = new juego($row);
                 $row = $resultado->fetch();
             }
 	}     
         return $juegos;
     }
+    /****************/
     /* CARLOS */
     public static function obtienePartidas() {
         //Añadimos la familia
-        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username FROM partidas;";
+        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas;";
         $resultado = self::ejecutaConsulta($sql);
         $partidas = array();
 
@@ -46,6 +50,24 @@ class DB {
         }
 
         return $partidas;
+    }
+    
+     public static function obtieneEquipos() {
+        //Añadimos la familia
+        $sql = "SELECT id, codigo, nombre, tiempo, idPartida FROM equipos;";
+        $resultado = self::ejecutaConsulta($sql);
+        $equipos = array();
+
+        if ($resultado) {
+            // Añadimos un elemento por cada producto obtenido
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $equipos[] = new Equipo($row);
+                $row = $resultado->fetch();
+            }
+        }
+
+        return $equipos;
     }
     /****************/
     public static function obtienePruebas() {

@@ -12,6 +12,7 @@ class Partida {
     private $fechaInicio;
     private $idJuego;
     private $userName;
+    private $finalizada;
 
     // Methods
     public function __construct($row) {
@@ -22,6 +23,7 @@ class Partida {
         $this->fechaInicio = $row['fechaInicio'];
         $this->idJuego = $row['idJuego'];
         $this->userName = $row['username'];
+        $this->finalizada = $row['finalizada'];
     }
 
     /* GETTERS */
@@ -52,6 +54,10 @@ class Partida {
 
     public function getUserName() {
         return $this->userName;
+    }
+    
+    public function getFinalizada() {
+        return $this->finalizada;
     }
 
 }
