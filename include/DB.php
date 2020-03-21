@@ -1,6 +1,6 @@
 <?php
 
-require_once('Partida.php');
+require_once dirname(__FILE__).'/Partida.php';
 
 class DB {
     protected static function ejecutaConsulta($sql) {
@@ -31,19 +31,21 @@ class DB {
     }
     /* CARLOS */
     public static function obtienePartidas() {
+        //Añadimos la familia
         $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username FROM partidas;";
-        $resultado = self::ejecutaConsulta ($sql);
-        $partidasArray = Array();
+        $resultado = self::ejecutaConsulta($sql);
+        $partidas = array();
 
-	if($resultado) {
+        if ($resultado) {
             // Añadimos un elemento por cada producto obtenido
             $row = $resultado->fetch();
             while ($row != null) {
-                $partidasArray[] = new Partida($row);
+                $partidas[] = new Partida($row);
                 $row = $resultado->fetch();
             }
-	}     
-        return $partidasArray;
+        }
+
+        return $partidas;
     }
     /****************/
     public static function obtienePruebas() {

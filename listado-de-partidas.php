@@ -17,5 +17,5 @@
     $smarty->assign('partidas', DB::obtienePartidas());
     
     // Mostramos la plantilla
-    $smarty->display('productos.tpl');
+    $smarty->display('listadoPartidas.tpl');
 ?>

@@ -28,31 +28,18 @@
 			 <th>Número de equipos</th>
 			 <th>Fecha de creación</th>
 			 <th>Usuario que la creó</th>
+                         <th>Finalizada</th>
 		 </tr>
 		 <tr>
-			 <td></td>
-			 <td></td>
-			 <td></td>
-			 <td></td>
-		 </tr>
-		 <tr>
-			 <td></td>
-			 <td></td>
-			 <td></td>
-			 <td></td>
-		 </tr>
-		 <tr>
-			 <td></td>
-			 <td></td>
-			 <td></td>
-			 <td></td>
-		 </tr>
-		 <tr>
-			 <td></td>
-			 <td></td>
-			 <td></td>
-			 <td></td>
-		 </tr>
+		{foreach from=$partidas item=partida}
+                <tr>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>{$partida->getFechaCreacion()}</td>
+                    <td>{$partida->getUserName()}</td>
+                    <td>a</td>
+                </tr>
+                {/foreach}
 	 </table>
 
 <br>
