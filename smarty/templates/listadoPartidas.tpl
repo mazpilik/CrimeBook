@@ -32,26 +32,44 @@
                 <div id="editZone">
                     <table align="center">
                         <tr>
-                            <td rowspan="2" class="titulos">Nombre del juego</td>
-                            <td rowspan="2" class="titulos">Duración de la partida</td>
-                            <td colspan="2" class="titulos">Listado de Equipos</td>
-                        </tr>
-                        <tr>
-                            <td class="titulos">Nombre Equipo</td>
-                            <td class="titulos">Código Acceso</td>
+                            <td class="titulos">Nombre del juego/partida</td>
+                            <td class="titulos">Duración de la partida</td>
+                            <td class="titulos">Listado de Equipos</td>
                         </tr>
                         {foreach from=$partidas item=partida}
                             {if $partida->getId()==$cual}
                                 {foreach from=$juegos item=juego}
                                     {if $juego->getId()==$partida->getIdJuego()}
+                                        <input type="hidden" id="idPartida" name="idPartida" value="{$partida->getId()}">
                                         <tr>
-                                            <td>{$juego->getNombre()}</td>
+                                            <td>{$juego->getNombre()}/{$partida->getNombre()}</td>
                                             <td><input type="text" name="duracionF" value="{$partida->getDuracion()}" /></td>
+                                            <td>
+                                                <table border="1">
+                                                    <tr>
+                                                        <td class="titulos">Nombre Equipo</td>
+                                                        <td class="titulos">Código Acceso</td>
+                                                    </tr>
+                                                    {foreach from=$equipos item=equipo}
+                                                        {if $equipo->getIdPartida()==$partida->getId()}  
+                                                            <tr>
+                                                                <td>{$equipo->getNombre()}</td>
+                                                                <td>{$equipo->getCodigo()}</td>
+                                                            </tr>
+                                                        {/if}
+                                                    {/foreach}
+                                                </table>
+                                            </td>
                                         </tr>
                                     {/if}
                                 {/foreach}
                             {/if}
                         {/foreach}
+                        <tr>
+                            <td>
+                                 <button type="submit" form="editarPartida" value="grabarDuracion" name="grabarDuracion" class="button">GRABAR</button>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             {/if}
@@ -59,7 +77,7 @@
         <table align="center">
             <tr>
                 <th></th>
-                <th>Nombre del juego</th>
+                <th>Nombre del juego/partida</th>
                 <th>Número de equipos</th>
                 <th>Fecha de creación</th>
                 <th>Usuario que la creó</th>
@@ -72,7 +90,7 @@
                         <td>
                             {foreach from=$juegos item=juego}
                                 {if $juego->getId()==$partida->getIdJuego()}
-                                    {$juego->getNombre()}
+                                    {$juego->getNombre()}/{$partida->getNombre()}
                                 {/if}
                             {/foreach}
                         </td>
@@ -98,7 +116,7 @@
 
         <br>
         <div style="text-align:center;">
-            <button type="submit" form="editarPartida" value="newButton" name="newButton" class="button">Editar/Crear Partida</button>
+            <button type="submit" form="editarPartida" value="duracionButton" name="duracionButton" class="button">Modificar Duración</button>
             <button class="button">Eliminar partida</button>
         </div>
     </form>

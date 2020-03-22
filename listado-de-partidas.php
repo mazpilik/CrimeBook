@@ -14,7 +14,8 @@
     /*if (!isset($_SESSION['sesion']))
         die("Error - debe <a href='login.php'>identificarse</a>.<br />");*/
     
-    if (isset($_POST['newButton'])) {
+    /* MOSTRAR FORMULARIO PARA CAMBIAR LA DURACIÓN DE UNA PARTIDA */
+    if (isset($_POST['duracionButton'])) {
         if (!empty($_POST['eleccion'])){
             $smarty->assign('eleccion', 'si');
             $smarty->assign('cual', $_POST['eleccion']);
@@ -22,6 +23,13 @@
         else{
             $smarty->assign('eleccion', 'no');
         }
+    }
+    
+     /* GRABAR UNA PARTIDA NUEVA CON LOS MISMOS EQUIPOS PERO DIFERENTE DURACIÓN */
+    if (isset($_POST['grabarDuracion'])) {
+        $newDuracion=$_POST['duracionF'];
+        $idPartida=$_POST['idPartida'];
+        DB::grabarPartidaNueva($idPartida,$newDuracion);
     }
     
     $smarty->assign('partidas', DB::obtienePartidas());

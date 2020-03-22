@@ -338,12 +338,12 @@ th{
   
   #editZone{
     width: 76.8em;
-    height: 10em;
     margin-left: 4.3em;
     margin-bottom: 2em;
     text-align: center;
     background: #654321;
     padding-top: 0.5em;
+    padding-bottom: 0.5em;
   }
   
   td.titulos{

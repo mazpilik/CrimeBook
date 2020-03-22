@@ -36,7 +36,8 @@ class DB {
     /* CARLOS */
     public static function obtienePartidas() {
         //Añadimos la familia
-        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas;";
+        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas "
+                . "ORDER BY nombre;";
         $resultado = self::ejecutaConsulta($sql);
         $partidas = array();
 
@@ -52,7 +53,21 @@ class DB {
         return $partidas;
     }
     
-     public static function obtieneEquipos() {
+     public static function obtienePartida($idPartida) {
+        //$sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas;";// WHERE id=".$idPartida.";";
+        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas ";
+        $sql .= "WHERE id=$idPartida;";
+        $resultado = self::ejecutaConsulta($sql);
+
+        $row = null;
+        if (isset($resultado)) {
+            $row = $resultado->fetch();
+        }
+
+        return $row;
+    }
+    
+    public static function obtieneEquipos() {
         //Añadimos la familia
         $sql = "SELECT id, codigo, nombre, tiempo, idPartida FROM equipos;";
         $resultado = self::ejecutaConsulta($sql);
@@ -69,6 +84,25 @@ class DB {
 
         return $equipos;
     }
+    
+    public static function grabarPartidaNueva($idPartida,$newDuracion) {
+        $row = self::obtienePartida($idPartida);
+
+        $newName=$row['nombre'];
+        $pos = strpos($newName,':');
+        $newName=substr($newName,0,$pos+1);
+        $newName=$newName." ".$newDuracion;
+        $newFechaCreacion=$row['fechaCreacion'];
+        $newFechaInicio=$row['fechaInicio'];
+        $newIdJuego=$row['idJuego'];
+        $newUsername=$row['username'];
+        
+        $sql = "INSERT INTO partidas (nombre,fechaCreacion,duracion,fechaInicio,idJuego,username,finalizada)"
+                . " VALUES ('$newName','2020-03-27','55','2020-03-30','100001','usercarlos','NO')";
+
+        $resultado = self::ejecutaConsulta($sql);
+    }
+    
     /****************/
     public static function obtienePruebas() {
         $sql = "SELECT cod, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username FROM producto;";

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-21 18:56:54
+/* Smarty version 3.1.34-dev-7, created on 2020-03-22 10:44:12
   from 'C:\wamp64\www\crimebook\smarty\templates\listadoPartidas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e766376692a34_35170508',
+  'unifunc' => 'content_5e77417c7ae274_88830420',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e46001b74aa55500b20397cd8e22925dca206e79' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\listadoPartidas.tpl',
-      1 => 1584817009,
+      1 => 1584873792,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e766376692a34_35170508 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e77417c7ae274_88830420 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -55,13 +55,9 @@ function content_5e766376692a34_35170508 (Smarty_Internal_Template $_smarty_tpl)
                 <div id="editZone">
                     <table align="center">
                         <tr>
-                            <td rowspan="2" class="titulos">Nombre del juego</td>
-                            <td rowspan="2" class="titulos">Duración de la partida</td>
-                            <td colspan="2" class="titulos">Listado de Equipos</td>
-                        </tr>
-                        <tr>
-                            <td class="titulos">Nombre Equipo</td>
-                            <td class="titulos">Código Acceso</td>
+                            <td class="titulos">Nombre del juego/partida</td>
+                            <td class="titulos">Duración de la partida</td>
+                            <td class="titulos">Listado de Equipos</td>
                         </tr>
                         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['partidas']->value, 'partida');
@@ -75,11 +71,39 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['juego']->value) {
 ?>
                                     <?php if ($_smarty_tpl->tpl_vars['juego']->value->getId() == $_smarty_tpl->tpl_vars['partida']->value->getIdJuego()) {?>
+                                        <input type="hidden" id="idPartida" name="idPartida" value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getId();?>
+">
                                         <tr>
                                             <td><?php echo $_smarty_tpl->tpl_vars['juego']->value->getNombre();?>
+/<?php echo $_smarty_tpl->tpl_vars['partida']->value->getNombre();?>
 </td>
                                             <td><input type="text" name="duracionF" value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getDuracion();?>
 " /></td>
+                                            <td>
+                                                <table border="1">
+                                                    <tr>
+                                                        <td class="titulos">Nombre Equipo</td>
+                                                        <td class="titulos">Código Acceso</td>
+                                                    </tr>
+                                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['equipos']->value, 'equipo');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['equipo']->value) {
+?>
+                                                        <?php if ($_smarty_tpl->tpl_vars['equipo']->value->getIdPartida() == $_smarty_tpl->tpl_vars['partida']->value->getId()) {?>  
+                                                            <tr>
+                                                                <td><?php echo $_smarty_tpl->tpl_vars['equipo']->value->getNombre();?>
+</td>
+                                                                <td><?php echo $_smarty_tpl->tpl_vars['equipo']->value->getCodigo();?>
+</td>
+                                                            </tr>
+                                                        <?php }?>
+                                                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                                                </table>
+                                            </td>
                                         </tr>
                                     <?php }?>
                                 <?php
@@ -91,6 +115,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                        <tr>
+                            <td>
+                                 <button type="submit" form="editarPartida" value="grabarDuracion" name="grabarDuracion" class="button">GRABAR</button>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             <?php }?>
@@ -98,7 +127,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <table align="center">
             <tr>
                 <th></th>
-                <th>Nombre del juego</th>
+                <th>Nombre del juego/partida</th>
                 <th>Número de equipos</th>
                 <th>Fecha de creación</th>
                 <th>Usuario que la creó</th>
@@ -121,6 +150,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['juego']->value) {
 ?>
                                 <?php if ($_smarty_tpl->tpl_vars['juego']->value->getId() == $_smarty_tpl->tpl_vars['partida']->value->getIdJuego()) {?>
                                     <?php echo $_smarty_tpl->tpl_vars['juego']->value->getNombre();?>
+/<?php echo $_smarty_tpl->tpl_vars['partida']->value->getNombre();?>
 
                                 <?php }?>
                             <?php
@@ -164,7 +194,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
         <br>
         <div style="text-align:center;">
-            <button type="submit" form="editarPartida" value="newButton" name="newButton" class="button">Editar/Crear Partida</button>
+            <button type="submit" form="editarPartida" value="duracionButton" name="duracionButton" class="button">Modificar Duración</button>
             <button class="button">Eliminar partida</button>
         </div>
     </form>
