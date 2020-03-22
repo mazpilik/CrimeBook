@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-22 10:44:12
+/* Smarty version 3.1.34-dev-7, created on 2020-03-22 15:41:27
   from 'C:\wamp64\www\crimebook\smarty\templates\listadoPartidas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e77417c7ae274_88830420',
+  'unifunc' => 'content_5e7787279ef809_73894425',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e46001b74aa55500b20397cd8e22925dca206e79' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\listadoPartidas.tpl',
-      1 => 1584873792,
+      1 => 1584891679,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e77417c7ae274_88830420 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e7787279ef809_73894425 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -53,37 +53,30 @@ function content_5e77417c7ae274_88830420 (Smarty_Internal_Template $_smarty_tpl)
                 </div>
             <?php } else { ?>
                 <div id="editZone">
-                    <table align="center">
-                        <tr>
-                            <td class="titulos">Nombre del juego/partida</td>
-                            <td class="titulos">Duración de la partida</td>
-                            <td class="titulos">Listado de Equipos</td>
-                        </tr>
-                        <?php
+                    <?php if ($_smarty_tpl->tpl_vars['tarea']->value == 'estadisticas') {?>
+                       <table align="center">
+                            <tr>
+                                <td class="titulos">Fecha inicio</td>
+                                <td class="titulos">Duración</td>
+                                <td class="titulos">Equipos</td>
+                                                            </tr>
+                                                        <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['partidas']->value, 'partida');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['partida']->value) {
 ?>
-                            <?php if ($_smarty_tpl->tpl_vars['partida']->value->getId() == $_smarty_tpl->tpl_vars['cual']->value) {?>
-                                <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['juegos']->value, 'juego');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['juego']->value) {
-?>
-                                    <?php if ($_smarty_tpl->tpl_vars['juego']->value->getId() == $_smarty_tpl->tpl_vars['partida']->value->getIdJuego()) {?>
-                                        <input type="hidden" id="idPartida" name="idPartida" value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getId();?>
-">
+                                
+                                    <?php if ($_smarty_tpl->tpl_vars['partida']->value->getId() == $_smarty_tpl->tpl_vars['cual']->value) {?>
                                         <tr>
-                                            <td><?php echo $_smarty_tpl->tpl_vars['juego']->value->getNombre();?>
-/<?php echo $_smarty_tpl->tpl_vars['partida']->value->getNombre();?>
+                                            <td><?php echo $_smarty_tpl->tpl_vars['partida']->value->getFechaInicio();?>
 </td>
-                                            <td><input type="text" name="duracionF" value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getDuracion();?>
-" /></td>
+                                            <td><?php echo $_smarty_tpl->tpl_vars['partida']->value->getDuracion();?>
+</td>
                                             <td>
                                                 <table border="1">
                                                     <tr>
-                                                        <td class="titulos">Nombre Equipo</td>
-                                                        <td class="titulos">Código Acceso</td>
+                                                        <td class="titulos">Equipo</td>
+                                                        <td class="titulos">Código de Acceso</td>
                                                     </tr>
                                                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['equipos']->value, 'equipo');
@@ -106,21 +99,107 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                             </td>
                                         </tr>
                                     <?php }?>
-                                <?php
+                                    
+                            <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                            <tr>
+                                <td><button type="submit" form="editarPartida" value="salir" name="salir" class="button">SALIR</button></td>
+                            </tr>
+                       </table>
+                    <?php } else { ?>
+                        <table align="center">
+                            <tr>
+                                <td class="titulos">Nombre del juego/partida</td>
+                                <td class="titulos">Duración de la partida</td>
+                                <td class="titulos">Listado de Equipos</td>
+                            </tr>
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['partidas']->value, 'partida');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['partida']->value) {
+?>
+                                <?php if ($_smarty_tpl->tpl_vars['partida']->value->getId() == $_smarty_tpl->tpl_vars['cual']->value) {?>
+                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['juegos']->value, 'juego');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['juego']->value) {
+?>
+                                        <?php if ($_smarty_tpl->tpl_vars['juego']->value->getId() == $_smarty_tpl->tpl_vars['partida']->value->getIdJuego()) {?>
+                                            <input type="hidden" id="idPartida" name="idPartida" value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getId();?>
+">
+                                            <tr>
+                                                <td><?php echo $_smarty_tpl->tpl_vars['juego']->value->getNombre();?>
+/<?php echo $_smarty_tpl->tpl_vars['partida']->value->getNombre();?>
+</td>
+                                                <td>
+                                                    <?php if ($_smarty_tpl->tpl_vars['tarea']->value == 'duracion') {?>
+                                                        <input type="text" name="duracionF" value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getDuracion();?>
+" />
+                                                    <?php } else { ?>
+                                                        <?php echo $_smarty_tpl->tpl_vars['partida']->value->getDuracion();?>
+
+                                                    <?php }?>
+                                                </td>
+                                                <td>
+                                                    <table border="1">
+                                                        <tr>
+                                                            <td class="titulos">Nombre Equipo</td>
+                                                            <td class="titulos">Código Acceso</td>
+                                                        </tr>
+                                                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['equipos']->value, 'equipo');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['equipo']->value) {
+?>
+                                                            <?php if ($_smarty_tpl->tpl_vars['equipo']->value->getIdPartida() == $_smarty_tpl->tpl_vars['partida']->value->getId()) {?>  
+                                                                <tr>
+                                                                    <td><?php echo $_smarty_tpl->tpl_vars['equipo']->value->getNombre();?>
+</td>
+                                                                    <td><?php echo $_smarty_tpl->tpl_vars['equipo']->value->getCodigo();?>
+</td>
+                                                                </tr>
+                                                            <?php }?>
+                                                        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                                                        <?php if ($_smarty_tpl->tpl_vars['tarea']->value == 'equipos') {?>
+                                                            <tr>
+                                                                <td><input type="text" name="equiposF" placeholder='Nombre del nuevo equipo' /></td>
+                                                                <td><button type="submit" form="editarPartida" value="grabarEquipos" name="grabarEquipos" class="button">GRABAR</button></td>
+                                                            </tr>
+                                                        <?php }?>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        <?php }?>
+                                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                                <?php }?>
+                            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                            <?php if ($_smarty_tpl->tpl_vars['tarea']->value == 'duracion') {?>
+                                <tr>
+                                    <td>
+                                         <button type="submit" form="editarPartida" value="grabarDuracion" name="grabarDuracion" class="button">GRABAR</button>
+                                    </td>
+                                </tr>
                             <?php }?>
-                        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                        <tr>
-                            <td>
-                                 <button type="submit" form="editarPartida" value="grabarDuracion" name="grabarDuracion" class="button">GRABAR</button>
-                            </td>
-                        </tr>
-                    </table>
+                            <?php if ($_smarty_tpl->tpl_vars['tarea']->value == 'borrar') {?>
+                                <tr>
+                                    <td>
+                                         <button type="submit" form="editarPartida" value="borrarPartida" name="borrarPartida" class="button">CONFIRMAR BORRADO</button>
+                                    </td>
+                                </tr>
+                            <?php }?>
+                        </table>
+                    <?php }?>
                 </div>
             <?php }?>
         <?php }?>
@@ -133,69 +212,66 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <th>Usuario que la creó</th>
                 <th>Finalizada</th>
             </tr>
-            <tr>
-		<?php
+            <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['partidas']->value, 'partida');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['partida']->value) {
 ?>
-                    <tr>
-                        <td><input type="radio" name="eleccion" value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getId();?>
+                <tr>
+                    <td><input type="radio" name="eleccion" value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getId();?>
 " /></td>
-                        <td>
-                            <?php
+                    <td>
+                        <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['juegos']->value, 'juego');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['juego']->value) {
 ?>
-                                <?php if ($_smarty_tpl->tpl_vars['juego']->value->getId() == $_smarty_tpl->tpl_vars['partida']->value->getIdJuego()) {?>
-                                    <?php echo $_smarty_tpl->tpl_vars['juego']->value->getNombre();?>
+                            <?php if ($_smarty_tpl->tpl_vars['juego']->value->getId() == $_smarty_tpl->tpl_vars['partida']->value->getIdJuego()) {?>
+                                <?php echo $_smarty_tpl->tpl_vars['juego']->value->getNombre();?>
 /<?php echo $_smarty_tpl->tpl_vars['partida']->value->getNombre();?>
 
-                                <?php }?>
-                            <?php
+                            <?php }?>
+                        <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                        </td>
-                        <td>
-                            <?php $_smarty_tpl->_assignInScope('cuantos', 0);?>
-                            <?php
+                    </td>
+                    <td>
+                        <?php $_smarty_tpl->_assignInScope('cuantos', 0);?>
+                        <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['equipos']->value, 'equipo');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['equipo']->value) {
 ?>
-                                <?php if ($_smarty_tpl->tpl_vars['equipo']->value->getIdPartida() == $_smarty_tpl->tpl_vars['partida']->value->getId()) {?>
-                                    <?php $_smarty_tpl->_assignInScope('cuantos', $_smarty_tpl->tpl_vars['cuantos']->value+1);?>
-                                <?php }?>
-                            <?php
+                            <?php if ($_smarty_tpl->tpl_vars['equipo']->value->getIdPartida() == $_smarty_tpl->tpl_vars['partida']->value->getId()) {?>
+                                <?php $_smarty_tpl->_assignInScope('cuantos', $_smarty_tpl->tpl_vars['cuantos']->value+1);?>
+                            <?php }?>
+                        <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-                            <?php echo $_smarty_tpl->tpl_vars['cuantos']->value;?>
+                        <?php echo $_smarty_tpl->tpl_vars['cuantos']->value;?>
 
-                        </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['partida']->value->getFechaCreacion();?>
+                    </td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['partida']->value->getFechaCreacion();?>
 </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['partida']->value->getUserName();?>
+                    <td><?php echo $_smarty_tpl->tpl_vars['partida']->value->getUserName();?>
 </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['partida']->value->getFinalizada();?>
+                    <td><?php echo $_smarty_tpl->tpl_vars['partida']->value->getFinalizada();?>
 </td>
-                    </tr>
-                <?php
+                </tr>
+            <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-            <tr>
-                <td><input type="radio" name="eleccion" value="nueva" /></td>
-                <td colspan="5">PARTIDA NUEVA</td>
-            </tr>
         </table>
 
         <br>
         <div style="text-align:center;">
             <button type="submit" form="editarPartida" value="duracionButton" name="duracionButton" class="button">Modificar Duración</button>
-            <button class="button">Eliminar partida</button>
+            <button type="submit" form="editarPartida" value="equiposButton" name="equiposButton" class="button">Añadir Equipos</button>
+            <button type="submit" form="editarPartida" value="borrarButton" name="borrarButton" class="button">Borrar Partida</button>
+            <button type="submit" form="editarPartida" value="estadisticasButton" name="estadisticasButton" class="button">Estadísticas Partida</button>
         </div>
     </form>
             
