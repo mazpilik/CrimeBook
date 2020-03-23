@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-03-22 21:48:22
+  from 'D:\wamp64\www\crimebook\smarty\templates\Pagina3.html' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5e77dd260d26a6_96462818',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '17ee8079532f97a63b7de1e7965a74776726a8bb' => 
+    array (
+      0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\Pagina3.html',
+      1 => 1584913700,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5e77dd260d26a6_96462818 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html>
 <head>
 	<title>Crimebook</title>
@@ -50,7 +73,8 @@
 <button class="button">Eliminar prueba</button>
 </div>
 
-<script>
+<?php echo '<script'; ?>
+>
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -59,7 +83,10 @@ function myFunction() {
     x.className = "topnav";
   }
 }
-</script>
+<?php echo '</script'; ?>
+>
 
 </body>
 </html>
+<?php }
+}
