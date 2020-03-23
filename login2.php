@@ -29,6 +29,6 @@ if (isset($_POST['enviar'])) {
 }
 
 // Mostramos la plantilla
-$smarty->display('login2.tpl');
+$smarty->display('login.tpl');
 ?>
 
