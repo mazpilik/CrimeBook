@@ -16,7 +16,8 @@ $smarty->compile_dir = 'smarty/templates_c/';
 $smarty->config_dir = 'smarty/configs/';
 $smarty->cache_dir = 'smarty/cache/';
 
-if (isset($_POST['crearJuego'])){
+// Si se llama a nuevo-juego.php después de haber creado el juego
+if (isset($_POST['nuevoIdJuego'])){
     
     $row = array ();
     $row['id'] = $_POST['nuevoIdJuego'];
@@ -28,24 +29,21 @@ if (isset($_POST['crearJuego'])){
     $row['numPruebas'] = 0;
 
     $nuevoJuego = new juego($row);
-    $nuevoId = DB::obtieneIdJuego();
-    if ($nuevoId == $nuevoJuego->getIdJuego()){
-        $resultado = DB::crearJuego($nuevoJuego);
-    }else{
-        $nuevoJuego->setIdJuego($nuevoId);
-        $resultado = DB::crearJuego($nuevoJuego);
-    }
-    $smarty->assign('resultado', $resultado);
+    $resultado = DB::crearJuego($nuevoJuego);
+    
+    $nuevoIdPrueba = DB::obtieneIdPrueba();  
+    $smarty->assign('nuevoIdPrueba',$nuevoIdPrueba);
     $smarty->assign('usuario', $_SESSION['usuario']);
-    $smarty->assign('juego', DB::obtieneJuego($_POST['nuevoIdJuego']));
-    $smarty->assign('pruebas',DB::obtienePruebas($_POST['nuevoIdJuego']));
+    $smarty->assign('juego', DB::obtieneJuego($resultado));
+    $smarty->assign('pruebas',DB::obtienePruebas($resultado));
     $smarty->display('editar-juego.tpl');
-
+    
 }else{
-    // Ponemos a disposición de la plantilla los datos necesarios
+    // Si se llama a nuevo-juego.php para crear un nuevo juego desde link
     $nuevoIdJuego = DB::obtieneIdJuego();
     $nuevoIdPrueba = DB::obtieneIdPrueba();
-    echo $nuevoIdJuego." nuevo id para crear un juego";
+    // echo $nuevoIdJuego." nuevo id para crear un juego";
+
     // Ponemos a disposición de la plantilla los datos necesarios
     $smarty->assign('usuario', $_SESSION['usuario']);
     $smarty->assign('nuevoIdJuego',$nuevoIdJuego);

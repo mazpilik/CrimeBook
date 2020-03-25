@@ -17,6 +17,7 @@ $smarty->compile_dir = 'smarty/templates_c/';
 $smarty->config_dir = 'smarty/configs/';
 $smarty->cache_dir = 'smarty/cache/';
 
+
 if (isset($_POST['usuario'])) {
     $juegos = new juego();
 }

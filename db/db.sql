@@ -50,8 +50,9 @@ fechaCreacion date not null default 0,
 username varchar (15) not null,
 primary key (id),
 unique (nombre),
-foreign key(username) references usuarios(username)
+foreign key(username) references usuarios(username);
 ) engine=InnoDB character set=utf8;
+
 
 create table pertenencias (
 idJuego int unsigned not null,
@@ -60,6 +61,8 @@ primary key(idJuego,idPrueba),
 foreign key(idJuego) references juegos(id),
 foreign key(idPrueba) references pruebas(id)
 ) engine=InnoDB character set=utf8;
+
+
 
 create table partidas (
 id int unsigned not null,

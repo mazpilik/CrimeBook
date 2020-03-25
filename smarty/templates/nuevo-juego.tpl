@@ -12,16 +12,16 @@
 </head>
 <body>
     <div class="topnav" id="myTopnav" style="margin: 0 0 0 0;">
-        <a href="listado-de-juegos.php">Listado de juegos</a>
-        <a href="Pagina2.html">Listado de partidas</a>
-        <a href="Pagina3.html">Listado de pruebas</a>
-        <a href="Pagina4.html">Partida nueva</a>
-        <a href="nuevo-juego.php" class="active">Juego Nuevo/editar juego</a>
-        <a href="Pagina6.html">Prueba Nueva/ Editar prueba</a>
-        <a href="Pagina7.html">Consultar partida</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-        </a>
+  	<a href="listado-de-juegos.php" class="active">Listado de juegos</a>
+  	<a href="listado-de-partidas.php">Listado de partidas</a>
+  	<a href="listado-de-pruebas.php">Listado de pruebas</a>
+  	<a href="nueva-partida.php">Partida nueva</a>
+  	<a href="nuevo-juego.php" class="active">Juego Nuevo/editar juego</a>
+  	<a href="nueva-prueba.php">Prueba Nueva/ Editar prueba</a>
+  	<a href="consultar-partida.php">Consultar partida</a>
+  	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  	<i class="fa fa-bars"></i>
+  	</a>
     </div>
     <form id='{$nuevoIdJuego}' action='nuevo-juego.php' method='POST'>
         <div id="pag5" align="center">        
@@ -53,7 +53,7 @@
 	</table>
         <br>
         <div align="center">
-            <button class="button" form='{$nuevoIdJuego}' name="crearJuego" value="crearJuego">Enviar/Guardar</button>
+            <button class="button" form="{$nuevoIdJuego}" name="nuevoIdJuegob" value="crearJuego">Enviar/Guardar</button>
         </div>
 
 <script>

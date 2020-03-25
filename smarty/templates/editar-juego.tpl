@@ -23,17 +23,22 @@
         <i class="fa fa-bars"></i>
         </a>
     </div>
-    <form id='{$juego->getIdJuego()}' action='grabar-juego.php' method='POST'>
+    <form id='{$juego->getIdJuego()}' action='editar-juego.php' method='POST'>
         <div id="pag5" align="center">        
             <p>     
-                <input type='hidden' name='idJuego' value='{$juego->getIdJuego()}'/>
+                <input type='hidden' name='modificarJuego' value='{$juego->getIdJuego()}'/>
                 <strong>Nombre del juego:</strong><textarea name="nombre" rows="1" cols="25" placeholder="Introduzca el nombre">{$juego->getNombreJuego()}</textarea><br><br>
                 <strong>Descripcion breve:</strong><textarea name="descBreve" rows="2" cols="25" placeholder="Introduzca una descripción breve">{$juego->getdescBreveJuego()}</textarea><br><br>
                 <strong>Descripcion extendida:</strong><textarea name="descExtendida" rows="2" cols="25" placeholder="Introduzca una descripción extensa">{$juego->getdescExtendidaJuego()}</textarea><br>      
             </p>
             <br>
         </div>
-        </form>              
+    </form>            
+    <form id='eliminarJuego' action='editar-juego.php' method='POST'>
+        <div id="pag5" align="center"><p>     
+                <input type='hidden' name='eliminarJuego' value='{$juego->getIdJuego()}'/>
+        </p></div>
+    </form>  
     <h3 align="center">Listado de pruebas</h3>
 	<table align="center">
             <tr>
@@ -42,13 +47,15 @@
             </tr>        
             {foreach from=$pruebas item=prueba}
             <tr>
-                <form id='{$prueba->getIdPrueba()}' action='editar-prueba.php' method='POST'>
-                    <input type='hidden' name='idPrueba' value='{$prueba->getIdPrueba()}'/>              
+                <form id='{$prueba->getIdPrueba()}' action='editar-juego.php' method='POST'>
+                    <input type='hidden' name='idPruebaParaEliminar' value='{$prueba->getIdPrueba()}'/> 
+                    <input type='hidden' name='idJuegoParaEliminarPrueba' value='{$juego->getIdJuego()}'/>
                     <td>                       
                         {$prueba->getNombrePrueba()}
                     </td>   
                     <td>                       
-                        <input type='submit' name='editarPrueba' value='Editar prueba'/>                    
+                        <input type='submit' name='editarPrueba' value='Editar prueba'/>
+                        <input type='submit' name='eliminarPrueba' value='Elminar prueba'/>
                     </td>   
                 </form>
             </tr>        
@@ -56,7 +63,7 @@
             <tr>                
                 <form id='nuevaPrueba' action='nueva-prueba.php' method='POST'>
                     <input type='hidden' name='idJuego' value='{$juego->getIdJuego()}'/>
-                    <input type='hidden' name='idJuego' value='{$nuevoIdPrueba}'/>
+                    <input type='hidden' name='idPrueba' value='{$nuevoIdPrueba}'/>
                     <td>
                         Haz clic en Añadir prueba para crear pruebas en el juego
                     </td>
@@ -70,6 +77,7 @@
         <br>
         <div align="center">
             <button class="button" form='{$juego->getIdJuego()}'>Enviar/Guardar</button> 
+            <button class="button" form='eliminarJuego'>Eliminar Juego</button>
         </div>
 <script>
 function myFunction() {

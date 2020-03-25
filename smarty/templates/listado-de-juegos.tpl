@@ -38,7 +38,7 @@
             <form id='{$juego->getidJuego()}' action='editar-juego.php' method='POST'>
                 <td>
                     <input type='hidden' name='idJuego' value='{$juego->getIdJuego()}'/>
-                    <input type='submit' name='editarJuego' value='Editar'/>
+                    <input type='submit' name='editarJuego' value='Editar / Eliminar'/>
                 </td>
                 <td>{$juego->getNombreJuego()}</td>
                 <td>{$juego->getdescBreveJuego()}</td>
@@ -51,9 +51,9 @@
 <br>
     <div style="text-align:center;">
         <a href="Pagina4.html"><button class="button">Nueva partida</button></a>
-        <a href="nuevo-juego.php"><button class="button" name="nuevoJuego">Nuevo juego</button></a>
+        <a href="nuevo-juego.php"><button class="button" name="nuevoJuego" value="nuevoJuego">Nuevo juego</button></a>
         <a href="Pagina2.html"><button class="button">Ver Partidas</button></a>
-        <a href="index.html"><button class="button">Eliminar Juego</button></a>
+
     </div>
 
 <script>

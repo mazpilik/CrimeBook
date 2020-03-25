@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-23 02:51:39
+/* Smarty version 3.1.34-dev-7, created on 2020-03-24 22:52:58
   from 'C:\xampp\htdocs\crimebook\smarty\templates\editar-juego.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e78162b307197_43628031',
+  'unifunc' => 'content_5e7a813a14bcc7_08049769',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5934aca8073aff357c87a23e529f82cc4f553070' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crimebook\\smarty\\templates\\editar-juego.tpl',
-      1 => 1584928293,
+      1 => 1585086771,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e78162b307197_43628031 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e7a813a14bcc7_08049769 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : PROYECTO Programación orientada a objetos en PHP -->
@@ -47,10 +47,10 @@ function content_5e78162b307197_43628031 (Smarty_Internal_Template $_smarty_tpl)
         </a>
     </div>
     <form id='<?php echo $_smarty_tpl->tpl_vars['juego']->value->getIdJuego();?>
-' action='grabar-juego.php' method='POST'>
+' action='editar-juego.php' method='POST'>
         <div id="pag5" align="center">        
             <p>     
-                <input type='hidden' name='idJuego' value='<?php echo $_smarty_tpl->tpl_vars['juego']->value->getIdJuego();?>
+                <input type='hidden' name='modificarJuego' value='<?php echo $_smarty_tpl->tpl_vars['juego']->value->getIdJuego();?>
 '/>
                 <strong>Nombre del juego:</strong><textarea name="nombre" rows="1" cols="25" placeholder="Introduzca el nombre"><?php echo $_smarty_tpl->tpl_vars['juego']->value->getNombreJuego();?>
 </textarea><br><br>
@@ -61,7 +61,13 @@ function content_5e78162b307197_43628031 (Smarty_Internal_Template $_smarty_tpl)
             </p>
             <br>
         </div>
-        </form>              
+    </form>            
+    <form id='eliminarJuego' action='editar-juego.php' method='POST'>
+        <div id="pag5" align="center"><p>     
+                <input type='hidden' name='eliminarJuego' value='<?php echo $_smarty_tpl->tpl_vars['juego']->value->getIdJuego();?>
+'/>
+        </p></div>
+    </form>  
     <h3 align="center">Listado de pruebas</h3>
 	<table align="center">
             <tr>
@@ -75,15 +81,18 @@ foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
 ?>
             <tr>
                 <form id='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
-' action='editar-prueba.php' method='POST'>
-                    <input type='hidden' name='idPrueba' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
-'/>              
+' action='editar-juego.php' method='POST'>
+                    <input type='hidden' name='idPruebaParaEliminar' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
+'/> 
+                    <input type='hidden' name='idJuegoParaEliminarPrueba' value='<?php echo $_smarty_tpl->tpl_vars['juego']->value->getIdJuego();?>
+'/>
                     <td>                       
                         <?php echo $_smarty_tpl->tpl_vars['prueba']->value->getNombrePrueba();?>
 
                     </td>   
                     <td>                       
-                        <input type='submit' name='editarPrueba' value='Editar prueba'/>                    
+                        <input type='submit' name='editarPrueba' value='Editar prueba'/>
+                        <input type='submit' name='eliminarPrueba' value='Elminar prueba'/>
                     </td>   
                 </form>
             </tr>        
@@ -95,7 +104,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <form id='nuevaPrueba' action='nueva-prueba.php' method='POST'>
                     <input type='hidden' name='idJuego' value='<?php echo $_smarty_tpl->tpl_vars['juego']->value->getIdJuego();?>
 '/>
-                    <input type='hidden' name='idJuego' value='<?php echo $_smarty_tpl->tpl_vars['nuevoIdPrueba']->value;?>
+                    <input type='hidden' name='idPrueba' value='<?php echo $_smarty_tpl->tpl_vars['nuevoIdPrueba']->value;?>
 '/>
                     <td>
                         Haz clic en Añadir prueba para crear pruebas en el juego
@@ -111,6 +120,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <div align="center">
             <button class="button" form='<?php echo $_smarty_tpl->tpl_vars['juego']->value->getIdJuego();?>
 '>Enviar/Guardar</button> 
+            <button class="button" form='eliminarJuego'>Eliminar Juego</button>
         </div>
 <?php echo '<script'; ?>
 >

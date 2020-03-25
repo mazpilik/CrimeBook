@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-23 01:21:45
+/* Smarty version 3.1.34-dev-7, created on 2020-03-24 14:49:26
   from 'C:\xampp\htdocs\crimebook\smarty\templates\nuevo-juego.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e7801199c6371_70741351',
+  'unifunc' => 'content_5e7a0fe6756c14_52824465',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9b4e1719598bcc5b2d829e918481c35c8c9eeb29' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crimebook\\smarty\\templates\\nuevo-juego.tpl',
-      1 => 1584918828,
+      1 => 1585057746,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e7801199c6371_70741351 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e7a0fe6756c14_52824465 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : PROYECTO Programación orientada a objetos en PHP -->
@@ -35,16 +35,16 @@ function content_5e7801199c6371_70741351 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 <body>
     <div class="topnav" id="myTopnav" style="margin: 0 0 0 0;">
-        <a href="listado-de-juegos.php">Listado de juegos</a>
-        <a href="Pagina2.html">Listado de partidas</a>
-        <a href="Pagina3.html">Listado de pruebas</a>
-        <a href="Pagina4.html">Partida nueva</a>
-        <a href="nuevo-juego.php" class="active">Juego Nuevo/editar juego</a>
-        <a href="Pagina6.html">Prueba Nueva/ Editar prueba</a>
-        <a href="Pagina7.html">Consultar partida</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-        </a>
+  	<a href="listado-de-juegos.php" class="active">Listado de juegos</a>
+  	<a href="listado-de-partidas.php">Listado de partidas</a>
+  	<a href="listado-de-pruebas.php">Listado de pruebas</a>
+  	<a href="nueva-partida.php">Partida nueva</a>
+  	<a href="nuevo-juego.php" class="active">Juego Nuevo/editar juego</a>
+  	<a href="nueva-prueba.php">Prueba Nueva/ Editar prueba</a>
+  	<a href="consultar-partida.php">Consultar partida</a>
+  	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  	<i class="fa fa-bars"></i>
+  	</a>
     </div>
     <form id='<?php echo $_smarty_tpl->tpl_vars['nuevoIdJuego']->value;?>
 ' action='nuevo-juego.php' method='POST'>
@@ -82,8 +82,8 @@ function content_5e7801199c6371_70741351 (Smarty_Internal_Template $_smarty_tpl)
 	</table>
         <br>
         <div align="center">
-            <button class="button" form='<?php echo $_smarty_tpl->tpl_vars['nuevoIdJuego']->value;?>
-' name="crearJuego" value="crearJuego">Enviar/Guardar</button>
+            <button class="button" form="<?php echo $_smarty_tpl->tpl_vars['nuevoIdJuego']->value;?>
+" name="nuevoIdJuegob" value="crearJuego">Enviar/Guardar</button>
         </div>
 
 <?php echo '<script'; ?>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-22 23:01:34
+/* Smarty version 3.1.34-dev-7, created on 2020-03-24 22:36:07
   from 'C:\xampp\htdocs\crimebook\smarty\templates\listado-de-juegos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e77e03eb4bd80_66525965',
+  'unifunc' => 'content_5e7a7d47b14d57_43949244',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0d0edd3c56e2c3d42b2adce0117f48b92ba09725' => 
     array (
       0 => 'C:\\xampp\\htdocs\\crimebook\\smarty\\templates\\listado-de-juegos.tpl',
-      1 => 1584914490,
+      1 => 1585085764,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e77e03eb4bd80_66525965 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e7a7d47b14d57_43949244 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : PROYECTO Programación orientada a objetos en PHP -->
@@ -67,7 +67,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['juego']->value) {
                 <td>
                     <input type='hidden' name='idJuego' value='<?php echo $_smarty_tpl->tpl_vars['juego']->value->getIdJuego();?>
 '/>
-                    <input type='submit' name='editarJuego' value='Editar'/>
+                    <input type='submit' name='editarJuego' value='Editar / Eliminar'/>
                 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['juego']->value->getNombreJuego();?>
 </td>
@@ -87,9 +87,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 <br>
     <div style="text-align:center;">
         <a href="Pagina4.html"><button class="button">Nueva partida</button></a>
-        <a href="nuevo-juego.php"><button class="button" name="nuevoJuego">Nuevo juego</button></a>
+        <a href="nuevo-juego.php"><button class="button" name="nuevoJuego" value="nuevoJuego">Nuevo juego</button></a>
         <a href="Pagina2.html"><button class="button">Ver Partidas</button></a>
-        <a href="index.html"><button class="button">Eliminar Juego</button></a>
+
     </div>
 
 <?php echo '<script'; ?>
