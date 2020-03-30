@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-22 15:41:27
+/* Smarty version 3.1.34-dev-7, created on 2020-03-30 10:40:30
   from 'C:\wamp64\www\crimebook\smarty\templates\listadoPartidas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e7787279ef809_73894425',
+  'unifunc' => 'content_5e81cc9e642a60_89840830',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e46001b74aa55500b20397cd8e22925dca206e79' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\listadoPartidas.tpl',
-      1 => 1584891679,
+      1 => 1585564829,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e7787279ef809_73894425 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e81cc9e642a60_89840830 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -77,6 +77,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['partida']->value) {
                                                     <tr>
                                                         <td class="titulos">Equipo</td>
                                                         <td class="titulos">Código de Acceso</td>
+                                                        <td>&#160;</td>
                                                     </tr>
                                                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['equipos']->value, 'equipo');
@@ -89,6 +90,41 @@ foreach ($_from as $_smarty_tpl->tpl_vars['equipo']->value) {
 </td>
                                                                 <td><?php echo $_smarty_tpl->tpl_vars['equipo']->value->getCodigo();?>
 </td>
+                                                                <td><table border="1">
+                                                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['resoluciones']->value, 'resolucion');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['resolucion']->value) {
+?>  
+                                                                        <?php if ($_smarty_tpl->tpl_vars['resolucion']->value->getIdEquipo() == $_smarty_tpl->tpl_vars['equipo']->value->getId()) {?>
+                                                                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['pruebas']->value, 'prueba');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
+?>
+                                                                                <?php if ($_smarty_tpl->tpl_vars['resolucion']->value->getIdPrueba() == $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba()) {?>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <?php echo $_smarty_tpl->tpl_vars['prueba']->value->getNombrePrueba();?>
+
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo $_smarty_tpl->tpl_vars['resolucion']->value->getIntentos();?>
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                <?php }?>
+                                                                            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?> 
+                                                                        <?php }?>
+                                                                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>         
+                                                                    </table>
+                                                                </td>
                                                             </tr>
                                                         <?php }?>
                                                     <?php

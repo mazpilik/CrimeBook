@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 23-03-2020 a las 15:19:30
+-- Tiempo de generación: 30-03-2020 a las 10:47:18
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.2.18
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `equipos` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `codigo` (`codigo`),
   KEY `idPartida` (`idPartida`)
-) ENGINE=MyISAM AUTO_INCREMENT=300010 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=300012 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `equipos`
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   UNIQUE KEY `nombre` (`nombre`),
   KEY `idJuego` (`idJuego`),
   KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=200026 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=200027 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `partidas`
@@ -248,14 +248,14 @@ INSERT INTO `pruebas` (`id`, `nombre`, `descExtendida`, `descBreve`, `tipo`, `di
 
 DROP TABLE IF EXISTS `resoluciones`;
 CREATE TABLE IF NOT EXISTS `resoluciones` (
-  `idPrueba` int(10) UNSIGNED NOT NULL,
+  `idPrueba` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `idEquipo` int(10) UNSIGNED NOT NULL,
   `resuelta` tinyint(1) NOT NULL DEFAULT '0',
   `intentos` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `estrellas` enum('0','1','2','3','4','5') DEFAULT NULL,
   PRIMARY KEY (`idEquipo`,`idPrueba`),
   KEY `idPrueba` (`idPrueba`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=400012 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `resoluciones`
@@ -269,7 +269,10 @@ INSERT INTO `resoluciones` (`idPrueba`, `idEquipo`, `resuelta`, `intentos`, `est
 (400005, 300001, 0, 0, NULL),
 (400006, 300001, 0, 0, NULL),
 (400007, 300001, 0, 0, NULL),
-(400008, 300001, 0, 0, NULL);
+(400008, 300001, 0, 0, NULL),
+(400001, 300002, 1, 5, NULL),
+(400002, 300002, 0, 2, NULL),
+(400001, 300003, 1, 8, NULL);
 
 -- --------------------------------------------------------
 

@@ -62,6 +62,8 @@
     $smarty->assign('partidas', DB::obtienePartidas());
     $smarty->assign('juegos', DB::obtieneJuegos());
     $smarty->assign('equipos', DB::obtieneEquipos());
+    $smarty->assign('resoluciones', DB::obtieneResoluciones());
+    $smarty->assign('pruebas', DB::obtieneTodasLasPruebas());
     
     // Mostramos la plantilla
     $smarty->display('listadoPartidas.tpl');

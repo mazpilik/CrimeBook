@@ -54,12 +54,32 @@
                                                     <tr>
                                                         <td class="titulos">Equipo</td>
                                                         <td class="titulos">Código de Acceso</td>
+                                                        <td>&#160;</td>
                                                     </tr>
                                                     {foreach from=$equipos item=equipo}
                                                         {if $equipo->getIdPartida()==$partida->getId()}  
                                                             <tr>
                                                                 <td>{$equipo->getNombre()}</td>
                                                                 <td>{$equipo->getCodigo()}</td>
+                                                                <td><table border="1">
+                                                                    {foreach from=$resoluciones item=resolucion}  
+                                                                        {if $resolucion->getIdEquipo()==$equipo->getId()}
+                                                                            {foreach from=$pruebas item=prueba}
+                                                                                {if $resolucion->getIdPrueba()==$prueba->getIdPrueba()}
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            {$prueba->getNombrePrueba()}
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            {$resolucion->getIntentos()}
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                {/if}
+                                                                            {/foreach} 
+                                                                        {/if}
+                                                                    {/foreach}         
+                                                                    </table>
+                                                                </td>
                                                             </tr>
                                                         {/if}
                                                     {/foreach}

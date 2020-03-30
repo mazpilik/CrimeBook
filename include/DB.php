@@ -3,6 +3,8 @@
 require_once dirname(__FILE__) . '/Partida.php';
 require_once dirname(__FILE__) . '/Equipo.php';
 require_once dirname(__FILE__) . '/juego.php';
+require_once dirname(__FILE__) . '/Resolucion.php';
+require_once dirname(__FILE__) . '/Prueba.php';
 
 class DB {
 
@@ -38,6 +40,7 @@ class DB {
     }
 
     /*     * ************* */
+    
     /* CARLOS */
 
     public static function obtienePartidas() {
@@ -112,7 +115,6 @@ class DB {
 
     public static function grabarNuevoEquipo($idPartida, $newEquipo) {
         list($usec, $sec) = explode(" ", microtime());
-        echo "mierda".$idPartida;
         $sql = "INSERT INTO equipos (codigo,nombre,tiempo,idPartida)"
                 . " VALUES ('$sec','$newEquipo','0','$idPartida')";
 
@@ -127,40 +129,41 @@ class DB {
         $resultado = self::ejecutaConsulta($sql);
     }
 
-    /*     * ************* */
-
-    public static function obtienePruebas() {
-        $sql = "SELECT cod, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username FROM producto;";
+     public static function obtieneResoluciones() {
+        $sql = "SELECT idPrueba, idEquipo, resuelta, intentos, estrellas FROM resoluciones;";
         $resultado = self::ejecutaConsulta($sql);
+        $resoluciones = array();
+
+        if ($resultado) {
+            // Añadimos un elemento por cada producto obtenido
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $resoluciones[] = new Resolucion($row);
+                $row = $resultado->fetch();
+            }
+        }
+
+        return $resoluciones;
+    }
+    
+     public static function obtieneTodasLasPruebas() {
+        $sql = "SELECT id, nombre, descExtendida, descBreve, tipo, "
+                . "dificultad, url, ayudaFinal, username FROM pruebas;";
+        $resultado = self::ejecutaConsulta ($sql);
         $pruebas = array();
 
-        if ($resultado) {
-            // Añadimos un elemento por cada producto obtenido
+	if($resultado) {
+            // Añadimos un elemento por cada registro obtenido
             $row = $resultado->fetch();
             while ($row != null) {
-                $pruebas[] = new Producto($row);
+                $pruebas[] = new prueba($row);
                 $row = $resultado->fetch();
             }
-        }
+	}     
         return $pruebas;
     }
-
-    public static function obtienePistas() {
-        $sql = "SELECT idPrueba, id, texto, tiempo, intentos FROM producto;";
-        $resultado = self::ejecutaConsulta($sql);
-        $pistas = array();
-
-        if ($resultado) {
-            // Añadimos un elemento por cada producto obtenido
-            $row = $resultado->fetch();
-            while ($row != null) {
-                $pistas[] = new Producto($row);
-                $row = $resultado->fetch();
-            }
-        }
-        return $pistas;
-    }
+    
+    /*     * ************* */
 
 }
-
 ?>
