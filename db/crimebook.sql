@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 30-03-2020 a las 10:47:18
+-- Tiempo de generación: 30-03-2020 a las 10:54:41
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.2.18
 
@@ -248,7 +248,7 @@ INSERT INTO `pruebas` (`id`, `nombre`, `descExtendida`, `descBreve`, `tipo`, `di
 
 DROP TABLE IF EXISTS `resoluciones`;
 CREATE TABLE IF NOT EXISTS `resoluciones` (
-  `idPrueba` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `idPrueba` int(10) UNSIGNED NOT NULL,
   `idEquipo` int(10) UNSIGNED NOT NULL,
   `resuelta` tinyint(1) NOT NULL DEFAULT '0',
   `intentos` int(10) UNSIGNED NOT NULL DEFAULT '0',
