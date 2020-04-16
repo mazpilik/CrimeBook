@@ -69,7 +69,7 @@ class DB {
     /*IÑAKI*/
     
     public static function obtienePistas() {
-        $sql = "SELECT idPrueba, id, texto, tiempo, intentos FROM producto;";
+        $sql = "SELECT idPrueba, id, texto, tiempo, intentos FROM pistas;";
         $resultado = self::ejecutaConsulta ($sql);
         $pistas = array();
 
