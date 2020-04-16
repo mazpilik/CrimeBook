@@ -4,7 +4,8 @@ require_once('include/libs/Smarty.class.php');
 
 session_start();
 
-
+if (!isset($_SESSION['usuario'])) 
+    die("Error - debe <a href='login.php'>identificarse</a>.<br />");
 
 $smarty = new Smarty;
 $smarty->template_dir = 'smarty/templates/';
