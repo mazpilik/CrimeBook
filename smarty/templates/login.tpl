@@ -11,7 +11,7 @@
 
 <body>
     <div id='login'>
-    <form action='login.php' method='post'>
+    <form action='listado-de-pruebas.php' method='post'> //pruebas.php
     <fieldset >
         <legend>Login</legend>
         <div><span class='error'>{if isset($error)}{$error}{/if}</span></div>

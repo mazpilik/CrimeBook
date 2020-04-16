@@ -4,6 +4,8 @@
 
 //session_start();
 
+
+
 //$smarty = new Smarty;
 //$smarty->template_dir = 'smarty/templates/';
 //$smarty->compile_dir = 'smarty/templates_c/';
@@ -15,6 +17,6 @@
 //$smarty->assign('pruebas', DB::obtienePruebas());
 
 
-//$smarty->display('Pagina6.html');   
+//$smarty->display('prueba.tpl');   
 
 ?>

@@ -14,10 +14,10 @@
 	<div class="topnav" id="myTopnav">
 	 <a href="Index.html">Listado de juegos</a>
 	 <a href="Pagina2.html">Listado de partidas</a>
-	 <a href="Pagina3.html">Listado de pruebas</a>
+	 <a href="listado-de-pruebas.php">Listado de pruebas</a>
 	 <a href="Pagina4.html">Partida nueva</a>
 	 <a href="Pagina5.html">Juego Nuevo/editar juego</a>
-	 <a href="Pagina6.html" class="active">Prueba Nueva/ Editar prueba</a>
+	 <a href="prueba.php" class="active">Prueba Nueva/ Editar prueba</a>
 	 <a href="Pagina7.html">Consultar partida</a>
 	 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		 <i class="fa fa-bars"></i>

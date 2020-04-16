@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-22 21:48:22
+/* Smarty version 3.1.34-dev-7, created on 2020-04-16 09:57:45
   from 'D:\wamp64\www\crimebook\smarty\templates\Pagina6.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e77dd2605e7d9_06689857',
+  'unifunc' => 'content_5e982c19769282_66751717',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c1249f5cd271476ee4c0c91ceb6fafcbf7a4a769' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\Pagina6.html',
-      1 => 1584913700,
+      1 => 1587031007,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e77dd2605e7d9_06689857 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e982c19769282_66751717 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,10 +37,10 @@ function content_5e77dd2605e7d9_06689857 (Smarty_Internal_Template $_smarty_tpl)
 	<div class="topnav" id="myTopnav">
 	 <a href="Index.html">Listado de juegos</a>
 	 <a href="Pagina2.html">Listado de partidas</a>
-	 <a href="Pagina3.html">Listado de pruebas</a>
+	 <a href="listado-de-pruebas.php">Listado de pruebas</a>
 	 <a href="Pagina4.html">Partida nueva</a>
 	 <a href="Pagina5.html">Juego Nuevo/editar juego</a>
-	 <a href="Pagina6.html" class="active">Prueba Nueva/ Editar prueba</a>
+	 <a href="prueba.php" class="active">Prueba Nueva/ Editar prueba</a>
 	 <a href="Pagina7.html">Consultar partida</a>
 	 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		 <i class="fa fa-bars"></i>

@@ -4,6 +4,8 @@ require_once('include/libs/Smarty.class.php');
 
 session_start();
 
+
+
 $smarty = new Smarty;
 $smarty->template_dir = 'smarty/templates/';
 $smarty->compile_dir = 'smarty/templates_c/';
@@ -15,6 +17,6 @@ $smarty->assign('usuario', $_SESSION['usuario']);
 $smarty->assign('pruebas', DB::obtienePruebas());
 
 
-$smarty->display('Pagina3.html');   
+$smarty->display('listado-de-pruebas.tpl');   
 
 ?>
