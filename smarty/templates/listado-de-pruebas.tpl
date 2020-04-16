@@ -38,10 +38,10 @@
         <tr>     
       
    
-                <td>{$pruebas->getNombre()}</td>
-                <td>{$pruebas->getdescBreve()}</td>
-                <td>{$pruebas->getnumTipo()}</td>
-                <td>{$pruebas->getUsername()}</td>                
+                <td>{$pruebas->getNombrePrueba()}</td>
+                <td>{$pruebas->getdescBrevePrueba()}</td>
+                <td>{$pruebas->getnumTipoPrueba()}</td>
+                <td>{$pruebas->getUsernamePrueba()}</td>                
          
         </tr>
         {/foreach}
