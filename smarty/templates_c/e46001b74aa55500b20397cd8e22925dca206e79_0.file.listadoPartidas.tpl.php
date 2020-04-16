@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-03-30 10:40:30
+/* Smarty version 3.1.34-dev-7, created on 2020-04-16 17:30:25
   from 'C:\wamp64\www\crimebook\smarty\templates\listadoPartidas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e81cc9e642a60_89840830',
+  'unifunc' => 'content_5e9896310abb49_43173213',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e46001b74aa55500b20397cd8e22925dca206e79' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\listadoPartidas.tpl',
-      1 => 1585564829,
+      1 => 1587057874,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e81cc9e642a60_89840830 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9896310abb49_43173213 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
