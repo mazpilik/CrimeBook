@@ -1,6 +1,6 @@
 <?php
 
-require_once('Prueba.php');
+require_once('prueba.php');
 require_once('Pista.php');
 
 
@@ -60,7 +60,7 @@ class DB {
             // Añadimos un elemento por cada prueba obtenido
             $row = $resultado->fetch();
             while ($row != null) {
-                $pruebas[] = new Prueba($row);
+                $pruebas[] = new prueba($row);
                 $row = $resultado->fetch();
             }
 	}     
