@@ -35,7 +35,7 @@
        
 {foreach from=$pruebas item=prueba}
        
-        <form id='{$pruebas->getId()}' action='prueba.php' method='post'>
+        <form id='{$pruebas->getId()}' action='listado-de-pruebas.php' method='post'>
         <input type='hidden' name='cod' value='{$pruebas->getId()}'/>
         <input type='submit' name='enviar' value='Seleccionar'/>
                 <td>{$pruebas->getNombre()}</td>
