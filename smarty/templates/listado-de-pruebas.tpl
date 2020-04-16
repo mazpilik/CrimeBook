@@ -36,12 +36,11 @@
        
         {foreach from=$pruebas item=prueba}
         <tr>     
-      
-   
-                <td>{$pruebas->getNombrePrueba()}</td>
-                <td>{$pruebas->getdescBrevePrueba()}</td>
-                <td>{$pruebas->getnumTipoPrueba()}</td>
-                <td>{$pruebas->getUsernamePrueba()}</td>                
+         
+                <td>{$prueba->getNombrePrueba()}</td>
+                <td>{$prueba->getdescBrevePrueba()}</td>
+                <td>{$prueba->getnumTipoPrueba()}</td>
+                <td>{$prueba->getUsernamePrueba()}</td>                
          
         </tr>
         {/foreach}

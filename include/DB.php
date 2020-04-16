@@ -66,8 +66,8 @@ class DB {
 	}     
         return $pruebas;
     }
-
     
+     
     /*IÑAKI*/
     
     public static function obtienePistas() {
