@@ -1,6 +1,6 @@
 <?php
 
-require_once('prueba.php');
+require_once('Prueba.php');
 require_once('Pista.php');
 
 
