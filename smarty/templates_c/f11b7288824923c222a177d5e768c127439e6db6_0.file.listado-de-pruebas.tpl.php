@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-16 12:43:52
+/* Smarty version 3.1.34-dev-7, created on 2020-04-16 14:21:12
   from 'D:\wamp64\www\crimebook\smarty\templates\listado-de-pruebas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e985308ab5022_49794054',
+  'unifunc' => 'content_5e9869d8939999_98458410',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f11b7288824923c222a177d5e768c127439e6db6' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\listado-de-pruebas.tpl',
-      1 => 1587041028,
+      1 => 1587046866,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e985308ab5022_49794054 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9869d8939999_98458410 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -49,24 +49,27 @@ function content_5e985308ab5022_49794054 (Smarty_Internal_Template $_smarty_tpl)
 <h2 align="center">Pruebas</h2>
 <table align="center">
 	<tr>
+                <th>Seleccionar</th>
 		<th>Nombre</th>
 		<th>Descripción</th>
 		<th>Tipo</th>
 		<th>Usuario que la creó</th>
-	
+	</tr>
         
        
-<?php
+        <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['pruebas']->value, 'prueba');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
 ?>
-       
+        <tr>     
         <form id='<?php echo $_smarty_tpl->tpl_vars['pruebas']->value->getId();?>
-' action='prueba.php' method='post'>
-        <input type='hidden' name='cod' value='<?php echo $_smarty_tpl->tpl_vars['pruebas']->value->getId();?>
+' action='listado-de-pruebas.php' method='post'>
+        <td>    
+            <input type='hidden' name='cod' value='<?php echo $_smarty_tpl->tpl_vars['pruebas']->value->getId();?>
 '/>
-        <input type='submit' name='enviar' value='Seleccionar'/>
+            <input type='submit' name='selec' value='Seleccionar'/>
+        <td>
                 <td><?php echo $_smarty_tpl->tpl_vars['pruebas']->value->getNombre();?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['pruebas']->value->getdescBreve();?>
@@ -76,12 +79,12 @@ foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
                 <td><?php echo $_smarty_tpl->tpl_vars['pruebas']->value->getUsername();?>
 </td>                
             </form>
-       
+        </tr>
         <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-	 </tr>
+	 
 
 </table>
 <br>

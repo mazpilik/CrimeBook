@@ -26,26 +26,29 @@
 <h2 align="center">Pruebas</h2>
 <table align="center">
 	<tr>
+                <th>Seleccionar</th>
 		<th>Nombre</th>
 		<th>Descripción</th>
 		<th>Tipo</th>
 		<th>Usuario que la creó</th>
-	
+	</tr>
         
        
-{foreach from=$pruebas item=prueba}
-       
+        {foreach from=$pruebas item=prueba}
+        <tr>     
         <form id='{$pruebas->getId()}' action='listado-de-pruebas.php' method='post'>
-        <input type='hidden' name='cod' value='{$pruebas->getId()}'/>
-        <input type='submit' name='enviar' value='Seleccionar'/>
+        <td>    
+            <input type='hidden' name='cod' value='{$pruebas->getId()}'/>
+            <input type='submit' name='selec' value='Seleccionar'/>
+        <td>
                 <td>{$pruebas->getNombre()}</td>
                 <td>{$pruebas->getdescBreve()}</td>
                 <td>{$pruebas->getnumTipo()}</td>
                 <td>{$pruebas->getUsername()}</td>                
             </form>
-       
+        </tr>
         {/foreach}
-	 </tr>
+	 
 
 </table>
 <br>
