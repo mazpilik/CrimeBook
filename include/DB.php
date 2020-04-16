@@ -1,6 +1,8 @@
 <?php
 
 require_once('Prueba.php');
+require_once('Pista.php');
+
 
 
 class DB {
