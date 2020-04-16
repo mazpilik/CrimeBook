@@ -50,12 +50,12 @@ class DB {
     /*IÑAKI*/
     
     public static function obtienePruebas() {
-        $sql = "SELECT cod, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username FROM producto;";
+        $sql = "SELECT id, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username FROM pruebas;";
         $resultado = self::ejecutaConsulta ($sql);
         $pruebas = array();
 
 	if($resultado) {
-            // Añadimos un elemento por cada producto obtenido
+            // Añadimos un elemento por cada prueba obtenido
             $row = $resultado->fetch();
             while ($row != null) {
                 $pruebas[] = new Prueba($row);

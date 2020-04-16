@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Description of Pruebas
+ * Description of Prueba
  *
  * @author Iñaki
  */
-class Pruebas {
+class Prueba {
     
     protected $id;
     protected $nombre;

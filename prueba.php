@@ -2,6 +2,7 @@
 //require_once('include/DB.php');
 //require_once('include/libs/Smarty.class.php');
 
+
 //session_start();
 
 
