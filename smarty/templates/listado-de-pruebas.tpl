@@ -26,7 +26,7 @@
 <h2 align="center">Pruebas</h2>
 <table align="center">
 	<tr>
-                <th>Seleccionar.</th>
+                <th>Seleccionar</th>
 		<th>Nombre</th>
 		<th>Descripción</th>
 		<th>Tipo</th>
