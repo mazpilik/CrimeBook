@@ -1,7 +1,7 @@
 <?php
 
-require_once('Prueba.php');
-require_once('Pista.php');
+require_once('include/Prueba.php');
+require_once('include/Pista.php');
 
 
 
@@ -52,7 +52,7 @@ class DB {
     /*IÑAKI*/
     
     public static function obtienePruebas() {
-        $sql = "SELECT id, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username FROM pruebas;";
+        $sql = "SELECT id, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username FROM pruebas";
         $resultado = self::ejecutaConsulta ($sql);
         $pruebas = array();
 
@@ -65,6 +65,20 @@ class DB {
             }
 	}     
         return $pruebas;
+    }
+    
+        public static function obtienePrueba($id) {
+        $sql = "SELECT id, nombre, descExtendida, descBreve, tipo, dificultad, url, ayudaFinal, username FROM pruebas";
+        $sql .= " WHERE id='" . $id . "'";
+        $resultado = self::ejecutaConsulta ($sql);
+        $prueba = null;
+
+	if(isset($resultado)) {
+            $row = $resultado->fetch();
+            $prueba = new Prueba($row);
+	}
+        
+        return $prueba;    
     }
     
      
