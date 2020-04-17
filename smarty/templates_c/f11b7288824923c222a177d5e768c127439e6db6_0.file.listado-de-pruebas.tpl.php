@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-17 17:55:46
+/* Smarty version 3.1.34-dev-7, created on 2020-04-17 18:11:58
   from 'D:\wamp64\www\crimebook\smarty\templates\listado-de-pruebas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e99eda2c62a74_78823368',
+  'unifunc' => 'content_5e99f16e320279_20728313',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f11b7288824923c222a177d5e768c127439e6db6' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\listado-de-pruebas.tpl',
-      1 => 1587145885,
+      1 => 1587147114,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e99eda2c62a74_78823368 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e99f16e320279_20728313 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +46,7 @@ function content_5e99eda2c62a74_78823368 (Smarty_Internal_Template $_smarty_tpl)
 	 </a>
 	</div>
 
-<h2 align="center">Pruebas</h2> // va listado
+<h2 align="center">Pruebas</h2>
 <table align="center">
 	<tr>
                 <th>Seleccionar</th>
@@ -62,6 +62,7 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
 ?>
+
         <form id='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
 ' action='listado-de-pruebas.php' method='post'>
         <td>    

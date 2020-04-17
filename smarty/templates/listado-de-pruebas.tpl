@@ -41,13 +41,6 @@
             <input type='hidden' name='cod' value='{$prueba->getIdPrueba()}'/>
             <input type='submit' name='selec' value='Seleccionar'/>    
         </td>     
-
-        <form id='{$prueba->getId()}' action='listado-de-pruebas.php' method='post'>
-        <td>    
-            <input type='hidden' name='cod' value='{$prueba->getId()}'/>
-            <input type='submit' name='selec' value='Seleccionar'/>    
-        <tr>     
-
          
                 <td>{$prueba->getNombrePrueba()}</td>
                 <td>{$prueba->getdescBrevePrueba()}</td>
