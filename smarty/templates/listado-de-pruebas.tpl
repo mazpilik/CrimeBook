@@ -54,7 +54,7 @@
 </table>
 <br>
 <div align="center">
-<a href="prueba.php"><button class="button">Crear prueba</button></a>
+<a href="prueba.php"><button class="button">Crear prueba</button></a> 
 <button class="button">Duplicar prueba</button>
 <a href="prueba.php"><button class="button">Editar prueba</button></a>
 <button class="button">Eliminar prueba</button>
