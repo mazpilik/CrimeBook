@@ -1,6 +1,7 @@
 <?php
 require_once('include/DB.php');
 require_once('include/libs/Smarty.class.php');
+//$cod= $_GET['cod'];
 
 
 session_start();
@@ -17,7 +18,7 @@ $smarty->cache_dir = 'smarty/cache/';
 
 
 $smarty->assign('usuario', $_SESSION['usuario']);
-$smarty->assign('pruebas', DB::obtienePruebas());
+$smarty->assign('prueba', DB::obtienePrueba('400001'));
 
 
 $smarty->display('prueba.tpl');   

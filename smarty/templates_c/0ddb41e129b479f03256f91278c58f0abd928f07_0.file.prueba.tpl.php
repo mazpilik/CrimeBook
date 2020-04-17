@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-17 18:17:00
+/* Smarty version 3.1.34-dev-7, created on 2020-04-17 19:30:00
   from 'D:\wamp64\www\crimebook\smarty\templates\prueba.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e99f29ceeaf97_49379213',
+  'unifunc' => 'content_5e9a03b85cec58_45436055',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0ddb41e129b479f03256f91278c58f0abd928f07' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\prueba.tpl',
-      1 => 1587035002,
+      1 => 1587151798,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e99f29ceeaf97_49379213 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9a03b85cec58_45436055 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,21 +51,33 @@ function content_5e99f29ceeaf97_49379213 (Smarty_Internal_Template $_smarty_tpl)
 	<div id="pag6" align="center"  >
 <form action="" method="" >
 <p>
-	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre">
+	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre" value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getNombrePrueba();?>
+">
 </p>
 <p>
-	URL:<input type="text" name="url" placeholder="Introduzca la URL">
+	URL:<input type="text" name="url" placeholder="Introduzca la URL" value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getUrlPrueba();?>
+">
 	</p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve"></textarea>
+	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve" ><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescBrevePrueba();?>
+</textarea>
 	</p>
 	<p>
-Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa"></textarea>
+Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa"><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescExtendidaPrueba();?>
+</textarea>
 	</p>
 	<p>
 		Tipo:<select value="Tipo">
+                                <?php if ($_smarty_tpl->tpl_vars['prueba']->value->getTipoPrueba() == "Prueba normal") {?>
 				<option value="N">Normal</option>
+                                <option value="F">Final</option>
+                                <?php } elseif ($_smarty_tpl->tpl_vars['prueba']->value->getTipoPrueba() == "Prueba final") {?>
 				<option value="F">Final</option>
+                                <option value="N">Normal</option>
+                                <?php } else { ?>
+                                <option value="N">Normal</option>
+				<option value="F">Final</option>
+                                <?php }?>
 				</select>
 	</p>
 </div>

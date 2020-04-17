@@ -28,21 +28,29 @@
 	<div id="pag6" align="center"  >
 <form action="" method="" >
 <p>
-	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre">
+	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre" value="{$prueba->getNombrePrueba()}">
 </p>
 <p>
-	URL:<input type="text" name="url" placeholder="Introduzca la URL">
+	URL:<input type="text" name="url" placeholder="Introduzca la URL" value="{$prueba->getUrlPrueba()}">
 	</p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve"></textarea>
+	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve" >{$prueba->getdescBrevePrueba()}</textarea>
 	</p>
 	<p>
-Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa"></textarea>
+Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa">{$prueba->getdescExtendidaPrueba()}</textarea>
 	</p>
 	<p>
 		Tipo:<select value="Tipo">
+                                {if $prueba->getTipoPrueba() eq "Prueba normal"}
 				<option value="N">Normal</option>
+                                <option value="F">Final</option>
+                                {else if $prueba->getTipoPrueba() eq "Prueba final"}
 				<option value="F">Final</option>
+                                <option value="N">Normal</option>
+                                {else}
+                                <option value="N">Normal</option>
+				<option value="F">Final</option>
+                                {/if}
 				</select>
 	</p>
 </div>
