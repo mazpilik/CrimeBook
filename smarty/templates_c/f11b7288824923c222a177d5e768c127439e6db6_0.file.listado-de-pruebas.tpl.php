@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-17 17:45:45
+/* Smarty version 3.1.34-dev-7, created on 2020-04-17 17:55:46
   from 'D:\wamp64\www\crimebook\smarty\templates\listado-de-pruebas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e99eb4910f283_29591922',
+  'unifunc' => 'content_5e99eda2c62a74_78823368',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f11b7288824923c222a177d5e768c127439e6db6' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\listado-de-pruebas.tpl',
-      1 => 1587145542,
+      1 => 1587145885,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e99eb4910f283_29591922 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e99eda2c62a74_78823368 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +46,7 @@ function content_5e99eb4910f283_29591922 (Smarty_Internal_Template $_smarty_tpl)
 	 </a>
 	</div>
 
-<h2 align="center">Pruebas</h2>
+<h2 align="center">Pruebas</h2> // va listado
 <table align="center">
 	<tr>
                 <th>Seleccionar</th>

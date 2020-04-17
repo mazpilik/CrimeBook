@@ -23,7 +23,7 @@
 	 </a>
 	</div>
 
-<h2 align="center">Pruebas</h2> // va listado
+<h2 align="center">Pruebas</h2>
 <table align="center">
 	<tr>
                 <th>Seleccionar</th>
