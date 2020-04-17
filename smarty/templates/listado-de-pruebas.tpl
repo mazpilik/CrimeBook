@@ -26,7 +26,7 @@
 <h2 align="center">Pruebas</h2>
 <table align="center">
 	<tr>
-                
+                <th>Seleccionar</th>
 		<th>Nombre</th>
 		<th>Descripción</th>
 		<th>Tipo</th>
@@ -35,6 +35,10 @@
         
        
         {foreach from=$pruebas item=prueba}
+        <form id='{$prueba->getId()}' action='listado-de-pruebas.php' method='post'>
+        <td>    
+            <input type='hidden' name='cod' value='{$prueba->getId()}'/>
+            <input type='submit' name='selec' value='Seleccionar'/>    
         <tr>     
          
                 <td>{$prueba->getNombrePrueba()}</td>
