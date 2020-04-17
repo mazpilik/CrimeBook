@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-17 17:33:16
+/* Smarty version 3.1.34-dev-7, created on 2020-04-17 17:45:45
   from 'D:\wamp64\www\crimebook\smarty\templates\listado-de-pruebas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e99e85cd4b316_69211304',
+  'unifunc' => 'content_5e99eb4910f283_29591922',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f11b7288824923c222a177d5e768c127439e6db6' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\listado-de-pruebas.tpl',
-      1 => 1587144240,
+      1 => 1587145542,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e99e85cd4b316_69211304 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e99eb4910f283_29591922 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -62,19 +62,19 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
 ?>
-        <form id='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getId();?>
+        <form id='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
 ' action='listado-de-pruebas.php' method='post'>
         <td>    
-            <input type='hidden' name='cod' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getId();?>
+            <input type='hidden' name='cod' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
 '/>
             <input type='submit' name='selec' value='Seleccionar'/>    
-        <tr>     
+        </td>     
          
                 <td><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getNombrePrueba();?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescBrevePrueba();?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getnumTipoPrueba();?>
+                <td><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getTipoPrueba();?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getUsernamePrueba();?>
 </td>                

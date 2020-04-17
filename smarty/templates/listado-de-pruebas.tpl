@@ -35,15 +35,15 @@
         
        
         {foreach from=$pruebas item=prueba}
-        <form id='{$prueba->getId()}' action='listado-de-pruebas.php' method='post'>
+        <form id='{$prueba->getIdPrueba()}' action='listado-de-pruebas.php' method='post'>
         <td>    
-            <input type='hidden' name='cod' value='{$prueba->getId()}'/>
+            <input type='hidden' name='cod' value='{$prueba->getIdPrueba()}'/>
             <input type='submit' name='selec' value='Seleccionar'/>    
-        <tr>     
+        </td>     
          
                 <td>{$prueba->getNombrePrueba()}</td>
                 <td>{$prueba->getdescBrevePrueba()}</td>
-                <td>{$prueba->getnumTipoPrueba()}</td>
+                <td>{$prueba->getTipoPrueba()}</td>
                 <td>{$prueba->getUsernamePrueba()}</td>                
          
         </tr>
