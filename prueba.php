@@ -19,6 +19,7 @@ $smarty->cache_dir = 'smarty/cache/';
 
 $smarty->assign('usuario', $_SESSION['usuario']);
 $smarty->assign('prueba', DB::obtienePrueba('400001'));
+$smarty->assign('pistaId', DB::obtienePistasId('400001'));
 
 
 $smarty->display('prueba.tpl');   

@@ -64,17 +64,12 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 	<tr>
 		<th>Listado de Pistas</th>
 	</tr>
+        {foreach from=$pistasId item=pistaId}
 	<tr>
-		<td align="center"></td>
-	<tr>
-		<td align="center"></td>
+		<td align="center">{$pistasId->getTexto()}</td>
+	
 	</tr>
-	<tr>
-		<td align="center"></td>
-	</tr>
-	<tr>
-		<td align="center"></td>
-	</tr>
+	{/foreach}
 </table>
 </form>
 <br>

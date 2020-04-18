@@ -85,12 +85,12 @@ class DB {
     /*IÑAKI*/
     
     public static function obtienePistas() {
-        $sql = "SELECT idPrueba, id, texto, tiempo, intentos FROM pistas;";
+        $sql = "SELECT idPrueba, id, texto, tiempo, intentos FROM pistas";
         $resultado = self::ejecutaConsulta ($sql);
         $pistas = array();
 
 	if($resultado) {
-            // Añadimos un elemento por cada producto obtenido
+            // Añadimos un elemento por cada pista obtenida
             $row = $resultado->fetch();
             while ($row != null) {
                 $pistas[] = new Pista($row);
@@ -98,6 +98,39 @@ class DB {
             }
 	}     
         return $pistas;
+                       
     }
+    
+    public static function obtienePistasId($id) {
+        $sql = "SELECT idPrueba, id, texto, tiempo, intentos FROM pistas";
+        $sql .= " WHERE idPrueba='" . $id . "'";
+        $resultado = self::ejecutaConsulta ($sql);
+        $pistasId = array();
+
+	if($resultado) {
+            // Añadimos un elemento por cada pista obtenida
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $pistasId[] = new Pista($row);
+                $row = $resultado->fetch();
+            }
+	}     
+        return $pistasId; 
+    }
+    
+            public static function obtienePista($id) {
+        $sql = "SELECT idPrueba, id, texto, tiempo, intentos FROM pistas";
+        $sql .= " WHERE id='" . $id . "'";
+        $resultado = self::ejecutaConsulta ($sql);
+        $pista = null;
+
+	if(isset($resultado)) {
+            $row = $resultado->fetch();
+            $pista = new Prueba($row);
+	}
+        
+        return $pista;    
+    }
+    
 }
 ?>
