@@ -2,13 +2,10 @@
 require_once('include/DB.php');
 require_once('include/juego.php');
 require_once('include/libs/Smarty.class.php');
+require_once('include/functions/initSession.php');
 
-// Recuperamos la información de la sesión
-session_start();
-
-// Y comprobamos que el usuario se haya autentificado
-if (!isset($_SESSION['usuario'])) 
-    die("Error - debe <a href='login.php'>identificarse</a>.<br />");
+//iniciamos y chequeamos sesión
+initSession();
 
 // Cargamos la librería de Smarty
 $smarty = new Smarty;
@@ -25,6 +22,7 @@ if (isset($_POST['usuario'])) {
 // Ponemos a disposición de la plantilla los datos necesarios
 $smarty->assign('usuario', $_SESSION['usuario']);
 $smarty->assign('juegos', DB::obtieneJuegos());
+$smarty->assign('alertMessage', $_SESSION['alertMessage']);
 
 // Mostramos la plantilla
 $smarty->display('listado-de-juegos.tpl');     

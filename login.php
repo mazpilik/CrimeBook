@@ -19,6 +19,7 @@ if (isset($_POST['enviar'])) {
         if (DB::verificaCliente($_POST['usuario'], $_POST['password'])) {
             session_start();
             $_SESSION['usuario']=$_POST['usuario'];
+            $_SESSION['alertMessage'] = array('isMessage' => false);
             header("Location: listado-de-juegos.php");                    
         }
         else {

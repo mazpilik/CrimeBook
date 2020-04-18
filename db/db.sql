@@ -19,7 +19,7 @@ unique(email)
 ) engine=InnoDB character set=utf8;
 
 create table pruebas (
-id int unsigned not null,
+id int unsigned not null auto_increment,
 nombre varchar (50) not null,
 descExtendida varchar (1000),
 descBreve varchar (200),
@@ -34,15 +34,15 @@ foreign key(username) references usuarios(username)
 ) engine=InnoDB character set=utf8;
 
 create table respuestas (
+id int unsigned not null auto_increment,
 idPrueba int unsigned not null,
-id int unsigned not null,
 respuesta varchar (200) not null,
-primary key (idPrueba,id),
+primary key (id),
 foreign key(idPrueba) references pruebas(id)
 ) engine=InnoDB character set=utf8;
 
 create table juegos (
-id int unsigned not null,
+id int unsigned not null auto_increment,
 nombre varchar (50) not null,
 descExtendida varchar (1000),
 descBreve varchar (200),
@@ -72,14 +72,14 @@ duracion int unsigned not null default 0,
 fechaInicio date not null default 0,
 idJuego int unsigned not null,
 username varchar (15) not null,
-primary key (id),
+primary key (id) auto_increment,
 unique (nombre),
 foreign key(idJuego) references juegos(id),
 foreign key(username) references usuarios(username)
 ) engine=InnoDB character set=utf8;
 
 create table equipos (
-id int unsigned not null,
+id int unsigned not null auto_increment,
 codigo int unsigned not null,
 nombre varchar (50) not null,
 tiempo int unsigned not null default 0,
@@ -90,12 +90,12 @@ unique(codigo)
 ) engine=InnoDB character set=utf8;
 
 create table pistas (
+id int unsigned not null auto_increment,
 idPrueba int unsigned not null,
-id int unsigned not null,
 texto varchar (1000) not null,
 tiempo int unsigned,
 intentos int unsigned,
-primary key (idPrueba,id),
+primary key (id),
 foreign key(idPrueba) references pruebas(id)
 ) engine=InnoDB character set=utf8;
 
@@ -135,8 +135,8 @@ values ('ivantapia01','ivantapia@email.cb','ivan','tapia','1234abcd');
 -- Juegos----------------------------
 -- ----------------------------------
 
-insert into juegos
-values ('100001','Los Asesinos del Crimebook','Una orden de asesinos tiene en
+insert into juegos (nombre, descExtendida, descBreve, fechaCreacion, username)
+values ('Los Asesinos del Crimebook','Una orden de asesinos tiene en
 jaque al mundo entero. La Orden de los asesinos del Crimebook. Estos criminales 
 tienen por costumbre, antes de matar a sus víctimas, crear un Crimebook. Un 
 libro de enigmas en cuyo interior se encuentran encriptados los datos de la 

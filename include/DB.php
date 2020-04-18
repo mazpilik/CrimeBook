@@ -2,9 +2,11 @@
 
 require_once('juego.php');
 require_once('prueba.php');
-//require_once('listado-de-partidas.php');
 
 class DB {
+    /**
+     * Conecta con la base de datos y ejecuta las consultas
+     */
     protected static function ejecutaConsulta($sql) {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
         $dsn = "mysql:host=localhost;dbname=crimebookluis";
@@ -15,53 +17,154 @@ class DB {
         if (isset($dwes)) {$resultado = $dwes->query($sql);}
         return $resultado;
     }
+
+    /**
+     * Obtiene todos los juegos
+     */
     public static function obtieneJuegos() {
         $sql = "SELECT id, nombre, descExtendida, descBreve, fechaCreacion, "
                 . "username, COUNT(idPrueba) as numPruebas FROM juegos "
                 . "LEFT JOIN pertenencias "
                 . "ON pertenencias.idJuego=juegos.id "
-                . "GROUP BY id;";
+                . "GROUP BY juegos.id;";
         $resultado = self::ejecutaConsulta ($sql);
         $juegos = array();
 
 	if($resultado) {
             // Añadimos un elemento por cada registro obtenido
-            $row = $resultado->fetch();
-            while ($row != null) {
-                $juegos[] = new juego($row);
-                $row = $resultado->fetch();
+            while ($row = $resultado->fetch()) {
+                $juegos[] = new Juego($row);
             }
 	}     
         return $juegos;
     }
-    public static function obtieneJuego($idJuego) {
-        $sql = "SELECT id, nombre, descExtendida, descBreve, "
-                . "fechaCreacion, username, COUNT(idPrueba) as numPruebas "
-                . "FROM juegos LEFT JOIN pertenencias "
-                . "ON juegos.id = pertenencias.idJuego "
-                . "WHERE  juegos.id = '".$idJuego."' GROUP BY id;";
-        $juego = null;
-        $resultado = self::ejecutaConsulta ($sql);
-	if($resultado) {
-                // Añadimos un elemento por cada registro obtenido
-                $row = $resultado->fetch();          
-                $juego = new juego($row);
-            }  
-        return $juego;
+
+    /**
+     * Obtener el id del último juego
+     * 
+     * @return Int $id
+     */
+    public static function getLastJuegoId(){
+        $id = 0;
+        $sql = "SELECT id FROM juegos ORDER BY id DESC LIMIT 1";
+        $resultado = self::ejecutaConsulta($sql);
+        if($resultado){
+            $rawJuego = $resultado->fetch();
+            $id = $rawJuego['id'];
+        }
+        return $id;
     }
-    public static function cuentaPruebasJuego($idJuego) {
-        $sql = "SELECT COUNT(idPrueba) as numPruebas FROM pertenencias "
-                . " WHERE idJuego = '".$idJuego
-                . "' GROUP BY idJuego;";
-        $juego = 0;
-        $resultado = self::ejecutaConsulta ($sql);
-	if($resultado) {
-                // Añadimos un elemento por cada registro obtenido
-                $row = $resultado->fetch();
-                $juego = (int) $row[0];
-            }  
+
+    /**
+     * obtener un juego por su id
+     * 
+     * @param int $id
+     * @return Juego
+     */
+    public static function getJuegoById($id){
+        $juego = new Juego();
+        $sql = "SELECT * FROM juegos WHERE id = ".$id;
+        $resultado = self::ejecutaConsulta($sql);
+        if($resultado){
+            $juego->populateJuego($resultado->fetch());
+        }
         return $juego;
-    }    
+    }  
+     
+    /**
+     * modifica un juego por su id
+     * 
+     * @param Int $id
+     * @param String $nombre
+     * @param String $desExten
+     * @param String $descBreve
+     * 
+     * @return boolean $resultado
+     */
+    public static function modificarJuego($id, $nombre, $desExten, $descBreve) {
+        $idJuego = $id;
+        $sql = "UPDATE juegos SET "
+                . " nombre = '". $nombre."', "
+                . " descExtendida = '".$desExten."', "
+                . " descBreve = '".$descBreve."' "
+                . " WHERE id = '".$idJuego."';";
+        $resultado = self::ejecutaConsulta ($sql); 
+        return $resultado; 
+    }
+    
+    /**
+     * Insertar nuevo juego en el sistema
+     * 
+     * @param Object $juego
+     * 
+     * @return boolean $resultado true or false
+     */
+    public static function crearJuego($juego) {
+        $sql = "INSERT INTO juegos (nombre, descExtendida, descBreve, fechaCreacion, username)"
+            . " VALUES ("
+            . "'". $juego->getNombre()."', "
+            . "'". $juego->getdescExtendida()."', "
+            . "'". $juego->getdescBreve()."', "
+            . "'". $juego->getfechaCreacion()."', "
+            . "'". $juego->getUsername()."');";
+        return self::ejecutaConsulta ($sql);       
+    }
+    
+    /**
+     * Elimina un juego por su id
+     * 
+     * @param int $idJuego
+     * 
+     * @return boolean
+     */
+    public static function eliminarJuego($idJuego) {
+        $sql = "DELETE  FROM juegos WHERE juegos.id = '".$idJuego."';";
+        $resultado = self::ejecutaConsulta ($sql); 
+        return $resultado; 
+    }
+
+    /**
+     * Elimina un multiples juegos dado un array de identificadores
+     * 
+     * @param array $idJuegos
+     * 
+     * @return boolean
+     */
+    public static function eliminarJuegos($idJuegos) {
+        $sql = "DELETE  FROM juegos WHERE juegos.id IN (".join(',',$idJuegos).");";
+        $resultado = self::ejecutaConsulta ($sql); 
+        return $resultado; 
+    }
+
+    /**
+     * verifica las credenciales de un usuario
+     * 
+     * @param string $nombre
+     * @param string $contrasena
+     * 
+     * @return boolean
+     */
+    public static function verificaCliente($nombre, $contrasena) {
+        $sql = "SELECT username FROM usuarios ";
+        $sql .= "WHERE username='$nombre' ";
+        $sql .= "AND contrasenya='" .$contrasena . "';";
+        $resultado = self::ejecutaConsulta ($sql);
+        $verificado = false;
+
+        if(isset($resultado)) {
+            $fila = $resultado->fetch();
+            if($fila !== false) $verificado=true;
+        }
+        return $verificado;
+    }
+
+    /**
+     * obtiene las pruebas de un juego en base a su id
+     * 
+     * @param integer $id
+     * 
+     * @return array
+     */
     public static function obtienePruebas($idJuego) {
         $sql = "SELECT id, nombre, descExtendida, descBreve, tipo, "
                 . "dificultad, url, ayudaFinal, username FROM pruebas"
@@ -81,128 +184,6 @@ class DB {
 	}     
         return $pruebas;
     }
-    
-    public static function obtieneIdJuego() {
-        $sql = "SELECT id FROM juegos ORDER BY id DESC limit 1;";
-        $resultado = self::ejecutaConsulta ($sql);
-	if($resultado) {
-                // Añadimos un elemento por cada registro obtenido
-                $row = $resultado->fetch();
-                $juego = (int) $row[0] + 1;
-            }  
-        return $juego;
-    }
-    public static function obtieneIdPrueba() {
-        $sql = "SELECT id FROM pruebas ORDER BY id DESC limit 1;";
-        $resultado = self::ejecutaConsulta ($sql);
-	if($resultado) {
-                // Añadimos un elemento por cada registro obtenido
-                $row = $resultado->fetch();
-                $prueba = (int) $row[0] + 1;
-            }  
-        return $prueba;
-    }
-        
-    public static function modificarJuego($id, $nombre, $desExten, $descBreve) {
-        $idJuego = $id;
-        $sql = "UPDATE juegos SET "
-                . " nombre = '". $nombre."', "
-                . " descExtendida = '".$desExten."', "
-                . " descBreve = '".$descBreve."' "
-                . " WHERE id = '".$idJuego."';";
-        $resultado = self::ejecutaConsulta ($sql); 
-        if(!$resultado) {
-            $idJuego = DB::obtieneIdJuego();
-        }
-        return $idJuego; 
-    }
-    
-    //devuelve el nuevo id creado del juego y si no ha ido bien devuelve cero
-    public static function crearJuego($juego) {
-        $sql = "INSERT INTO juegos (id, nombre, descExtendida, descBreve, fechaCreacion, username)"
-                . " VALUES ('". $juego->getIdJuego()."', "
-                . "'". $juego->getNombreJuego()."', "
-                . "'". $juego->getdescExtendidaJuego()."', "
-                . "'". $juego->getdescBreveJuego()."', "
-                . "'". $juego->getfechaCreacionJuego()."', "
-                . "'". $juego->getUsernameJuego()."');";
-        $resultado = self::ejecutaConsulta ($sql); 
-        if($resultado) {
-            $id= $juego->getIdJuego();
-        }else{
-            $id = DB::obtieneIdJuego();
-        }
-    return $id;     
-    }
-    
-    public static function eliminarJuego($idJuego) {
-        $devolver = $idJuego;
-        $sql = "DELETE  FROM juegos WHERE juegos.id = '".$idJuego."';";
-        $resultado = self::ejecutaConsulta ($sql); 
-        if(!$resultado) {
-            $devolver = DB::obtieneIdJuego();
-        }
-        return $devolver; 
-    }
-    
-    public static function eliminarPrueba($idJuego, $idPrueba) {
-        $devolver = $idJuego;
-        $sql = "DELETE  FROM pruebas WHERE pruebas.id = '".$idPrueba."';";
-        $resultado = self::ejecutaConsulta ($sql); 
-        if(!$resultado) {
-            $devolver = DB::obtieneIdJuego();
-        }
-        return $devolver; 
-    }
-    public static function obtienePartidas() {
-        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username FROM partidas;";
-        $resultado = self::ejecutaConsulta ($sql);
-        $partidas = array();
-
-	if($resultado) {
-            // Añadimos un elemento por cada producto obtenido
-            $row = $resultado->fetch();
-            while ($row != null) {
-                $partidas[] = new Producto($row);
-                $row = $resultado->fetch();
-            }
-	}     
-        return $partidas;
-    }
-
-
-    public static function obtienePistas() {
-        $sql = "SELECT idPrueba, id, texto, tiempo, intentos FROM pistas;";
-        $resultado = self::ejecutaConsulta ($sql);
-        $pistas = array();
-
-	if($resultado) {
-            // Añadimos un elemento por cada producto obtenido
-            $row = $resultado->fetch();
-            while ($row != null) {
-                $pistas[] = new Producto($row);
-                $row = $resultado->fetch();
-            }
-	}     
-        return $pistas;
-    }
-
-    
-    // Verifica el NOMBRE Y CONTRASEÑA contra la base de datoS
-
-    public static function verificaCliente($nombre, $contrasena) {
-        $sql = "SELECT username FROM usuarios ";
-        $sql .= "WHERE username='$nombre' ";
-        $sql .= "AND contrasenya='" .$contrasena . "';";
-        $resultado = self::ejecutaConsulta ($sql);
-        $verificado = false;
-
-        if(isset($resultado)) {
-            $fila = $resultado->fetch();
-            if($fila !== false) $verificado=true;
-        }
-        return $verificado;
-    } 
     
 }
 ?>

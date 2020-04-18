@@ -1,80 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- Desarrollo Web en Entorno Servidor -->
-<!-- Tema 6 : PROYECTO Programación orientada a objetos en PHP -->
-<!-- juego crimebook -->
-<html>
-<head>
-    <title>Crimebook - Listado de Juegos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
-</head>
-<body>
-    <div class="topnav" id="myTopnav" style="margin: 0 0 0 0;">
-  	<a href="listado-de-juegos.php" class="active">Listado de juegos</a>
-  	<a href="listado-de-partidas.php">Listado de partidas</a>
-  	<a href="listado-de-pruebas.php">Listado de pruebas</a>
-  	<a href="nueva-partida.php">Partida nueva</a>
-  	<a href="nuevo-juego.php">Juego Nuevo/Editar juego</a>
-  	<a href="nueva-prueba.php">Prueba Nueva/ Editar prueba</a>
-  	<a href="consultar-partida.php">Consultar partida</a>
-  	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  	<i class="fa fa-bars"></i>
-  	</a>
-    </div>
+{include file='header.tpl' pageTitle='listado de juegos' activePage='listado-de-juegos' }
+  <div id="listadoDeJuegos">
+    <h1 align="center">Juegos</h1>
+    <form
+          id="juegos"
+          action="borrar-juegos.php"
+          method="POST"
+        >
+      <input type="hidden" name="borrar" value="ok" />
+    <table align="center">
+      <tr>
+        <th></th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Número de pruebas</th>
+        <th>Usuario que la creó</th>
+        <th></th>
+      </tr>
+      {foreach from=$juegos item=juego}
+      <tr>
+          <td><input name='juegos[]' type="checkbox" value={$juego->getId()}></td>
+          <td>{$juego->getNombre()}</td>
+          <td>{$juego->getdescBreve()}</td>
+          <td>{$juego->getNumPruebas()}</td>
+          <td>{$juego->getUsername()}</td>
+          <td>
+            <div class="actions">
+              <a href="juego.php?edit={$juego->getId()}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="borrar-juegos.php?id={$juego->getId()}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </div>
+          </td>
+      </tr>
+      {/foreach}
+    </table>
 
-<h2 align="center">Juegos</h2>
-      <table align="center">
-        <tr>
-          <th>Modificar</th>
-          <th>Nombre del juego</th>
-          <th>Descripción</th>
-          <th>Número de pruebas</th>
-          <th>Usuario que la creó</th>
-        </tr>
-        {foreach from=$juegos item=juego}
-        <tr>
-            <form id='{$juego->getidJuego()}' action='editar-juego.php' method='POST'>
-                <td>
-                    <input type='hidden' name='idJuego' value='{$juego->getIdJuego()}'/>
-                    <input type='submit' name='editarJuego' value='Editar / Eliminar'/>
-                </td>
-                <td>{$juego->getNombreJuego()}</td>
-                <td>{$juego->getdescBreveJuego()}</td>
-                <td>{$juego->getnumPruebasJuego()}</td>
-                <td>{$juego->getUsernameJuego()}</td>                
-            </form>
-        </tr>
-        {/foreach}
-      </table>
-<br>
+    <br />
     <div style="text-align:center;">
-        <a href="Pagina4.html"><button class="button">Nueva partida</button></a>
-        <a href="nuevo-juego.php"><button class="button" name="nuevoJuego" value="nuevoJuego">Nuevo juego</button></a>
-        <a href="Pagina2.html"><button class="button">Ver Partidas</button></a>
-
+      <a href="partida.php" class="button">Nueva partida</a>
+      <a href="juego.php" class="button">Nuevo juego</a>
+      <input type="submit" class="button" value="Borrar juegos" />
+      <a href="Pagina2.html" class="button">Ver Partidas</a>
     </div>
-
-<script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
-
-<div id="contenedor">
-
-  <br class="divisor" />
-  <div id="pie">
-    <form action='logout.php' method='post'>
-        <input type='submit' name='desconectar' value='Desconectar usuario {$usuario}'/>
-    </form>        
+    </form>
   </div>
-</div>
-</body>
-</html>
+    
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+    </script>
+{include file='footer.tpl'}
