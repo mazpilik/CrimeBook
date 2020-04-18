@@ -36,10 +36,9 @@
        
         {foreach from=$pruebas item=prueba}
 
-        <form id='{$prueba->getIdPrueba()}' action='listado-de-pruebas.php' method='post'>
+        
         <td>    
-            <input type='hidden' name='cod' value='{$prueba->getIdPrueba()}'/>
-            <input type='submit' name='selec' value='Seleccionar'/>    
+            <a href="prueba.php?id={$prueba->getIdPrueba()}"><input type="checkbox"></a>       
         </td>     
          
                 <td>{$prueba->getNombrePrueba()}</td>
@@ -48,6 +47,7 @@
                 <td>{$prueba->getUsernamePrueba()}</td>                
          
         </tr>
+        
         {/foreach}
 	 
 
@@ -56,7 +56,7 @@
 <div align="center">
 <a href="prueba.php"><button class="button">Crear prueba</button></a> 
 <button class="button">Duplicar prueba</button>
-<a href="prueba.php"><button class="button">Editar prueba</button></a>
+<a href="prueba.php?id={$_GET['id']}"><button class="button">Editar prueba</button></a>
 <button class="button">Eliminar prueba</button>
 </div>
 

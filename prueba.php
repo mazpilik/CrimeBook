@@ -1,7 +1,7 @@
 <?php
 require_once('include/DB.php');
 require_once('include/libs/Smarty.class.php');
-//$cod= $_GET['cod'];
+//$cod= $_GET['id'];
 
 
 session_start();

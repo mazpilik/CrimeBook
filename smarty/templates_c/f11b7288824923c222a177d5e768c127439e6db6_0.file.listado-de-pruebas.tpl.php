@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-17 18:25:31
+/* Smarty version 3.1.34-dev-7, created on 2020-04-18 19:41:59
   from 'D:\wamp64\www\crimebook\smarty\templates\listado-de-pruebas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e99f49bcdf682_80292187',
+  'unifunc' => 'content_5e9b5807d82771_70502842',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f11b7288824923c222a177d5e768c127439e6db6' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\listado-de-pruebas.tpl',
-      1 => 1587147906,
+      1 => 1587238918,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e99f49bcdf682_80292187 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9b5807d82771_70502842 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -63,12 +63,10 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
 ?>
 
-        <form id='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
-' action='listado-de-pruebas.php' method='post'>
+        
         <td>    
-            <input type='hidden' name='cod' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
-'/>
-            <input type='submit' name='selec' value='Seleccionar'/>    
+            <a href="prueba.php?cod=<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
+"><input type="checkbox"></a>       
         </td>     
          
                 <td><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getNombrePrueba();?>
@@ -81,6 +79,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
 </td>                
          
         </tr>
+        
         <?php
 }
 }
@@ -90,7 +89,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </table>
 <br>
 <div align="center">
-<a href="prueba.php"><button class="button">Crear prueba</button></a> 
+<a href="prueba.php?cod=<?php echo $_smarty_tpl->tpl_vars['_GET']->value['cod'];?>
+"><button class="button">Crear prueba</button></a> 
 <button class="button">Duplicar prueba</button>
 <a href="prueba.php"><button class="button">Editar prueba</button></a>
 <button class="button">Eliminar prueba</button>
