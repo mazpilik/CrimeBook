@@ -24,41 +24,49 @@
 	</div>
 
 <h2 align="center">Pruebas</h2>
-<table align="center">
-	<tr>
-                <th>Seleccionar</th>
-		<th>Nombre</th>
-		<th>Descripción</th>
-		<th>Tipo</th>
-		<th>Usuario que la creó</th>
-	</tr>
-        
-       
-        {foreach from=$pruebas item=prueba}
+<form id="pruebas" method="post" action="borrar-pruebas.php">
+	<table align="center">
+		<tr>
+			<th>Seleccionar</th>
+			<th>Nombre</th>
+			<th>Descripción</th>
+			<th>Tipo</th>
+			<th>Usuario que la creó</th>
+			<th></th>
+		</tr>
+					
+				
+		{foreach from=$pruebas item=prueba}
 
-        
-        <td>    
-            <a href="prueba.php?id={$prueba->getIdPrueba()}"><input type="checkbox"></a>       
-        </td>     
-         
-                <td>{$prueba->getNombrePrueba()}</td>
-                <td>{$prueba->getdescBrevePrueba()}</td>
-                <td>{$prueba->getTipoPrueba()}</td>
-                <td>{$prueba->getUsernamePrueba()}</td>                
-         
-        </tr>
-        
-        {/foreach}
-	 
+		<tr>
+			<td>    
+					<input type="checkbox" name="pruebas[]" value="{$prueba->getIdPrueba}">       
+			</td>     
+					
+			<td>{$prueba->getNombrePrueba()}</td>
+			<td>{$prueba->getdescBrevePrueba()}</td>
+			<td>{$prueba->getTipoPrueba()}</td>
+			<td>{$prueba->getUsernamePrueba()}</td>
+			<td>
+				<div class="actions">
+					<a href="prueba.php?edit={$prueba->getIdPrueba()}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+					<a href="borrar-pruebas.php?id={$prueba->getIdPrueba()}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+				</div>
+			</td>              
+		</tr>
+					
+		{/foreach}
+		
 
-</table>
-<br>
-<div align="center">
-<a href="prueba.php"><button class="button">Crear prueba</button></a> 
-<button class="button">Duplicar prueba</button>
-<a href="prueba.php?id={$_GET['id']}"><button class="button">Editar prueba</button></a>
-<button class="button">Eliminar prueba</button>
-</div>
+	</table>
+
+	<br>
+	<div align="center">
+		<a href="prueba.php" class="button">Crear prueba</a> 
+		<button class="button">Duplicar prueba</button>
+		<input class="button" type="submit" value="Eliminar prueba">
+	</div>
+</form>
 
 <script>
 function myFunction() {
