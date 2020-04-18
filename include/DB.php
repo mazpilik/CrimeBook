@@ -1,7 +1,10 @@
 <?php
 
-require_once('juego.php');
-require_once('prueba.php');
+    require_once dirname(__FILE__) . '/Partida.php';
+    require_once dirname(__FILE__) . '/Equipo.php';
+    require_once dirname(__FILE__) . '/juego.php';
+    require_once dirname(__FILE__) . '/Resolucion.php';
+    require_once dirname(__FILE__) . '/Prueba.php';
 
 class DB {
     /**
