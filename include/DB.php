@@ -184,6 +184,175 @@ class DB {
 	}     
         return $pruebas;
     }
+
+    /**
+     * Obtener partidas
+     * 
+     * @return array $partidas
+     */
+    public static function obtienePartidas() {
+        //Añadimos la familia
+        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas "
+                . "ORDER BY nombre;";
+        $resultado = self::ejecutaConsulta($sql);
+        $partidas = array();
+
+        if ($resultado) {
+            // Añadimos un elemento por cada producto obtenido
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $partidas[] = new Partida($row);
+                $row = $resultado->fetch();
+            }
+        }
+
+        return $partidas;
+    }
+
+    /**
+     * Obtener una partida
+     * 
+     * @param integer $idPartida
+     * 
+     * @return array $row
+     */
+    public static function obtienePartida($idPartida) {
+        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas ";
+        $sql .= "WHERE id=$idPartida;";
+        $resultado = self::ejecutaConsulta($sql);
+
+        $row = null;
+        if (isset($resultado)) {
+            $row = $resultado->fetch();
+        }
+
+        return $row;
+    }
+
+    /**
+     * obtiene los equipos
+     * 
+     * @return array $equipos
+     */
+    public static function obtieneEquipos() {
+        //Añadimos la familia
+        $sql = "SELECT id, codigo, nombre, tiempo, idPartida FROM equipos "
+                . "ORDER BY nombre;";
+        $resultado = self::ejecutaConsulta($sql);
+        $equipos = array();
+
+        if ($resultado) {
+            // Añadimos un elemento por cada producto obtenido
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $equipos[] = new Equipo($row);
+                $row = $resultado->fetch();
+            }
+        }
+
+        return $equipos;
+    }
+
+    /**
+     * da de alta una partida nueva
+     * 
+     * @param integer $idPartida
+     * @param string $newDuracion
+     * 
+     * @return boolean
+     */
+    public static function grabarPartidaNueva($idPartida, $newDuracion) {
+        $row = self::obtienePartida($idPartida);
+
+        $newName = $row['nombre'];
+        $pos = strpos($newName, ':');
+        $newName = substr($newName, 0, $pos + 1);
+        $newName = $newName . " " . $newDuracion;
+        $newFechaCreacion = $row['fechaCreacion'];
+        $newFechaInicio = $row['fechaInicio'];
+        $newIdJuego = $row['idJuego'];
+        $newUsername = $row['username'];
+
+        $sql = "INSERT INTO partidas (nombre,fechaCreacion,duracion,fechaInicio,idJuego,username)"
+                . " VALUES ('$newName','$newFechaCreacion','$newDuracion','$newFechaInicio','$newIdJuego','$newUsername')";
+
+        $resultado = self::ejecutaConsulta($sql);
+    }
+
+    /**
+     * da de alta una nueva partida
+     * 
+     * @param integer $idPartida
+     * @param string $newEquipo
+     */
+    public static function grabarNuevoEquipo($idPartida, $newEquipo) {
+        list($usec, $sec) = explode(" ", microtime());
+        $sql = "INSERT INTO equipos (codigo,nombre,tiempo,idPartida)"
+                . " VALUES ('$sec','$newEquipo','0','$idPartida')";
+
+        $resultado = self::ejecutaConsulta($sql);
+    }
+
+    /**
+     * borrar una partida
+     * 
+     * @param integer $idPartida
+     * 
+     * @param boolean $resultado
+     */
+    public static function borrarPartida($idPartida) {
+        $sql = "DELETE FROM equipos WHERE idPartida='$idPartida';";
+        $resultado = self::ejecutaConsulta($sql);
+        
+        $sql = "DELETE FROM partidas WHERE id='$idPartida';";
+        $resultado = self::ejecutaConsulta($sql);
+        return $resultado;
+    }
+
+    /**
+     * obtener resoluciones
+     * 
+     * @return array $resoluciones
+     */
+     public static function obtieneResoluciones() {
+        $sql = "SELECT idPrueba, idEquipo, resuelta, intentos, estrellas FROM resoluciones;";
+        $resultado = self::ejecutaConsulta($sql);
+        $resoluciones = array();
+
+        if ($resultado) {
+            // Añadimos un elemento por cada producto obtenido
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $resoluciones[] = new Resolucion($row);
+                $row = $resultado->fetch();
+            }
+        }
+
+        return $resoluciones;
+    }
+    
+    /**
+     * obtener todas las pruebas
+     * 
+     * @return array $pruebas
+     */
+     public static function obtieneTodasLasPruebas() {
+        $sql = "SELECT id, nombre, descExtendida, descBreve, tipo, "
+                . "dificultad, url, ayudaFinal, username FROM pruebas;";
+        $resultado = self::ejecutaConsulta ($sql);
+        $pruebas = array();
+
+	if($resultado) {
+            // Añadimos un elemento por cada registro obtenido
+            $row = $resultado->fetch();
+            while ($row != null) {
+                $pruebas[] = new prueba($row);
+                $row = $resultado->fetch();
+            }
+	}     
+        return $pruebas;
+    }
+
     
 }
 ?>
