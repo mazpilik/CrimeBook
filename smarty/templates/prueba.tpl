@@ -42,14 +42,14 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 	<p>
 		Tipo:<select value="Tipo" name="tipo">
                                 {if $prueba->getTipoPrueba() eq "Prueba normal"}
-				<option value="N">Normal</option>
-                                <option value="F">Final</option>
+				<option value="Prueba normal">Normal</option>
+                                <option value="Prueba final">Final</option>
                                 {else if $prueba->getTipoPrueba() eq "Prueba final"}
-				<option value="F">Final</option>
-                                <option value="N">Normal</option>
+				<option value="Prueba final">Final</option>
+                                <option value="Prueba normal">Normal</option>
                                 {else}
-                                <option value="N">Normal</option>
-				<option value="F">Final</option>
+                                <option value="Prueba normal">Normal</option>
+				<option value="Prueba final">Final</option>
                                 {/if}
 				</select>
 	</p>
