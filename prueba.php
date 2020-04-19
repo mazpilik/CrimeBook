@@ -60,8 +60,8 @@ else{
 
     $pruebaNueva = new Prueba();
     $pruebaNueva->setNombrePrueba($_POST['nombre']);
-    $pruebaNueva->setdescBrevePrueba($_POST['descripción']);
-    $pruebaNueva->setdescExtendidaPrueba($_POST['DESCRIPCION']);
+    $pruebaNueva->setdescBrevePrueba($_POST['descripcionBreve']);
+    $pruebaNueva->setdescExtendidaPrueba($_POST['DescripcionExtendida']);
     $pruebaNueva->setTipoPrueba($_POST['tipo']);
     $pruebaNueva->setUrlPrueba($_POST['url']);
 

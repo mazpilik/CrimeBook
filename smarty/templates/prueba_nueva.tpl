@@ -34,13 +34,13 @@
 	URL:<input type="text" name="url" placeholder="Introduzca la URL" value="">
 	</p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve" ></textarea>
+	Descripción breve:<textarea cols="50" rows="5" name="descripcionBreve" placeholder="Introduzca una descripción breve" ></textarea>
 	</p>
 	<p>
-Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa"></textarea>
+        Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DescripcionExtendida" placeholder="Introduzca una descripción extensa"></textarea>
 	</p>
 	<p>
-		Tipo:<select name="tipo" value="Tipo">
+	Tipo:<select name="tipo" value="Tipo">
               
                                 <option value="N">Normal</option>
 				<option value="F">Final</option>
