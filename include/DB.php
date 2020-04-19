@@ -189,13 +189,53 @@ class DB {
     }
 
     /**
+     * crear una partida nueva
+     * 
+     * @param array $partida
+     * 
+     * @return boolean
+     */
+    public static function crearPartida($partida){
+        $sql = 'INSERT INTO partidas ';
+        $sql .= '(nombre, fechaCreacion, duracion, fechaInicio, idJuego, username) ';
+        $sql .= 'VALUES(';
+        $sql .= '"'.$partida['nombre'].'", ';
+        $sql .= '"'.$partida['fechaCreacion'].'", ';
+        $sql .= $partida['duracion'].', ';
+        $sql .= '"'.$partida['fechaInicio'].'", ';
+        $sql .= $partida['idJuego'].', ';
+        $sql .= '"'.$partida['username'].'"';
+        $sql .= ');';
+        $resultado = self::ejecutaConsulta($sql);
+        return $resultado;
+    }
+
+    /**
+     * Devuelve el id de la última partida insertada
+     * 
+     * @return integer $id
+     */
+    public static function getLastPartidaId(){
+        $id=0;
+        $sql = 'SELECT id FROM partidas ORDER BY id DESC LIMIT 1';
+        $resultado = self::ejecutaConsulta($sql);
+        if($resultado){
+            $row = $resultado->fetch();
+            $id = $row['id'];
+        }
+        return $id;
+    }
+
+    /**
      * Obtener partidas
      * 
      * @return array $partidas
      */
     public static function obtienePartidas() {
         //Añadimos la familia
-        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas "
+        $sql = "SELECT ptd.id, ptd.nombre, ptd.fechaCreacion, ptd.duracion, ptd.fechaInicio, ptd.idJuego, ptd.username, ptd.finalizada, COUNT(eqs.id) AS equipos FROM partidas ptd "
+                . "LEFT JOIN equipos eqs ON (eqs.idPartida = ptd.id) "
+                . "GROUP BY ptd.id "
                 . "ORDER BY nombre;";
         $resultado = self::ejecutaConsulta($sql);
         $partidas = array();
@@ -209,6 +249,7 @@ class DB {
             }
         }
 
+
         return $partidas;
     }
 
@@ -220,16 +261,19 @@ class DB {
      * @return array $row
      */
     public static function obtienePartida($idPartida) {
-        $sql = "SELECT id, nombre, fechaCreacion, duracion, fechaInicio, idJuego, username, finalizada FROM partidas ";
-        $sql .= "WHERE id=$idPartida;";
+        $sql = "SELECT ptd.id, ptd.nombre, ptd.fechaCreacion, ptd.duracion, ptd.fechaInicio, ptd.idJuego, ptd.username, ptd.finalizada, COUNT(eqs.id) AS equipos FROM partidas ptd "
+                . "LEFT JOIN equipos eqs ON (eqs.idPartida = ptd.id) "
+                . "WHERE ptd.id=$idPartida "
+                . "GROUP BY ptd.id;";
         $resultado = self::ejecutaConsulta($sql);
+
 
         $row = null;
         if (isset($resultado)) {
             $row = $resultado->fetch();
         }
-
-        return $row;
+        $partida = new Partida($row);
+        return $partida;
     }
 
     /**

@@ -122,8 +122,19 @@ form .field{
 .field label{
   width: 35%;
 }
-.field textarea, .field input[type="text"]{
+.field textarea, .field input[type="text"], .field input[type="number"], .field input[type="date"]{
   width: 65%;
+}
+.actionButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.actionButtons button{
+  margin-left: 0.5rem;
+}
+.actionButtons button:first-of-type{
+  margin-left: 0px;
 }
 
 h1{
@@ -267,4 +278,12 @@ a.button{
 /** Editar juego **/
 .listadoPruebas{
   margin: 2rem 0;
+}
+
+/** CREAR PARTIDA **/
+#crearEditarPartida{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

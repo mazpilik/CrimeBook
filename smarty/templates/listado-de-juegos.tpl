@@ -6,7 +6,6 @@
           action="borrar-juegos.php"
           method="POST"
         >
-      <input type="hidden" name="borrar" value="ok" />
     <table align="center">
       <tr>
         <th></th>
@@ -35,9 +34,9 @@
 
     <br />
     <div style="text-align:center;">
-      <a href="partida.php" class="button">Nueva partida</a>
+      <a href="partida.php"><button class="button" name="nuevaPartida" value="nuevaPartida" formaction="partida.php">Nueva partida</button></a>
       <a href="juego.php" class="button">Nuevo juego</a>
-      <input type="submit" class="button" value="Borrar juegos" />
+      <a href="borrar-juegos.php"><button class="button" name="borrarJuegos" value="borrarJuegos" formaction="borrar-juegos.php">Borrar juegos</button></a>
       <a href="Pagina2.html" class="button">Ver Partidas</a>
     </div>
     </form>

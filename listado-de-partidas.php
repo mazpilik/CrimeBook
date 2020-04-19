@@ -2,7 +2,7 @@
     require_once('include/DB.php');
     require_once('include/libs/Smarty.class.php');
     require_once('include/functions/initSession.php');
-    
+    require_once('include/functions/unsetAlertMessage.php');
     // Cargamos la librería de Smarty
     $smarty = new Smarty;
     $smarty->template_dir = 'smarty/templates/';
@@ -52,17 +52,15 @@
         }
     }
     
-    /* BORRAR PARTIDA */
-    if (isset($_POST['borrarPartida'])) {
-        $idPartida=$_POST['idPartida'];
-        DB::borrarPartida($idPartida);
-    }
     
+    $smarty->assign('usuario', $_SESSION['usuario']);
     $smarty->assign('partidas', DB::obtienePartidas());
-    $smarty->assign('juegos', DB::obtieneJuegos());
-    $smarty->assign('equipos', DB::obtieneEquipos());
-    $smarty->assign('resoluciones', DB::obtieneResoluciones());
-    $smarty->assign('pruebas', DB::obtieneTodasLasPruebas());
+    // $smarty->assign('juegos', DB::obtieneJuegos());
+    // $smarty->assign('equipos', DB::obtieneEquipos());
+    // $smarty->assign('resoluciones', DB::obtieneResoluciones());
+    // $smarty->assign('pruebas', DB::obtieneTodasLasPruebas());
+    $smarty->assign('alertMessage', $_SESSION['alertMessage']);
+    unsetAlertMessage();
     
     // Mostramos la plantilla
     $smarty->display('listadoPartidas.tpl');

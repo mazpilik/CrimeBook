@@ -13,6 +13,7 @@ class Partida {
     private $idJuego;
     private $userName;
     private $finalizada;
+    private $numEquipos;
 
     // Methods
     public function __construct($row) {
@@ -24,6 +25,7 @@ class Partida {
         $this->idJuego = $row['idJuego'];
         $this->userName = $row['username'];
         $this->finalizada = $row['finalizada'];
+        $this->numEquipos = $row['equipos'];
     }
 
     /* GETTERS */
@@ -58,6 +60,10 @@ class Partida {
     
     public function getFinalizada() {
         return $this->finalizada;
+    }
+
+    public function getNumEquipos(){
+        return $this->numEquipos;
     }
 
 }

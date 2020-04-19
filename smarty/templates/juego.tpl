@@ -24,7 +24,6 @@
   <div class="field"><label>Descripcion extendida:</label><textarea name="descExtendida" rows="2" cols="25"
     placeholder="Introduzca una descripción extensa" required>{if $formType == 'edit'} {$juego->getdescExtendida()} {/if}</textarea><br>
   <input type='hidden' name='usuario' value='{$usuario}' /></div>
-  
 </form>
 
 <div align="center">

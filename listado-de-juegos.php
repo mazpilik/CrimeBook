@@ -3,6 +3,7 @@ require_once('include/DB.php');
 require_once('include/juego.php');
 require_once('include/libs/Smarty.class.php');
 require_once('include/functions/initSession.php');
+require_once('include/functions/unsetAlertMessage.php');
 
 //iniciamos y chequeamos sesión
 initSession();
@@ -23,6 +24,8 @@ if (isset($_POST['usuario'])) {
 $smarty->assign('usuario', $_SESSION['usuario']);
 $smarty->assign('juegos', DB::obtieneJuegos());
 $smarty->assign('alertMessage', $_SESSION['alertMessage']);
+unsetAlertMessage();
+
 
 // Mostramos la plantilla
 $smarty->display('listado-de-juegos.tpl');     
