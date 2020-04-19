@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 16:13:35
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 16:45:05
   from 'D:\wamp64\www\crimebook\smarty\templates\prueba_nueva.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9c78afc34a42_68447482',
+  'unifunc' => 'content_5e9c8011342b51_10059337',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b567a3b495923c0d2a049137ba0b1cacaf24cd0f' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\prueba_nueva.tpl',
-      1 => 1587312814,
+      1 => 1587314036,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e9c78afc34a42_68447482 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9c8011342b51_10059337 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,7 +63,7 @@ function content_5e9c78afc34a42_68447482 (Smarty_Internal_Template $_smarty_tpl)
 Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa"></textarea>
 	</p>
 	<p>
-		Tipo:<select value="Tipo">
+		Tipo:<select name="tipo" value="Tipo">
               
                                 <option value="N">Normal</option>
 				<option value="F">Final</option>

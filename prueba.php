@@ -58,6 +58,30 @@ $smarty->display('prueba_eliminar.tpl');
 else{
 //Crear prueba
 
+    $pruebaNueva = new Prueba();
+    $pruebaNueva->setNombrePrueba($_POST['nombre']);
+    $pruebaNueva->setdescBrevePrueba($_POST['descripción']);
+    $pruebaNueva->setdescExtendidaPrueba($_POST['DESCRIPCION']);
+    $pruebaNueva->setTipoPrueba($_POST['tipo']);
+    $pruebaNueva->setUrlPrueba($_POST['url']);
+
+
+    $resultado = DB::crearPrueba($pruebaNueva);    
+    
+    
+    if($resultado){
+        setAlertMessage('Prueba creada con éxito','success');
+        $juegoId = DB::getLastPruebaId();
+        header('location:prueba.php?edit='.$pruebaId);
+    } else {
+        setAlertMessage('No se ha podido crear el juego', 'error');
+        $smarty->assign('usuario', $_SESSION['usuario']);
+        $smarty->assign('alertMessage', $_SESSION['alertMessage']);
+        unsetAlertMessage();
+        $smarty->assign('formType','default');
+        $smarty->display('prueba_nueva.tpl');
+    }
+    
 
 $smarty->display('prueba_nueva.tpl');   
 }

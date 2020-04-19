@@ -40,7 +40,7 @@
 Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa"></textarea>
 	</p>
 	<p>
-		Tipo:<select value="Tipo">
+		Tipo:<select name="tipo" value="Tipo">
               
                                 <option value="N">Normal</option>
 				<option value="F">Final</option>

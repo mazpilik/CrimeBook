@@ -133,6 +133,27 @@ class DB {
         return $pista;    
     }
     
+    public static function crearPrueba($prueba) {
+        $sql = "INSERT INTO pruebas (nombre, descBreve, descExtendida, tipo, url)"
+            . " VALUES ("
+            . "'". $juego->getNombrePrueba()."', "
+            . "'". $juego->getdescExtendidaPrueba()."', "
+            . "'". $juego->getdescBrevePrueba()."', "
+            . "'". $juego->getUrlPrueba()."', "
+            . "'". $juego->getTipoPrueba()."');";
+        return self::ejecutaConsulta ($sql);       
+    }
+    
+    public static function getLastPruebaId(){
+        $id = 0;
+        $sql = "SELECT id FROM pruebas ORDER BY id DESC LIMIT 1";
+        $resultado = self::ejecutaConsulta($sql);
+        if($resultado){
+            $rawPrueba = $resultado->fetch();
+            $id = $rawPrueba['id'];
+        }
+        return $id;
+    }
 
 }
 ?>
