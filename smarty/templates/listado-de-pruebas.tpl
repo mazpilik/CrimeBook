@@ -46,7 +46,7 @@
         <td>    
                 
                 <input type='hidden' name='id' value='{$prueba->getIdPrueba()}'/>
-                <input type='submit' name='selec' value='Crear'/>
+                
                 <input type='submit' name='selec' value='Duplicar'/>
                 <input type='submit' name='selec' value='Editar'/>
                 <input type='submit' name='selec' value='Eliminar'/>
@@ -66,6 +66,11 @@
 </table>
 <br>
 <div align="center">
+    
+       
+         <form id='{$prueba->getIdPrueba()}' action='prueba.php' method='post'>   
+        <input type='submit' name='selec' value='Crear prueba'/>
+	 </form>    
 <a href="prueba.php"><button class="button">Crear prueba</button></a> 
 <button class="button">Duplicar prueba</button>
 <a href="prueba.php"><button class="button">Editar prueba</button></a>

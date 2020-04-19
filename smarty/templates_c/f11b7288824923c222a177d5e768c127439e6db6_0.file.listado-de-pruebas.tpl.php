@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 01:15:15
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 12:18:17
   from 'D:\wamp64\www\crimebook\smarty\templates\listado-de-pruebas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9ba623580a11_79530892',
+  'unifunc' => 'content_5e9c4189c77722_05017673',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f11b7288824923c222a177d5e768c127439e6db6' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\listado-de-pruebas.tpl',
-      1 => 1587258903,
+      1 => 1587298696,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e9ba623580a11_79530892 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9c4189c77722_05017673 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +75,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
                 
                 <input type='hidden' name='id' value='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
 '/>
-                <input type='submit' name='selec' value='Crear'/>
+                
                 <input type='submit' name='selec' value='Duplicar'/>
                 <input type='submit' name='selec' value='Editar'/>
                 <input type='submit' name='selec' value='Eliminar'/>
@@ -102,6 +102,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </table>
 <br>
 <div align="center">
+    
+       
+         <form id='<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getIdPrueba();?>
+' action='prueba.php' method='post'>   
+        <input type='submit' name='selec' value='Crear prueba'/>
+	 </form>    
 <a href="prueba.php"><button class="button">Crear prueba</button></a> 
 <button class="button">Duplicar prueba</button>
 <a href="prueba.php"><button class="button">Editar prueba</button></a>
