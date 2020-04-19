@@ -83,6 +83,7 @@ if (isset($_POST['nombre'])&& isset($_POST['descBreve']) && isset ($_POST['descE
         $smarty->assign('formType','default');
         $smarty->display('prueba_nueva.tpl');
     }
+    
 } 
 
 $smarty->display('prueba_nueva.tpl');   
