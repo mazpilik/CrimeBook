@@ -24,49 +24,54 @@
 	</div>
 
 <h2 align="center">Pruebas</h2>
-<form id="pruebas" method="post" action="borrar-pruebas.php">
-	<table align="center">
-		<tr>
-			<th>Seleccionar</th>
-			<th>Nombre</th>
-			<th>Descripción</th>
-			<th>Tipo</th>
-			<th>Usuario que la creó</th>
-			<th></th>
-		</tr>
-					
-				
-		{foreach from=$pruebas item=prueba}
+<table align="center">
+	<tr>
+                <th>Seleccionar </th>
+		<th>Nombre</th>
+		<th>Descripción</th>
+		<th>Tipo</th>
+		<th>Usuario que la creó</th>
+               
+	</tr>
+        
+       
+	</tr>
+        
+       
+        {foreach from=$pruebas item=prueba}
+        <form id='{$prueba->getIdPrueba()}' action='prueba.php' method='post'>    
+        <tr>
+            
+        
+        <td>    
+                
+                <input type='hidden' name='id' value='{$prueba->getIdPrueba()}'/>
+                
+                <input type='submit' name='selec' value='Editar'/>
+                <input type='submit' name='selec' value='Duplicar'/>
+                <input type='submit' name='selec' value='Eliminar'/>
+        </td>
+                <td>{$prueba->getNombrePrueba()}</td>
+                <td>{$prueba->getdescBrevePrueba()}</td>
+                <td>{$prueba->getTipoPrueba()}</td>
+                <td>{$prueba->getUsernamePrueba()}</td>  
 
-		<tr>
-			<td>    
-					<input type="checkbox" name="pruebas[]" value="{$prueba->getIdPrueba}">       
-			</td>     
-					
-			<td>{$prueba->getNombrePrueba()}</td>
-			<td>{$prueba->getdescBrevePrueba()}</td>
-			<td>{$prueba->getTipoPrueba()}</td>
-			<td>{$prueba->getUsernamePrueba()}</td>
-			<td>
-				<div class="actions">
-					<a href="prueba.php?edit={$prueba->getIdPrueba()}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-					<a href="borrar-pruebas.php?id={$prueba->getIdPrueba()}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-				</div>
-			</td>              
-		</tr>
-					
-		{/foreach}
-		
+        
+                 
+        </tr>
+         </form>  
+        {/foreach}
+	 
 
-	</table>
+</table>
+<br>
+<div align="center">
+           
+         <form id='{$prueba->getIdPrueba()}' action='prueba.php' method='post'>   
+        <input type='submit' name='selec' value='Crear prueba'/>
+	 </form>    
 
-	<br>
-	<div align="center">
-		<a href="prueba.php" class="button">Crear prueba</a> 
-		<button class="button">Duplicar prueba</button>
-		<input class="button" type="submit" value="Eliminar prueba">
-	</div>
-</form>
+</div>
 
 <script>
 function myFunction() {

@@ -17,7 +17,7 @@
 	 <a href="listado-de-pruebas.php">Listado de pruebas</a>
 	 <a href="Pagina4.html">Partida nueva</a>
 	 <a href="Pagina5.html">Juego Nuevo/editar juego</a>
-	 <a href="prueba.php" class="active">Prueba Nueva/ Editar prueba</a>
+	 <a href="prueba.php" class="active">Prueba Nueva</a>
 	 <a href="Pagina7.html">Consultar partida</a>
 	 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		 <i class="fa fa-bars"></i>
@@ -26,36 +26,30 @@
 
 <div id="pag6" align="center"  >
     
-<form action="" method="" >
+<form id="pruebaNueva" class="crearEditarPrueba" action='prueba.php' method='POST'>
 <p>
-	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre" value="{$prueba->getNombrePrueba()}">
+	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre" value="">
 </p>
 <p>
-	URL:<input type="text" name="url" placeholder="Introduzca la URL" value="{$prueba->getUrlPrueba()}">
+	URL:<input type="text" name="url" placeholder="Introduzca la URL" value="">
 	</p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve" >{$prueba->getdescBrevePrueba()}</textarea>
+	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve" ></textarea>
 	</p>
 	<p>
-Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa">{$prueba->getdescExtendidaPrueba()}</textarea>
+Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa"></textarea>
 	</p>
 	<p>
-		Tipo:<select value="Tipo">
-                                {if $prueba->getTipoPrueba() eq "Prueba normal"}
-				<option value="N">Normal</option>
-                                <option value="F">Final</option>
-                                {else if $prueba->getTipoPrueba() eq "Prueba final"}
-				<option value="F">Final</option>
-                                <option value="N">Normal</option>
-                                {else}
+		Tipo:<select name="tipo" value="Tipo">
+              
                                 <option value="N">Normal</option>
 				<option value="F">Final</option>
-                                {/if}
+                            
 				</select>
 	</p>
 </div>
 	<div id="pag6botones" align="center">
-	<button class="button">Orden</button>
+	 <button class="button" form="pruebaNueva" name="nuevoIdPrueba" value="pruebaNueva">Crear Prueba</button>
 	<button class="button">Respuesta/solucion</button>
 </div><br>
 
@@ -64,12 +58,12 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 	<tr>
 		<th>Listado de Pistas</th>
 	</tr>
-        {foreach from=$pistasId item=pistaId}
+ 
 	<tr>
-		<td align="center">{$pistasId->getTexto()}</td>
+		<td align="center"></td>
 	
 	</tr>
-	{/foreach}
+	
 </table>
 </form>
 <br>
