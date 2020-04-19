@@ -33,8 +33,9 @@ class prueba{
     public function setUsernamePrueba($usernamePrueba) { $this->username = $usernamePrueba; }    
     //Constructor de la clase, le pasamos un array obtenido de una 
     //fila de la base de datos
-    public function __construct($row) {
+    public function __construct($row=[]) {
         //iniciamos los atributos
+        if(isset($row)){ 
         $this->id = $row['id'];
         $this->nombre = $row['nombre'];
         $this->descExtendida = $row['descExtendida'];
@@ -44,7 +45,7 @@ class prueba{
         $this->url = $row['url'];
         $this->ayudaFinal = $row['ayudaFinal'];
         $this->username = $row['username'];
-        
+        }
     }
 }
 ?>

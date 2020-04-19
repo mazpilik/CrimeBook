@@ -137,8 +137,8 @@ class DB {
         $sql = "INSERT INTO pruebas (nombre, descBreve, descExtendida, tipo, url)"
             . " VALUES ("
             . "'". $juego->getNombrePrueba()."', "
-            . "'". $juego->getdescExtendidaPrueba()."', "
             . "'". $juego->getdescBrevePrueba()."', "
+            . "'". $juego->getdescExtendidaPrueba()."', "    
             . "'". $juego->getUrlPrueba()."', "
             . "'". $juego->getTipoPrueba()."');";
         return self::ejecutaConsulta ($sql);       
