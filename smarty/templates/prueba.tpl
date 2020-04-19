@@ -34,13 +34,13 @@
 	URL:<input type="text" name="url" placeholder="Introduzca la URL" value="{$prueba->getUrlPrueba()}">
 	</p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve" >{$prueba->getdescBrevePrueba()}</textarea>
+	Descripción breve:<textarea cols="50" rows="5" name="descBreve" placeholder="Introduzca una descripción breve" >{$prueba->getdescBrevePrueba()}</textarea>
 	</p>
 	<p>
-Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa">{$prueba->getdescExtendidaPrueba()}</textarea>
+Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="descExtensa" placeholder="Introduzca una descripción extensa">{$prueba->getdescExtendidaPrueba()}</textarea>
 	</p>
 	<p>
-		Tipo:<select value="Tipo">
+		Tipo:<select value="Tipo" name="tipo">
                                 {if $prueba->getTipoPrueba() eq "Prueba normal"}
 				<option value="N">Normal</option>
                                 <option value="F">Final</option>
