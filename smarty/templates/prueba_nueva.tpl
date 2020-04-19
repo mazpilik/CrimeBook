@@ -42,8 +42,8 @@
 	<p>
 	Tipo:<select name="tipo" value="Tipo">
               
-                                <option value="N">Normal</option>
-				<option value="F">Final</option>
+                                <option value="Prueba final">Normal</option>
+				<option value="Prueba normal">Final</option>
                             
 				</select>
 	</p>
