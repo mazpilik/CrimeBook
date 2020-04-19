@@ -17,7 +17,7 @@
 	 <a href="listado-de-pruebas.php">Listado de pruebas</a>
 	 <a href="Pagina4.html">Partida nueva</a>
 	 <a href="Pagina5.html">Juego Nuevo/editar juego</a>
-	 <a href="prueba.php" class="active">Prueba Nueva/ Editar prueba</a>
+	 <a href="prueba.php" class="active">Prueba Nueva</a>
 	 <a href="Pagina7.html">Consultar partida</a>
 	 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		 <i class="fa fa-bars"></i>
@@ -26,7 +26,7 @@
 
 <div id="pag6" align="center"  >
     
-<form action="" method="" >
+<form id="pruebaNueva" class="crearEditarPrueba" action='prueba.php' method='POST'>
 <p>
 	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre" value="">
 </p>
@@ -49,7 +49,7 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 	</p>
 </div>
 	<div id="pag6botones" align="center">
-	<button class="button">Orden</button>
+	 <button class="button" form="pruebaNueva" name="nuevoIdPrueba" value="pruebaNueva">Crear Prueba</button>
 	<button class="button">Respuesta/solucion</button>
 </div><br>
 

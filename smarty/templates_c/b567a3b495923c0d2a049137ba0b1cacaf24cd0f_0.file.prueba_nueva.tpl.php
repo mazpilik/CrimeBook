@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 00:59:48
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 16:13:35
   from 'D:\wamp64\www\crimebook\smarty\templates\prueba_nueva.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9ba2849f9519_67706275',
+  'unifunc' => 'content_5e9c78afc34a42_68447482',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b567a3b495923c0d2a049137ba0b1cacaf24cd0f' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\prueba_nueva.tpl',
-      1 => 1587257900,
+      1 => 1587312814,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e9ba2849f9519_67706275 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9c78afc34a42_68447482 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,7 +40,7 @@ function content_5e9ba2849f9519_67706275 (Smarty_Internal_Template $_smarty_tpl)
 	 <a href="listado-de-pruebas.php">Listado de pruebas</a>
 	 <a href="Pagina4.html">Partida nueva</a>
 	 <a href="Pagina5.html">Juego Nuevo/editar juego</a>
-	 <a href="prueba.php" class="active">Prueba Nueva/ Editar prueba</a>
+	 <a href="prueba.php" class="active">Prueba Nueva</a>
 	 <a href="Pagina7.html">Consultar partida</a>
 	 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		 <i class="fa fa-bars"></i>
@@ -49,7 +49,7 @@ function content_5e9ba2849f9519_67706275 (Smarty_Internal_Template $_smarty_tpl)
 
 <div id="pag6" align="center"  >
     
-<form action="" method="" >
+<form id="pruebaNueva" class="crearEditarPrueba" action='prueba.php' method='POST'>
 <p>
 	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre" value="">
 </p>
@@ -72,7 +72,7 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 	</p>
 </div>
 	<div id="pag6botones" align="center">
-	<button class="button">Orden</button>
+	 <button class="button" form="pruebaNueva" name="nuevoIdPrueba" value="pruebaNueva">Crear Prueba</button>
 	<button class="button">Respuesta/solucion</button>
 </div><br>
 
