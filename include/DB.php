@@ -136,11 +136,11 @@ class DB {
     public static function crearPrueba($prueba) {
         $sql = "INSERT INTO pruebas (nombre, descBreve, descExtendida, tipo, url)"
             . " VALUES ("
-            . "'". $juego->getNombrePrueba()."', "
-            . "'". $juego->getdescBrevePrueba()."', "
-            . "'". $juego->getdescExtendidaPrueba()."', "    
-            . "'". $juego->getUrlPrueba()."', "
-            . "'". $juego->getTipoPrueba()."');";
+            . "'". $prueba->getNombrePrueba()."', "
+            . "'". $prueba->getdescBrevePrueba()."', "
+            . "'". $prueba->getdescExtendidaPrueba()."', "    
+            . "'". $prueba->getTipoPrueba()."', "
+            . "'". $prueba->getUrlPrueba()."');";
         return self::ejecutaConsulta ($sql);       
     }
     

@@ -34,10 +34,10 @@
 	URL:<input type="text" name="url" placeholder="Introduzca la URL" value="">
 	</p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripcionBreve" placeholder="Introduzca una descripción breve" ></textarea>
+	Descripción breve:<textarea cols="50" rows="5" name="descBreve" placeholder="Introduzca una descripción breve" ></textarea>
 	</p>
 	<p>
-        Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DescripcionExtendida" placeholder="Introduzca una descripción extensa"></textarea>
+        Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="descExtensa" placeholder="Introduzca una descripción extensa"></textarea>
 	</p>
 	<p>
 	Tipo:<select name="tipo" value="Tipo">
@@ -49,7 +49,8 @@
 	</p>
 </div>
 	<div id="pag6botones" align="center">
-	 <button class="button" form="pruebaNueva" name="nuevoIdPrueba" value="pruebaNueva">Crear Prueba</button>
+ 
+	<button class="button" form="pruebaNueva" name="nuevoIdPrueba" value="pruebaNueva">Crear Prueba</button>
 	<button class="button">Respuesta/solucion</button>
 </div><br>
 

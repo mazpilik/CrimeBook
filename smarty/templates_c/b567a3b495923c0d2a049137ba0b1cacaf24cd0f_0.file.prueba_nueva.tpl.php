@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 16:45:05
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 20:21:59
   from 'D:\wamp64\www\crimebook\smarty\templates\prueba_nueva.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9c8011342b51_10059337',
+  'unifunc' => 'content_5e9cb2e71ba3d1_19298411',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b567a3b495923c0d2a049137ba0b1cacaf24cd0f' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\prueba_nueva.tpl',
-      1 => 1587314036,
+      1 => 1587327712,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e9c8011342b51_10059337 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9cb2e71ba3d1_19298411 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,13 +57,13 @@ function content_5e9c8011342b51_10059337 (Smarty_Internal_Template $_smarty_tpl)
 	URL:<input type="text" name="url" placeholder="Introduzca la URL" value="">
 	</p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve" ></textarea>
+	Descripción breve:<textarea cols="50" rows="5" name="descBreve" placeholder="Introduzca una descripción breve" ></textarea>
 	</p>
 	<p>
-Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa"></textarea>
+        Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="descExtensa" placeholder="Introduzca una descripción extensa"></textarea>
 	</p>
 	<p>
-		Tipo:<select name="tipo" value="Tipo">
+	Tipo:<select name="tipo" value="Tipo">
               
                                 <option value="N">Normal</option>
 				<option value="F">Final</option>
@@ -72,7 +72,8 @@ Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name
 	</p>
 </div>
 	<div id="pag6botones" align="center">
-	 <button class="button" form="pruebaNueva" name="nuevoIdPrueba" value="pruebaNueva">Crear Prueba</button>
+ 
+	<button class="button" form="pruebaNueva" name="nuevoIdPrueba" value="pruebaNueva">Crear Prueba</button>
 	<button class="button">Respuesta/solucion</button>
 </div><br>
 

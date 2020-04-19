@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 00:44:02
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 20:54:06
   from 'D:\wamp64\www\crimebook\smarty\templates\prueba.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9b9ed247f361_00198020',
+  'unifunc' => 'content_5e9cba6e3f97e7_68086034',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0ddb41e129b479f03256f91278c58f0abd928f07' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\prueba.tpl',
-      1 => 1587257029,
+      1 => 1587320715,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e9b9ed247f361_00198020 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9cba6e3f97e7_68086034 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,15 +59,15 @@ function content_5e9b9ed247f361_00198020 (Smarty_Internal_Template $_smarty_tpl)
 ">
 	</p>
 	<p>
-	Descripción breve:<textarea cols="50" rows="5" name="descripción" placeholder="Introduzca una descripción breve" ><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescBrevePrueba();?>
+	Descripción breve:<textarea cols="50" rows="5" name="descBreve" placeholder="Introduzca una descripción breve" ><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescBrevePrueba();?>
 </textarea>
 	</p>
 	<p>
-Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="DESCRIPCION" placeholder="Introduzca una descripción extensa"><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescExtendidaPrueba();?>
+Descripción extendida/Enunciado de la prueba:<textarea cols="50" rows="10" name="descExtensa" placeholder="Introduzca una descripción extensa"><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getdescExtendidaPrueba();?>
 </textarea>
 	</p>
 	<p>
-		Tipo:<select value="Tipo">
+		Tipo:<select value="Tipo" name="tipo">
                                 <?php if ($_smarty_tpl->tpl_vars['prueba']->value->getTipoPrueba() == "Prueba normal") {?>
 				<option value="N">Normal</option>
                                 <option value="F">Final</option>
