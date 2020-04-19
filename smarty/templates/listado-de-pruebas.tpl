@@ -49,7 +49,7 @@
                 <input type='submit' name='selec' value='Crear'/>
                 <input type='submit' name='selec' value='Duplicar'/>
                 <input type='submit' name='selec' value='Editar'/>
-                <input type='submit' name='selec' value='eliminar'/>
+                <input type='submit' name='selec' value='Eliminar'/>
         </td>
                 <td>{$prueba->getNombrePrueba()}</td>
                 <td>{$prueba->getdescBrevePrueba()}</td>

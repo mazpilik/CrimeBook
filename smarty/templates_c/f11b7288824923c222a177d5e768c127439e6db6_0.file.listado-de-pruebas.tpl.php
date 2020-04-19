@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 00:24:22
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 01:15:15
   from 'D:\wamp64\www\crimebook\smarty\templates\listado-de-pruebas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9b9a36f030b1_93470891',
+  'unifunc' => 'content_5e9ba623580a11_79530892',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f11b7288824923c222a177d5e768c127439e6db6' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\listado-de-pruebas.tpl',
-      1 => 1587255861,
+      1 => 1587258903,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e9b9a36f030b1_93470891 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9ba623580a11_79530892 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['prueba']->value) {
                 <input type='submit' name='selec' value='Crear'/>
                 <input type='submit' name='selec' value='Duplicar'/>
                 <input type='submit' name='selec' value='Editar'/>
-                <input type='submit' name='selec' value='eliminar'/>
+                <input type='submit' name='selec' value='Eliminar'/>
         </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['prueba']->value->getNombrePrueba();?>
 </td>

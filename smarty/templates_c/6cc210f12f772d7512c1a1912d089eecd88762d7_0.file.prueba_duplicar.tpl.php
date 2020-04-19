@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 00:44:02
-  from 'D:\wamp64\www\crimebook\smarty\templates\prueba.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 00:59:48
+  from 'D:\wamp64\www\crimebook\smarty\templates\prueba_duplicar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9b9ed247f361_00198020',
+  'unifunc' => 'content_5e9ba284a50fb4_79157412',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '0ddb41e129b479f03256f91278c58f0abd928f07' => 
+    '6cc210f12f772d7512c1a1912d089eecd88762d7' => 
     array (
-      0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\prueba.tpl',
-      1 => 1587257029,
+      0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\prueba_duplicar.tpl',
+      1 => 1587257231,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e9b9ed247f361_00198020 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9ba284a50fb4_79157412 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
