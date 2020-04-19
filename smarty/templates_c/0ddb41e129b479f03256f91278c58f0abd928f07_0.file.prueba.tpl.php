@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-18 17:33:22
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 00:24:10
   from 'D:\wamp64\www\crimebook\smarty\templates\prueba.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9b39e21cfe19_40539540',
+  'unifunc' => 'content_5e9b9a2a7af9a4_88951008',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0ddb41e129b479f03256f91278c58f0abd928f07' => 
     array (
       0 => 'D:\\wamp64\\www\\crimebook\\smarty\\templates\\prueba.tpl',
-      1 => 1587231200,
+      1 => 1587255660,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e9b39e21cfe19_40539540 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9b9a2a7af9a4_88951008 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,8 +47,8 @@ function content_5e9b39e21cfe19_40539540 (Smarty_Internal_Template $_smarty_tpl)
 	 </a>
 	</div>
 
-
-	<div id="pag6" align="center"  >
+<div id="pag6" align="center"  >
+    
 <form action="" method="" >
 <p>
 	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre" value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getNombrePrueba();?>

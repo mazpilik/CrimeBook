@@ -24,8 +24,8 @@
 	 </a>
 	</div>
 
-
-	<div id="pag6" align="center"  >
+<div id="pag6" align="center"  >
+    
 <form action="" method="" >
 <p>
 	Nombre:<input type="text" name="nombre" placeholder="Introduzca el nombre" value="{$prueba->getNombrePrueba()}">

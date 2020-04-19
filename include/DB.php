@@ -5,6 +5,7 @@ require_once('include/Pista.php');
 
 
 
+
 class DB {
     protected static function ejecutaConsulta($sql) {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
@@ -132,5 +133,6 @@ class DB {
         return $pista;    
     }
     
+
 }
 ?>

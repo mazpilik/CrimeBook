@@ -26,28 +26,40 @@
 <h2 align="center">Pruebas</h2>
 <table align="center">
 	<tr>
-                <th>Seleccionar</th>
+                <th>Seleccionar </th>
 		<th>Nombre</th>
 		<th>Descripción</th>
 		<th>Tipo</th>
 		<th>Usuario que la creó</th>
+               
+	</tr>
+        
+       
 	</tr>
         
        
         {foreach from=$pruebas item=prueba}
-
+        <form id='{$prueba->getIdPrueba()}' action='prueba.php' method='post'>    
+        <tr>
+            
         
         <td>    
-            <a href="prueba.php?id={$prueba->getIdPrueba()}"><input type="checkbox"></a>       
-        </td>     
-         
+                
+                <input type='hidden' name='id' value='{$prueba->getIdPrueba()}'/>
+                <input type='submit' name='selec' value='Crear'/>
+                <input type='submit' name='selec' value='Duplicar'/>
+                <input type='submit' name='selec' value='Editar'/>
+                <input type='submit' name='selec' value='eliminar'/>
+        </td>
                 <td>{$prueba->getNombrePrueba()}</td>
                 <td>{$prueba->getdescBrevePrueba()}</td>
                 <td>{$prueba->getTipoPrueba()}</td>
-                <td>{$prueba->getUsernamePrueba()}</td>                
-         
-        </tr>
+                <td>{$prueba->getUsernamePrueba()}</td>  
+
         
+                 
+        </tr>
+         </form>  
         {/foreach}
 	 
 
@@ -56,7 +68,7 @@
 <div align="center">
 <a href="prueba.php"><button class="button">Crear prueba</button></a> 
 <button class="button">Duplicar prueba</button>
-<a href="prueba.php?id={$_GET['id']}"><button class="button">Editar prueba</button></a>
+<a href="prueba.php"><button class="button">Editar prueba</button></a>
 <button class="button">Eliminar prueba</button>
 </div>
 
