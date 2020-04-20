@@ -87,6 +87,9 @@ td {
      padding: 8px;
      background-color: white;
    }
+td.notice h3{
+  text-align: center;
+}
 th{
      border: 1px solid black;
      text-align: center;
@@ -119,10 +122,19 @@ form .field{
   margin-bottom: 1rem;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .field label{
+  font-size:1rem;
+  text-align: left;
   width: 35%;
 }
-.field textarea, .field input[type="text"], .field input[type="number"], .field input[type="date"]{
+.field textarea, .field input[type="text"], .field input[type="number"], .field input[type="date"], .field select{
   width: 65%;
 }
 .actionButtons{
@@ -130,11 +142,15 @@ form .field{
   justify-content: center;
   align-items: center;
 }
-.actionButtons button{
+.actionButtons button, .actionButtons input{
   margin-left: 0.5rem;
 }
-.actionButtons button:first-of-type{
+.actionButtons button:first-of-type, .actionButtons input:first-of-type{
   margin-left: 0px;
+}
+
+.listButtons{
+  margin:2rem 0;
 }
 
 h1{

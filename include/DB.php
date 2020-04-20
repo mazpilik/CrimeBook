@@ -432,6 +432,61 @@ class DB {
         return $pruebas;
     }
 
+    /**
+     * obtener todas las pruebas
+     * 
+     * @return array $pruebas
+     */
+    public static function getAllPruebas(){
+        $sql = "SELECT * FROM pruebas ORDER BY nombre";
+        $resultado = self::ejecutaConsulta($sql);
+        $pruebas = array();
+        if($resultado){
+            while($row = $resultado->fetch()){
+                array_push($pruebas, new Prueba($row));
+            }
+        }
+        return $pruebas;
+    }
+
+    /**
+     * dar de alta una prueba
+     * 
+     * @param array $prueba
+     * 
+     * @return boolean
+     */
+    public static function createPrueba($prueba){
+        $keys = array();
+        $insertFields = array();
+        foreach ($prueba as $key => $value) {
+            array_push($keys, $key);
+            array_push($insertFields, "'".$value."'");
+        }
+        $sql = "INSERT INTO pruebas "
+                . "(".join(',', $keys).") "
+                . "VALUES ("
+                . join(',',$insertFields)
+                . ");";
+        return self::ejecutaConsulta($sql);
+    }
+
+    /** 
+     * obtener el id de la última prueba
+     * 
+     * @return integer $id
+     */
+    public static function getLastPruebaId(){
+        $id = 0;
+        $sql = "SELECT id FROM pruebas ORDER BY id DESC";
+        $result = self::ejecutaConsulta($sql);
+        if($result){
+            $row = $result->fetch();
+            $id = $row['id'];
+        }
+        return $id;
+    }
+
     
 }
 ?>

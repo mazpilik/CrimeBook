@@ -1,6 +1,6 @@
 <?php
 
-class prueba{
+class Prueba{
     protected $id;
     protected $nombre;
     protected $descExtendida;
@@ -12,25 +12,25 @@ class prueba{
     protected $username;
     
     //Métodos
-    public function getIdPrueba() {return $this->id; }
-    public function getNombrePrueba() {return $this->nombre; }
-    public function getdescExtendidaPrueba() {return $this->descExtendida; }
-    public function getdescBrevePrueba() {return $this->descBreve; }
-    public function getUrlPrueba() {return $this->url; }
-    public function getTipoPrueba() {return $this->tipo; }
-    public function getDificultadPrueba() {return $this->dificultad; }
-    public function getayudaFinalPrueba() {return $this->ayudaFinal; }
-    public function getUsernamePrueba() {return $this->username; }
+    public function getId() {return $this->id; }
+    public function getNombre() {return $this->nombre; }
+    public function getDescExtendida() {return $this->descExtendida; }
+    public function getDescBreve() {return $this->descBreve; }
+    public function getUrl() {return $this->url; }
+    public function getTipo() {return $this->tipo; }
+    public function getDificultad() {return $this->dificultad; }
+    public function getAyudaFinal() {return $this->ayudaFinal; }
+    public function getUsername() {return $this->username; }
 
-    public function setIdPrueba($idPrueba) { $this->id = $idPrueba; }
-    public function setNombrePrueba($nombrePrueba) { $this->nombre = $nombrePrueba; }
-    public function setdescExtendidaPrueba($descExtendidaPrueba) { $this->descExtendida = $descExtendidaPrueba; }
-    public function setdescBrevePrueba($descBrevePrueba) { $this->descBreve = $descBrevePrueba; }
-    public function setUrlPrueba($urlPrueba) { $this->url = $urlPrueba; }
-    public function setTipoPrueba($tipoPrueba) { $this->tipo = $tipoPrueba; }
-    public function setDificultadPrueba($dificultadPrueba) { $this->dificultad = $dificultadPrueba; }
-    public function setayudaFinalPrueba($ayudaFinalPrueba) { $this->ayudaFinal = $ayudaFinalPrueba; }
-    public function setUsernamePrueba($usernamePrueba) { $this->username = $usernamePrueba; }    
+    public function setId($id) { $this->id = $id; }
+    public function setNombre($nombre) { $this->nombre = $nombre; }
+    public function setdescExtendida($descExtendida) { $this->descExtendida = $descExtendida; }
+    public function setdescBreve($descBreve) { $this->descBreve = $descBreve; }
+    public function setUrl($url) { $this->url = $url; }
+    public function setTipo($tipo) { $this->tipo = $tipo; }
+    public function setDificultad($dificultad) { $this->dificultad = $dificultad; }
+    public function setayudaFinal($ayudaFinal) { $this->ayudaFinal = $ayudaFinal; }
+    public function setUsername($username) { $this->username = $username; }    
     //Constructor de la clase, le pasamos un array obtenido de una 
     //fila de la base de datos
     public function __construct($row) {
