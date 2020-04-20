@@ -16,7 +16,7 @@
           {if !empty($pruebas)}
             {foreach from=$pruebas item=$prueba}
               <tr>
-              <td><input type="checkbox" value="{$prueba->getId()}" /></td>
+              <td><input name="pruebasIds[]" type="checkbox" value="{$prueba->getId()}" /></td>
               <td>{$prueba->getNombre()}</td>
               <td>{$prueba->getDescBreve()}</td>
               <td>{$prueba->getTipo()}</td>
@@ -32,7 +32,7 @@
         <a href="prueba.php"><button class="button" name="printCrearPrueba" value="crearPrueba" formaction="prueba.php">Crear prueba</button></a>
         <a href="prueba.php"><button class="button" name="duplicarPrueba" formaction="prueba.php">Duplicar prueba</button></a>
         <a href="prueba.php"><button class="button" name="editarPrueba" value="editarPrueba" formaction="prueba.php">Editar prueba</button></a>
-        <a href="borrar-pruebas.php" class="button">Borrar prueba</a>
+        <a href="borrar-pruebas.php"><button class="button" name="deletePruebas" formaction="borrar-pruebas.php">Borrar prueba</button></a>
     </div>
     </form>
   </div>

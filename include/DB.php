@@ -487,6 +487,58 @@ class DB {
         return $id;
     }
 
-    
+    /**
+     * obtener una prueba por su id
+     * 
+     * @param integer $id
+     * 
+     * @return Object $prueba
+     */
+    public static function getPruebaById($id){
+        $sql = "SELECT * FROM pruebas WHERE id = ".$id;
+        $result = self::ejecutaConsulta($sql);
+        if($result){
+            $row = $result->fetch();
+            return new Prueba($row);
+        }
+        return false;
+    }
+
+    /** 
+     * actualiza una prueba
+     * 
+     * @param integer $id
+     * 
+     * @return boolean
+     */
+    public static function updatePrueba($prueba){
+        $updateFields = array();
+        foreach ($prueba as $key => $value) {
+            if($key != 'id'){
+                array_push($updateFields, $key." = '".$value."'");
+            }
+        }
+        $sql = "UPDATE pruebas SET "
+                . join(',',$updateFields)." "
+                . "WHERE id = ".$prueba['id'];
+        $result = self::ejecutaConsulta($sql);
+        return $result;
+    }
+
+    /**
+     * Borrado de pruebas
+     * 
+     * @param array $pruebas ids de las pruebas
+     * 
+     * @return boolean
+     */
+    public static function deletePruebas(array $pruebas)
+    {
+        var_dump($pruebas);
+
+        $sql = "DELETE FROM pruebas WHERE pruebas.id IN (".join(',',$pruebas).");";
+        $resultado = self::ejecutaConsulta($sql);
+        return $resultado;
+    }  
 }
 ?>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 23:21:02
+/* Smarty version 3.1.34-dev-7, created on 2020-04-20 10:37:00
   from 'C:\wamp64\www\crimebook\smarty\templates\partida.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9cdcded8a786_67176382',
+  'unifunc' => 'content_5e9d7b4c62c110_49106814',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3112b17e51185f31ed697ec1d07b41b957e4f320' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\partida.tpl',
-      1 => 1587338325,
+      1 => 1587365495,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e9cdcded8a786_67176382 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9d7b4c62c110_49106814 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('activePage'=>'partida'), 0, false);
 ?>
 <div id="crearEditarPartida">

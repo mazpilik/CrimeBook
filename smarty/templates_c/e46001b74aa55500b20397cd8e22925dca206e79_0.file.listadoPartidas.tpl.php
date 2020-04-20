@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 23:41:47
+/* Smarty version 3.1.34-dev-7, created on 2020-04-20 10:36:57
   from 'C:\wamp64\www\crimebook\smarty\templates\listadoPartidas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9ce1bb8fa0d6_63707354',
+  'unifunc' => 'content_5e9d7b4956c034_99332060',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e46001b74aa55500b20397cd8e22925dca206e79' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\listadoPartidas.tpl',
-      1 => 1587339685,
+      1 => 1587365495,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e9ce1bb8fa0d6_63707354 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9d7b4956c034_99332060 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('pageTitle'=>'listado de partidas','activePage'=>'listado-de-partidas'), 0, false);
 ?>
     <h2 align="center">Listado de partidas</h2>
