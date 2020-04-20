@@ -324,13 +324,13 @@ a.button{
   text-align: center;
 }
 
-#prueba #respuestasForm .field{
+#prueba .section .field{
   justify-content: center;
 }
-#prueba #respuestasForm .field label{
+#prueba .section .field label{
   width: 30%;
 }
-#prueba #respuestasForm .field input{
+#prueba .section .field input{
   width: 30%;
 }
 

@@ -6,6 +6,7 @@
     require_once dirname(__FILE__) . '/Resolucion.php';
     require_once dirname(__FILE__) . '/Prueba.php';
     require_once dirname(__FILE__) . '/Respuesta.php';
+    require_once dirname(__FILE__) . '/Pista.php';
 
 class DB {
     /**
@@ -592,5 +593,59 @@ class DB {
         $result = self::ejecutaConsulta($sql);
         return $result;
     }
+
+    /**
+     * crear pista
+     * 
+     * @param array $pista
+     * 
+     * @return boolean
+     */
+    public static function addPista(array $pista)
+    {
+        $keys = array();
+        $values = array();
+        foreach ($pista as $key => $value) {
+            array_push($keys, $key);
+            array_push($values, "'$value'");
+        }
+        $sql = "INSERT INTO pistas (".join(',',$keys).") "
+                . "VALUES (".join(',',$values).")";
+        $result = self::ejecutaConsulta($sql);
+        return $result; 
+    }
+    /**
+     * obtener pistas de una prueba
+     * 
+     * @param integer $idPrueba
+     * 
+     * @return array $pistas
+     */
+    public static function getPistasByIdPrueba(int $idPrueba)
+    {
+        $pistas = array();
+        $sql = "SELECT * FROM pistas WHERE idPrueba = ".$idPrueba;
+        $result = self::ejecutaConsulta($sql);
+        if($result){
+            while($row = $result->fetch()){
+                array_push($pistas, new Pista($row));
+            }
+        }
+        return $pistas;
+    }
+    /**
+     * borrar pistas
+     * 
+     * @param array $pistas
+     * 
+     * @return boolean
+     */
+    public static function deletePistas(array $pistas)
+    {
+        $sql = "DELETE FROM pistas WHERE pistas.id IN (".join(',',$pistas).")";
+        $result = self::ejecutaConsulta($sql);
+        return $result;
+    }
+
 }
 ?>

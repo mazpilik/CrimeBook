@@ -79,44 +79,99 @@
     {/if}
   </div>
 </form>
-<div class="section">
-  <h2>Respuestas</h2>
-  <form id="respuestasForm" action="prueba.php" method="post">
-    <input type="hidden" name="idPrueba" value="{$prueba->getId()}">
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Respuestas</th>
-        </tr>
-      </thead>
-      <tbody>
-        {if isset($respuestas) && !empty($respuestas)}
-          {foreach from=$respuestas item=respuesta}
-            <tr>
-              <td><input type="checkBox" name="respuestas[]" value="{$respuesta->getId()}" /></td>
-              <td>{$respuesta->getRespuesta()}</td>
-            </tr>
-          {/foreach}
-          {else}
-            <tr><td colspan="2"><h3>No hay respuestas todavía</h3></td></tr>
-        {/if}
-        <tr>
-          <td colspan="2">
-            <div class="field">
-              <label>Nueva respuesta:</label>
-              <input type="text" name="respuesta" />
-            </div>
-            <div class="actionButtons">
-              <input type="submit" class="button" name="addRespuesta" value="Añadir" />
-              <input type="reset" class="button" value="Reset" />
-              <input type="submit" class="button" name="borrarRespuestas" value="Borrar" />
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
-</div>
+{if $action == 'edit'}
+  <div class="section">
+    <h2>Respuestas</h2>
+    <form id="respuestasForm" action="prueba.php" method="post">
+      <input type="hidden" name="idPrueba" value="{$prueba->getId()}">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Respuestas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {if isset($respuestas) && !empty($respuestas)}
+            {foreach from=$respuestas item=respuesta}
+              <tr>
+                <td><input type="checkBox" name="respuestas[]" value="{$respuesta->getId()}" /></td>
+                <td>{$respuesta->getRespuesta()}</td>
+              </tr>
+            {/foreach}
+            {else}
+              <tr><td colspan="2"><h3>No hay respuestas todavía</h3></td></tr>
+          {/if}
+          <tr>
+            <td colspan="2">
+              <div class="field">
+                <label>Nueva respuesta:</label>
+                <input type="text" name="respuesta" />
+              </div>
+              <div class="actionButtons">
+                <input type="submit" class="button" name="addRespuesta" value="Añadir" />
+                <input type="reset" class="button" value="Reset" />
+                <input type="submit" class="button" name="borrarRespuestas" value="Borrar" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+  <div class="section">
+    <h2>Pistas</h2>
+    <form id="pistasForm" action="prueba.php" method="post">
+      <input type="hidden" name="idPrueba" value="{$prueba->getId()}">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Pista</th>
+            <th>Tiempo</th>
+            <th>Intentos</th>
+          </tr>
+        </thead>
+        <tbody>
+          {if isset($pistas) && !empty($pistas)}
+            {foreach from=$pistas item=pista}
+              <tr>
+                <td><input type="checkBox" name="pistas[]" value="{$pista->getId()}" /></td>
+                <td>{$pista->getTexto()}</td>
+                <td>{$pista->getTiempo()}</td>
+                <td>{$pista->getIntentos()}</td>
+              </tr>
+            {/foreach}
+            {else}
+              <tr><td colspan="4"><h3>No hay pistas todavía</h3></td></tr>
+          {/if}
+          <tr>
+            <td colspan="4">
+              <div class="field">
+                <label>texto:</label>
+                <input  type="text" name="texto" />
+              </div>
+              <div class="field">
+                <label>tiempo:</label>
+                <input type="number" name="tiempo" />
+              </div>
+              <div class="field">
+                <label>intentos:</label>
+                <input type="number" name="intentos" />
+              </div>
+              <div class="actionButtons">
+                <input type="submit" class="button" name="addPista" value="Añadir" />
+                <input type="reset" class="button" value="Reset" />
+                <input type="submit" class="button" name="borrarPistas" value="Borrar" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+{/if}
+
 </div>
 {include file='footer.tpl'}

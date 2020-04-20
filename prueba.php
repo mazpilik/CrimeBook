@@ -70,9 +70,11 @@ if(isset($_POST['editarPrueba']) || isset($_GET['id'])){
   if($id){
     $prueba = DB::getPruebaById($id);
     $respuestas = DB::getRespuestasOfPrueba($id);
+    $pistas = DB::getPistasByIdPrueba($id);
     if($prueba){
       $smarty->assign('prueba', $prueba);
       $smarty->assign('respuestas', $respuestas);
+      $smarty->assign('pistas', $pistas);
       $smarty->assign('action', 'edit');
       $smarty->assign('alertMessage', $_SESSION['alertMessage']);
       unsetAlertMessage();
@@ -146,6 +148,42 @@ if(isset($_POST['borrarRespuestas'])){
     }
   } else {
     setAlertMessage('selecciona una o más respuestas para borrar', 'error');
+    header('location:prueba.php?id='.$_POST['idPrueba']);
+  }
+}
+//Añadir pista
+if(isset($_POST['addPista'])){
+  $pista = array();
+  $pista['idPrueba'] = $_POST['idPrueba'];
+  $pista['texto'] = $_POST['texto'];
+  if(isset($_POST['tiempo']) && !empty($_POST['tiempo'])){
+    $pista['tiempo'] = $_POST['tiempo'];
+  }
+  if(isset($_POST['intentos']) && !empty($_POST['intentos'])){
+    $pista['intentos'] = $_POST['intentos'];
+  }
+  
+  if(!empty($pista['texto'])){
+    if(DB::addPista($pista)){
+      header('location:prueba.php?id='.$pista['idPrueba']);
+    } else {
+      setAlertMessage('No se ha podido crear la pista', 'error');
+      header('location:prueba.php?id='.$pista['idPrueba']);
+    }
+  } else {
+    setAlertMessage('Campo de texto vacio', 'error');
+    header('location:prueba.php?id='.$pista['idPrueba']);
+  }
+}
+
+//Borrar pista
+if(isset($_POST['borrarPistas'])){
+  if(isset($_POST['pistas']) && !empty($_POST['pistas'])){
+    if(DB::deletePistas($_POST['pistas'])){
+      header('location:prueba.php?id='.$_POST['idPrueba']);
+    }
+  } else {
+    setAlertMessage('selecciona una o más pistas para borrar', 'error');
     header('location:prueba.php?id='.$_POST['idPrueba']);
   }
 }
