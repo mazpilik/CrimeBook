@@ -572,6 +572,66 @@ class DB {
     }
 
     /**
+     * clonar una prueba
+     * 
+     * @param int $idPrueba
+     * 
+     * @return boolean
+     */
+    public static function clonePrueba($idPrueba){
+        $result = true;
+        //traemos la prueba
+        $candidatePrueba = self::getPruebaById($idPrueba);
+        $newPrueba = array(
+            'nombre' => $candidatePrueba->getNombre().'-cloned',
+            'descExtendida' => $candidatePrueba->getdescExtendida(),
+            'descBreve' => $candidatePrueba->getdescBreve(),
+            'url' => $candidatePrueba->getUrl(),
+            'tipo' => $candidatePrueba->getTipo(),
+            'dificultad' => $candidatePrueba->getDificultad(),
+            'ayudaFinal' => $candidatePrueba->getAyudaFinal(),
+            'username' => $candidatePrueba->getUsername()
+        );
+
+        //generamos la nueva prueba
+        if(!self::createPrueba($newPrueba)){
+            $result = false;
+        }
+
+        //traemos el id de la última prueba
+        $lastPruebaId = self::getLastPruebaId();
+
+        //traemos las respuestas
+        $respuestas = self::getRespuestasOfPrueba($candidatePrueba->getId());
+
+        foreach ($respuestas as $respuesta) {
+            $newRespuesta = array(
+                'idPrueba' => $lastPruebaId,
+                'respuesta' => $respuesta->getRespuesta()
+            );
+            if(!self::addRespuesta($newRespuesta)){
+                $result = false;
+            }
+        }
+
+        //traemos las pistas de la pruebaCandidata
+        $pistas = self::getPistasByIdPrueba($candidatePrueba->getId());
+        foreach ($pistas as $pista ) {
+            $newPista = array(
+                'idPrueba' => $lastPruebaId,
+                'texto' => $pista->getTexto(),
+                'tiempo' => $pista->getTiempo(),
+                'intentos' => $pista->getIntentos()
+            );
+            if(!self::addPista($newPista)){
+                $result = false;
+            }
+        }
+        return $result;
+
+    }
+
+    /**
      * obtener respuestas de una prueba
      * 
      * @param integer $pruebaId

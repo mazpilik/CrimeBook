@@ -3,10 +3,28 @@ require_once('include/DB.php');
 require_once('include/juego.php');
 require_once('include/libs/Smarty.class.php');
 require_once('include/functions/initSession.php');
+require_once('include/functions/setAlertMessage.php');
 require_once('include/functions/unsetAlertMessage.php');
 
 //iniciamos y chequeamos sesión
 initSession();
+
+// Duplicado de pruebas
+if(isset($_POST['duplicarPrueba'])){
+  if(isset($_POST['pruebasIds'])){
+    if(count($_POST['pruebasIds']) == 1){
+
+      //duplicar prueba con un nuevo nombre
+      if(!DB::clonePrueba($_POST['pruebasIds'][0])){
+        setAlertMessage('Algo ha ido mal en el clonado', 'error');
+      }
+    } else {
+      setAlertMessage('Elige solamente una prueba para clonar', 'error');
+    }
+  } else {
+    setAlertMessage('selecciona una prueba para clonar', 'error');
+  }
+}
 
 // Cargamos la librería de Smarty
 $smarty = new Smarty;
