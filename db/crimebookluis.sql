@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 18-04-2020 a las 17:45:26
+-- Tiempo de generación: 20-04-2020 a las 16:32:55
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.2.18
 
@@ -37,8 +37,16 @@ CREATE TABLE IF NOT EXISTS `equipos` (
   `idPartida` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `codigo` (`codigo`),
-  KEY `idPartida` (`idPartida`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `equipos_ibfk_1` (`idPartida`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `equipos`
+--
+
+INSERT INTO `equipos` (`id`, `codigo`, `nombre`, `tiempo`, `idPartida`) VALUES
+(1, 1587338211, 'Moco verde', 0, 4),
+(2, 1587338500, 'Azkenputs', 0, 4);
 
 -- --------------------------------------------------------
 
@@ -57,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `juegos` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`),
   KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `juegos`
@@ -65,7 +73,8 @@ CREATE TABLE IF NOT EXISTS `juegos` (
 
 INSERT INTO `juegos` (`id`, `nombre`, `descExtendida`, `descBreve`, `fechaCreacion`, `username`) VALUES
 (1, 'Los Asesinos del Crimebook', 'Una orden de asesinos tiene en\r\njaque al mundo entero. La Orden de los asesinos del Crimebook. Estos criminales \r\ntienen por costumbre, antes de matar a sus víctimas, crear un Crimebook. Un \r\nlibro de enigmas en cuyo interior se encuentran encriptados los datos de la \r\nfutura víctima. ¿Estáis a punto para jugar? Los asesinos del Crimebook es una \r\nhistoria corta y también es un juego en el que deberéis colaborar con el centro \r\nde investigación de Crimebook descifrando enigmas y puzles. De vosotros depende \r\nla vida de la víctima.', 'Un BOOK ESCAPE donde vosotros sois los protagonistas. \r\nDescifrad los enigmas, de vosotros depende su vida.', '2020-02-07', 'ivantapia01'),
-(3, 'Juego Mikel', 'Descripción extendida juego mikel', 'Descripción breve juego mikel', '2020-04-18', 'ivantapia01');
+(3, 'Juego Mikel', 'Descripción extendida juego mikel', 'Descripción breve juego mikel', '2020-04-18', 'ivantapia01'),
+(7, 'tercer juego', 'fñaksjfñasdkfj ñaldksfj ñaldkj', 'tarari', '2020-04-19', 'ivantapia01');
 
 -- --------------------------------------------------------
 
@@ -82,11 +91,18 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   `fechaInicio` date NOT NULL,
   `idJuego` int(10) UNSIGNED NOT NULL,
   `username` varchar(15) NOT NULL,
+  `finalizada` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `nombre` (`nombre`),
   KEY `idJuego` (`idJuego`),
   KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `partidas`
+--
+
+INSERT INTO `partidas` (`id`, `nombre`, `fechaCreacion`, `duracion`, `fechaInicio`, `idJuego`, `username`, `finalizada`) VALUES
+(4, 'Los Asesinos del Crimebook', '2020-04-19', 4, '2020-04-20', 1, 'ivantapia01', 0);
 
 -- --------------------------------------------------------
 
@@ -132,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `pistas` (
   `intentos` int(10) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idPrueba` (`idPrueba`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -154,7 +170,14 @@ CREATE TABLE IF NOT EXISTS `pruebas` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`),
   KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pruebas`
+--
+
+INSERT INTO `pruebas` (`id`, `nombre`, `descExtendida`, `descBreve`, `tipo`, `dificultad`, `url`, `ayudaFinal`, `username`) VALUES
+(10, 'Prueba 1', NULL, NULL, 'Prueba normal', 'Dificil', NULL, NULL, 'ivantapia01');
 
 -- --------------------------------------------------------
 
@@ -186,7 +209,14 @@ CREATE TABLE IF NOT EXISTS `respuestas` (
   `respuesta` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idPrueba` (`idPrueba`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `respuestas`
+--
+
+INSERT INTO `respuestas` (`id`, `idPrueba`, `respuesta`) VALUES
+(4, 10, 'platano');
 
 -- --------------------------------------------------------
 
@@ -220,7 +250,7 @@ INSERT INTO `usuarios` (`username`, `email`, `nombre`, `apellidos`, `contrasenya
 -- Filtros para la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  ADD CONSTRAINT `equipos_ibfk_1` FOREIGN KEY (`idPartida`) REFERENCES `partidas` (`id`);
+  ADD CONSTRAINT `equipos_ibfk_1` FOREIGN KEY (`idPartida`) REFERENCES `partidas` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `juegos`
