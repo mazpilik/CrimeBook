@@ -18,7 +18,6 @@ $smarty->cache_dir = 'smarty/cache/';
 
 //Mostrar form crear prueba por defecto
   $smarty->assign('action', 'crear');
-  var_dump($_SESSION['alertMessage']);
 
 //Crear prueba
 if(isset($_POST['createPrueba'])){
@@ -57,6 +56,7 @@ if(isset($_POST['createPrueba'])){
   }
 }
 
+//Editar prueba
 if(isset($_POST['editarPrueba']) || isset($_GET['id'])){
   $id = 0;
   if(isset($_POST['editarPrueba']) && isset($_POST['pruebasIds']) && count($_POST['pruebasIds']) == 1){
@@ -67,13 +67,23 @@ if(isset($_POST['editarPrueba']) || isset($_GET['id'])){
     setAlertMessage('Selecciona una prueba para editar', 'error');
     header('location:listado-de-pruebas.php');
   }
-  $prueba = DB::getPruebaById($id);
-  if($prueba){
-    $smarty->assign('prueba', $prueba);
-    $smarty->assign('action', 'edit');
+  if($id){
+    $prueba = DB::getPruebaById($id);
+    $respuestas = DB::getRespuestasOfPrueba($id);
+    if($prueba){
+      $smarty->assign('prueba', $prueba);
+      $smarty->assign('respuestas', $respuestas);
+      $smarty->assign('action', 'edit');
+      $smarty->assign('alertMessage', $_SESSION['alertMessage']);
+      unsetAlertMessage();
+    }
   }
+} else {
+  $smarty->assign('alertMessage', $_SESSION['alertMessage']);
+  unsetAlertMessage();
 }
 
+//Actualizar prueba
 if(isset($_POST['updatePrueba'])){
   $prueba = array();
 
@@ -110,10 +120,38 @@ if(isset($_POST['updatePrueba'])){
   }
 }
 
+//Añadir respuesta
+if(isset($_POST['addRespuesta'])){
+  $respuesta = array();
+  $respuesta['idPrueba'] = $_POST['idPrueba'];
+  $respuesta['respuesta'] = $_POST['respuesta'];
+  if(!empty($respuesta['respuesta'])){
+    if(DB::addRespuesta($respuesta)){
+      header('location:prueba.php?id='.$respuesta['idPrueba']);
+    } else {
+      setAlertMessage('No se ha podido crear la respuesta', 'error');
+      header('location:prueba.php?id='.$respuesta['idPrueba']);
+    }
+  } else {
+    setAlertMessage('Campo de respuesta vacio', 'error');
+    header('location:prueba.php?id='.$respuesta['idPrueba']);
+  }
+}
+
+//Borrar respuesta
+if(isset($_POST['borrarRespuestas'])){
+  if(isset($_POST['respuestas']) && !empty($_POST['respuestas'])){
+    if(DB::deleteRespuestas($_POST['respuestas'])){
+      header('location:prueba.php?id='.$_POST['idPrueba']);
+    }
+  } else {
+    setAlertMessage('selecciona una o más respuestas para borrar', 'error');
+    header('location:prueba.php?id='.$_POST['idPrueba']);
+  }
+}
+
 // Ponemos a disposición de la plantilla los datos necesarios
 $smarty->assign('usuario', $_SESSION['usuario']);
-$smarty->assign('alertMessage', $_SESSION['alertMessage']);
-unsetAlertMessage();
 
 
 // Mostramos la plantilla

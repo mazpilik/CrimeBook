@@ -4,6 +4,7 @@ require_once('include/functions/setAlertMessage.php');
 require_once('include/DB.php');
 
 //iniciamos checkeamos sesión
+initSession();
 if(isset($_POST['borrarPartidas'])){
   if(isset($_POST['partidas']) && count($_POST['partidas']) != 0){
     if(!DB::borrarPartidas($_POST['partidas'])) {
@@ -13,4 +14,5 @@ if(isset($_POST['borrarPartidas'])){
     setAlertMessage('No has elegido ningúna partida que borrar', 'error');
   }
 }
-header('location:listado-de-partidas.php');
+  header('location:listado-de-partidas.php');
+

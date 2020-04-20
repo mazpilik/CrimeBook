@@ -77,9 +77,46 @@
       <input class="button" name="reset" type="reset" value="Reset" />
       <input class="button" name="deletePruebas" formaction="borrar-pruebas.php" type="submit" value="Borrar" />
     {/if}
-    
   </div>
-
 </form>
+<div class="section">
+  <h2>Respuestas</h2>
+  <form id="respuestasForm" action="prueba.php" method="post">
+    <input type="hidden" name="idPrueba" value="{$prueba->getId()}">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Respuestas</th>
+        </tr>
+      </thead>
+      <tbody>
+        {if isset($respuestas) && !empty($respuestas)}
+          {foreach from=$respuestas item=respuesta}
+            <tr>
+              <td><input type="checkBox" name="respuestas[]" value="{$respuesta->getId()}" /></td>
+              <td>{$respuesta->getRespuesta()}</td>
+            </tr>
+          {/foreach}
+          {else}
+            <tr><td colspan="2"><h3>No hay respuestas todavía</h3></td></tr>
+        {/if}
+        <tr>
+          <td colspan="2">
+            <div class="field">
+              <label>Nueva respuesta:</label>
+              <input type="text" name="respuesta" />
+            </div>
+            <div class="actionButtons">
+              <input type="submit" class="button" name="addRespuesta" value="Añadir" />
+              <input type="reset" class="button" value="Reset" />
+              <input type="submit" class="button" name="borrarRespuestas" value="Borrar" />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
 </div>
 {include file='footer.tpl'}

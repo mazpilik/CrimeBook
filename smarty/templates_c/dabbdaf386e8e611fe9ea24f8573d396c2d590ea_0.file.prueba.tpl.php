@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-20 11:52:33
+/* Smarty version 3.1.34-dev-7, created on 2020-04-20 15:24:49
   from 'C:\wamp64\www\crimebook\smarty\templates\prueba.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9d8d01b1e1a2_11620839',
+  'unifunc' => 'content_5e9dbec1065a80_42984253',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dabbdaf386e8e611fe9ea24f8573d396c2d590ea' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\prueba.tpl',
-      1 => 1587383503,
+      1 => 1587396283,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e9d8d01b1e1a2_11620839 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9dbec1065a80_42984253 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('pageTitle'=>'Crear / Editar Prueba','activePage'=>'prueba'), 0, false);
 ?>
 <div id="prueba">
@@ -119,10 +119,57 @@ if ($_smarty_tpl->tpl_vars['prueba']->value->getDificultad() == 'Dificil') {?>
       <input class="button" name="reset" type="reset" value="Reset" />
       <input class="button" name="deletePruebas" formaction="borrar-pruebas.php" type="submit" value="Borrar" />
     <?php }?>
-    
   </div>
-
 </form>
+<div class="section">
+  <h2>Respuestas</h2>
+  <form id="respuestasForm" action="prueba.php" method="post">
+    <input type="hidden" name="idPrueba" value="<?php echo $_smarty_tpl->tpl_vars['prueba']->value->getId();?>
+">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Respuestas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if (isset($_smarty_tpl->tpl_vars['respuestas']->value) && !empty($_smarty_tpl->tpl_vars['respuestas']->value)) {?>
+          <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['respuestas']->value, 'respuesta');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['respuesta']->value) {
+?>
+            <tr>
+              <td><input type="checkBox" name="respuestas[]" value="<?php echo $_smarty_tpl->tpl_vars['respuesta']->value->getId();?>
+" /></td>
+              <td><?php echo $_smarty_tpl->tpl_vars['respuesta']->value->getRespuesta();?>
+</td>
+            </tr>
+          <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+          <?php } else { ?>
+            <tr><td colspan="2"><h3>No hay respuestas todavía</h3></td></tr>
+        <?php }?>
+        <tr>
+          <td colspan="2">
+            <div class="field">
+              <label>Nueva respuesta:</label>
+              <input type="text" name="respuesta" />
+            </div>
+            <div class="actionButtons">
+              <input type="submit" class="button" name="addRespuesta" value="Añadir" />
+              <input type="reset" class="button" value="Reset" />
+              <input type="submit" class="button" name="borrarRespuestas" value="Borrar" />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
 </div>
 <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }

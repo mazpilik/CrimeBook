@@ -71,20 +71,30 @@ if(isset($_GET['id']) || isset($_POST['editarPartida'])){
   } else {
     if(isset($_POST['partidas']) && count($_POST['partidas']) == 1){
       $id = $_POST['partidas'][0];
-    } else {
+    } elseif(isset($_POST['partidas']) && count($_POST['partidas']) > 1){
       setAlertMessage('Selecciona solamente una partida', 'error');
+      header('location:listado-de-partidas.php');
+    } else {
+      setAlertMessage('Selecciona una partida para editar', 'error');
       header('location:listado-de-partidas.php');
     }
   }
-  $smarty->assign('action', 'edit');
-  $partida = DB::obtienePartida($id);
-  $equipos = DB::getPartidaEquipos($id);
-  if($partida){
-    $smarty->assign('partida', $partida);
-    $smarty->assign('equipos', $equipos);
-  } else {
-    header('location:listado-de-juegos.php');
+  if($id){
+    $smarty->assign('action', 'edit');
+    $partida = DB::obtienePartida($id);
+    $equipos = DB::getPartidaEquipos($id);
+    if($partida){
+      $smarty->assign('partida', $partida);
+      $smarty->assign('equipos', $equipos);
+      $smarty->assign('alertMessage', $_SESSION['alertMessage']);
+      unsetAlertMessage();
+    } else {
+      header('location:listado-de-juegos.php');
+    }
   }
+} else {
+  $smarty->assign('alertMessage', $_SESSION['alertMessage']);
+  unsetAlertMessage();
 }
 
  //Actualizar partida
@@ -123,9 +133,5 @@ if (isset($_POST['grabarEquipos'])) {
   }
   header('location:partida.php?id='.$idPartida);
 }
-
 $smarty->assign('usuario', $_SESSION['usuario']);
-$message = $_SESSION['alertMessage'];
-$smarty->assign('alertMessage', $message);
-// unsetAlertMessage();
 $smarty->display('partida.tpl');

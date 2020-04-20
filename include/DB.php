@@ -5,6 +5,7 @@
     require_once dirname(__FILE__) . '/juego.php';
     require_once dirname(__FILE__) . '/Resolucion.php';
     require_once dirname(__FILE__) . '/Prueba.php';
+    require_once dirname(__FILE__) . '/Respuesta.php';
 
 class DB {
     /**
@@ -539,6 +540,57 @@ class DB {
         $sql = "DELETE FROM pruebas WHERE pruebas.id IN (".join(',',$pruebas).");";
         $resultado = self::ejecutaConsulta($sql);
         return $resultado;
-    }  
+    }
+
+    /**
+     * obtener respuestas de una prueba
+     * 
+     * @param integer $pruebaId
+     * 
+     * @return array $repuestas
+     */
+    public static function getRespuestasOfPrueba(int $pruebaId)
+    {
+        $respuestas = array();
+        $sql = "SELECT * FROM respuestas WHERE idPrueba = ".$pruebaId;
+        $resultado = self::ejecutaConsulta($sql);
+        if($resultado){
+            while($row = $resultado->fetch()){
+                array_push($respuestas, new Respuesta($row));
+            }
+        }
+        return $respuestas;
+    }
+
+    /**
+     * añadir una respuesta
+     * 
+     * @param array $respuesta
+     * 
+     * @return boolean
+     */
+    public static function addRespuesta(array $respuesta)
+    {
+        $sql = "INSERT INTO respuestas (idPrueba, respuesta)"
+                . "VALUES( "
+                . $respuesta['idPrueba'].", "
+                . "'".$respuesta['respuesta']."'"
+                .");";
+        $result = self::ejecutaConsulta($sql);
+        return $result;
+    }
+
+    /** 
+     * borrar una respuesta
+     * 
+     * @param array $idRespuesta
+     * 
+     * @return boolean
+     */
+    public static function deleteRespuestas(array $respuestas) {
+        $sql = "DELETE FROM respuestas WHERE respuestas.id IN (".join(',',$respuestas).")";
+        $result = self::ejecutaConsulta($sql);
+        return $result;
+    }
 }
 ?>

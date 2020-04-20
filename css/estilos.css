@@ -303,3 +303,34 @@ a.button{
   justify-content: center;
   align-items: center;
 }
+
+/** PRUEBA **/
+#prueba{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#prueba .section{
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 4rem 0;
+}
+
+#prueba .section td h3{
+  text-align: center;
+}
+
+#prueba #respuestasForm .field{
+  justify-content: center;
+}
+#prueba #respuestasForm .field label{
+  width: 30%;
+}
+#prueba #respuestasForm .field input{
+  width: 30%;
+}
+

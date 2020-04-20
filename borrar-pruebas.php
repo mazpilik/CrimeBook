@@ -4,6 +4,7 @@ require_once('include/functions/setAlertMessage.php');
 require_once('include/DB.php');
 
 //iniciamos checkeamos sesión
+initSession();
 if(isset($_POST['deletePruebas'])){
   if(isset($_POST['pruebasIds']) && count($_POST['pruebasIds']) != 0){
     if(!DB::deletePruebas($_POST['pruebasIds'])) {

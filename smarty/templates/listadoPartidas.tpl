@@ -3,7 +3,8 @@
     <h2 align="center">Listado de partidas</h2>
     <form id="editarPartida" name="editarPartida" method="POST" action="listado-de-partidas.php">
         <table align="center">
-            <tr>
+            <thead>
+                <tr>
                 <th></th>
                 <th>Nombre de la partida</th>
                 <th>Número de equipos</th>
@@ -11,28 +12,36 @@
                 <th>Usuario que la creó</th>
                 <th>Finalizada</th>
             </tr>
-            {foreach from=$partidas item=partida}
-                <tr>
-                    <td><input type="checkbox" name="partidas[]" value="{$partida->getId()}" /></td>
-                    <td>
-                        {$partida->getNombre()}
-                    </td>
-                    <td>
-                        {$partida->getNumEquipos()}
-                    </td>
-                    <td>{$partida->getFechaCreacion()}</td>
-                    <td>{$partida->getUserName()}</td>
-                    <td>{if $partida->getFinalizada()}
-                        si
-                    {else}
-                        no
-                    {/if}</td>
-                </tr>
-            {/foreach}
+            </thead>
+            <tbody>
+                {if !empty($partidas)}
+                    {foreach from=$partidas item=partida}
+                        <tr>
+                            <td><input type="checkbox" name="partidas[]" value="{$partida->getId()}" /></td>
+                            <td>
+                                {$partida->getNombre()}
+                            </td>
+                            <td>
+                                {$partida->getNumEquipos()}
+                            </td>
+                            <td>{$partida->getFechaCreacion()}</td>
+                            <td>{$partida->getUserName()}</td>
+                            <td>{if $partida->getFinalizada()}
+                                si
+                            {else}
+                                no
+                            {/if}</td>
+                        </tr>
+                    {/foreach}
+            {else}
+                <tr><td colspan="6"><h3>Todavía no hay partidas en la aplicación</h3></td></tr>
+            {/if}
+            
+            </tbody>
         </table>
 
         <br>
-        <div style="text-align:center;">
+        <div class="listButtons">
             <button type="submit" form="editarPartida" formaction="partida.php" value="equiposButton" name="editarPartida" class="button">Editar partida</button>
             <button type="submit" form="editarPartida" value="borrarButton" formaction="borrar-partidas.php" name="borrarPartidas" class="button">Borrar Partida</button>
             <button type="submit" form="editarPartida" value="estadisticasButton" formaction="estadisticas.php" name="estadisticasButton" class="button">Estadísticas Partida</button>
