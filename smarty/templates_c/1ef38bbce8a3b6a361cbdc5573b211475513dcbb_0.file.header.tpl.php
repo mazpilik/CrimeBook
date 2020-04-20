@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 09:57:17
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 23:25:05
   from 'C:\wamp64\www\crimebook\smarty\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9c207d5969d8_06380251',
+  'unifunc' => 'content_5e9cddd15ed221_06065573',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1ef38bbce8a3b6a361cbdc5573b211475513dcbb' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\header.tpl',
-      1 => 1587290219,
+      1 => 1587338701,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e9c207d5969d8_06380251 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9cddd15ed221_06065573 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Desarrollo Web en Entorno Servidor -->
 <!-- Tema 6 : PROYECTO Programación orientada a objetos en PHP -->
@@ -43,10 +43,8 @@ function content_5e9c207d5969d8_06380251 (Smarty_Internal_Template $_smarty_tpl)
         <a href="listado-de-juegos.php"   <?php if ($_smarty_tpl->tpl_vars['activePage']->value == 'listado-de-juegos') {?> class="active" <?php }?>>Listado de juegos</a>
         <a href="listado-de-partidas.php" <?php if ($_smarty_tpl->tpl_vars['activePage']->value == 'listado-de-partidas') {?> class="active" <?php }?>>Listado de partidas</a>
         <a href="listado-de-pruebas.php" <?php if ($_smarty_tpl->tpl_vars['activePage']->value == 'listado-de-pruebas') {?> class="active" <?php }?>>Listado de pruebas</a>
-        <a href="nueva-partida.php" <?php if ($_smarty_tpl->tpl_vars['activePage']->value == 'partida') {?> class="active" <?php }?>>Partida nueva</a>
         <a href="juego.php" <?php if ($_smarty_tpl->tpl_vars['activePage']->value == 'juego') {?> class="active" <?php }?>>Nuevo juego</a>
         <a href="nueva-prueba.php" <?php if ($_smarty_tpl->tpl_vars['activePage']->value == 'prueba') {?> class="active" <?php }?>>Nueva prueba</a>
-        <a href="consultar-partida.php" <?php if ($_smarty_tpl->tpl_vars['activePage']->value == 'consultar-partida') {?> class="active" <?php }?>>Consultar partida</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>

@@ -207,6 +207,7 @@ class DB {
         $sql .= '"'.$partida['username'].'"';
         $sql .= ');';
         $resultado = self::ejecutaConsulta($sql);
+        
         return $resultado;
     }
 
@@ -224,6 +225,21 @@ class DB {
             $id = $row['id'];
         }
         return $id;
+    }
+
+    /**
+     * Actualizar una partida
+     * 
+     * @param array $partida
+     * 
+     * @return boolean
+     */
+    public static function updatePartida($partida){
+        $sql = 'UPDATE partidas SET '
+                . 'duracion = '.$partida['duracion'].', '
+                . 'fechaInicio = "'.$partida['fechaInicio'].'" '
+                . 'WHERE id = '.$partida['id'].';';
+        return self::ejecutaConsulta($sql);
     }
 
     /**
@@ -277,6 +293,25 @@ class DB {
     }
 
     /**
+     * obtiene los equipos de la partida
+     * 
+     * @param integer $idPartida
+     * 
+     * @return array $equipos
+     */
+    public static function getPartidaEquipos($idPartida){
+        $sql = "SELECT * FROM equipos WHERE idPartida = $idPartida";
+        $resultado = self::ejecutaConsulta($sql);
+        $equipos = array();
+        if($resultado){
+            while($row = $resultado->fetch()){
+                array_push($equipos, new Equipo($row));
+            }
+        }
+        return $equipos;
+    }
+
+    /**
      * obtiene los equipos
      * 
      * @return array $equipos
@@ -327,7 +362,7 @@ class DB {
     }
 
     /**
-     * da de alta una nueva partida
+     * da de alta un nuevo equipo
      * 
      * @param integer $idPartida
      * @param string $newEquipo
@@ -347,11 +382,8 @@ class DB {
      * 
      * @param boolean $resultado
      */
-    public static function borrarPartida($idPartida) {
-        $sql = "DELETE FROM equipos WHERE idPartida='$idPartida';";
-        $resultado = self::ejecutaConsulta($sql);
-        
-        $sql = "DELETE FROM partidas WHERE id='$idPartida';";
+    public static function borrarPartidas($partidas) {
+        $sql = "DELETE FROM partidas WHERE partidas.id IN (".join(',',$partidas).");";
         $resultado = self::ejecutaConsulta($sql);
         return $resultado;
     }

@@ -34,7 +34,7 @@
         <br>
         <div style="text-align:center;">
             <button type="submit" form="editarPartida" formaction="partida.php" value="equiposButton" name="editarPartida" class="button">Editar partida</button>
-            <button type="submit" form="editarPartida" value="borrarButton" formaction="borrar-partidas.php" name="borrarButton" class="button">Borrar Partida</button>
+            <button type="submit" form="editarPartida" value="borrarButton" formaction="borrar-partidas.php" name="borrarPartidas" class="button">Borrar Partida</button>
             <button type="submit" form="editarPartida" value="estadisticasButton" formaction="estadisticas.php" name="estadisticasButton" class="button">Estadísticas Partida</button>
         </div>
     </form>

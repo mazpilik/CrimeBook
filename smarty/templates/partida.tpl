@@ -1,4 +1,4 @@
-{include file='header.tpl' activePage='partida' }
+{include file='header.tpl'  activePage='partida' }
 <div id="crearEditarPartida">
 <h1>{if $action == 'crear'}
   Crear nueva partida
@@ -19,7 +19,7 @@
     {if isset($partida)}
       value="{$partida->getNombre()}"
     {/if}
-    required>
+    required readonly>
   </div>
   <div class="field">
     <label>Duracion (numero horas):</label>
@@ -39,6 +39,46 @@
     {/if}
   </div>
 </form>
+{if $action == 'edit'}
+  <h2>Equipos de la partida</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Código</th>
+      </tr>
+    </thead>
+    <tbody>
+      {if !empty($equipos)}
+        {foreach from=$equipos item=equipo}
+          <tr>
+            <td>{$equipo->getNombre()}</td>
+            <td>{$equipo->getCodigo()}</td>
+          </tr>
+      {/foreach}
+      {else}
+        <tr>
+          <td colspan="2"><h3>Todavía no hay equipos dados de alta</h3></td>
+        </tr>
+      {/if}
+    </tbody>
+  </table>
+  <div id="altaEquipos">
+    <h2>Añadir equipo</h2>
+    <form action="partida.php" method='post'>
+      <input type="hidden" name="idPartida" value="{$partida->getId()}" />
+      <div class="field">
+        <label for="nombre">
+          Nombre Equipo:
+        </label>
+        <input type="text" name="nombre" />
+      </div>
+      <div class="actionButtons">
+        <button class="button" name="grabarEquipos">Añadir</button>
+      </div>
+    </form>
+  </div>
+{/if}
 </div>
 
 {include file='footer.tpl'}

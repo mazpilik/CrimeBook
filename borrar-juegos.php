@@ -5,7 +5,6 @@ require_once('include/DB.php');
 
 //iniciamos checkeamos sesión
 initSession();
-var_dump($_POST);
 if(isset($_GET['id'])){
   if(!DB::eliminarJuego($_GET['borrar'])){
     setAlertMessage('No se ha podido borrar el juego '.$_GET['borrar'],'error');

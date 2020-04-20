@@ -19,10 +19,8 @@
         <a href="listado-de-juegos.php"   {if $activePage == 'listado-de-juegos'} class="active" {/if}>Listado de juegos</a>
         <a href="listado-de-partidas.php" {if $activePage == 'listado-de-partidas'} class="active" {/if}>Listado de partidas</a>
         <a href="listado-de-pruebas.php" {if $activePage == 'listado-de-pruebas'} class="active" {/if}>Listado de pruebas</a>
-        <a href="nueva-partida.php" {if $activePage == 'partida'} class="active" {/if}>Partida nueva</a>
         <a href="juego.php" {if $activePage == 'juego'} class="active" {/if}>Nuevo juego</a>
         <a href="nueva-prueba.php" {if $activePage == 'prueba'} class="active" {/if}>Nueva prueba</a>
-        <a href="consultar-partida.php" {if $activePage == 'consultar-partida'} class="active" {/if}>Consultar partida</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>

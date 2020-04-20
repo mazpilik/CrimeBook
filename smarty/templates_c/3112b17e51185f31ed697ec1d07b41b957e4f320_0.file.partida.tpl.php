@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 15:40:15
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 23:21:02
   from 'C:\wamp64\www\crimebook\smarty\templates\partida.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9c70df01f673_10927664',
+  'unifunc' => 'content_5e9cdcded8a786_67176382',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3112b17e51185f31ed697ec1d07b41b957e4f320' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\partida.tpl',
-      1 => 1587310811,
+      1 => 1587338325,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e9c70df01f673_10927664 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9cdcded8a786_67176382 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('activePage'=>'partida'), 0, false);
 ?>
 <div id="crearEditarPartida">
@@ -49,7 +49,7 @@ if (isset($_smarty_tpl->tpl_vars['partida']->value)) {?>
       value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getNombre();?>
 "
     <?php }?>
-    required>
+    required readonly>
   </div>
   <div class="field">
     <label>Duracion (numero horas):</label>
@@ -73,6 +73,56 @@ echo $_smarty_tpl->tpl_vars['partida']->value->getFechaInicio();
     <?php }?>
   </div>
 </form>
+<?php if ($_smarty_tpl->tpl_vars['action']->value == 'edit') {?>
+  <h2>Equipos de la partida</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Código</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php if (!empty($_smarty_tpl->tpl_vars['equipos']->value)) {?>
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['equipos']->value, 'equipo');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['equipo']->value) {
+?>
+          <tr>
+            <td><?php echo $_smarty_tpl->tpl_vars['equipo']->value->getNombre();?>
+</td>
+            <td><?php echo $_smarty_tpl->tpl_vars['equipo']->value->getCodigo();?>
+</td>
+          </tr>
+      <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+      <?php } else { ?>
+        <tr>
+          <td colspan="2"><h3>Todavía no hay equipos dados de alta</h3></td>
+        </tr>
+      <?php }?>
+    </tbody>
+  </table>
+  <div id="altaEquipos">
+    <h2>Añadir equipo</h2>
+    <form action="partida.php" method='post'>
+      <input type="hidden" name="idPartida" value="<?php echo $_smarty_tpl->tpl_vars['partida']->value->getId();?>
+" />
+      <div class="field">
+        <label for="nombre">
+          Nombre Equipo:
+        </label>
+        <input type="text" name="nombre" />
+      </div>
+      <div class="actionButtons">
+        <button class="button" name="grabarEquipos">Añadir</button>
+      </div>
+    </form>
+  </div>
+<?php }?>
 </div>
 
 <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

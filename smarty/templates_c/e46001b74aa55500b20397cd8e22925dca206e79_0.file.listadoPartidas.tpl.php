@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-19 17:21:02
+/* Smarty version 3.1.34-dev-7, created on 2020-04-19 23:41:47
   from 'C:\wamp64\www\crimebook\smarty\templates\listadoPartidas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9c887e6cf654_71441589',
+  'unifunc' => 'content_5e9ce1bb8fa0d6_63707354',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e46001b74aa55500b20397cd8e22925dca206e79' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\listadoPartidas.tpl',
-      1 => 1587316578,
+      1 => 1587339685,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e9c887e6cf654_71441589 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9ce1bb8fa0d6_63707354 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('pageTitle'=>'listado de partidas','activePage'=>'listado-de-partidas'), 0, false);
 ?>
     <h2 align="center">Listado de partidas</h2>
@@ -71,7 +71,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <br>
         <div style="text-align:center;">
             <button type="submit" form="editarPartida" formaction="partida.php" value="equiposButton" name="editarPartida" class="button">Editar partida</button>
-            <button type="submit" form="editarPartida" value="borrarButton" formaction="borrar-partidas.php" name="borrarButton" class="button">Borrar Partida</button>
+            <button type="submit" form="editarPartida" value="borrarButton" formaction="borrar-partidas.php" name="borrarPartidas" class="button">Borrar Partida</button>
             <button type="submit" form="editarPartida" value="estadisticasButton" formaction="estadisticas.php" name="estadisticasButton" class="button">Estadísticas Partida</button>
         </div>
     </form>
