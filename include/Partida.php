@@ -25,37 +25,28 @@ class Partida {
         $this->userName = $row['username'];
         $this->finalizada = $row['finalizada'];
     }
-
     /* GETTERS */
-
     public function getId() {
         return $this->id;
     }
-
     public function getNombre() {
         return $this->nombre;
     }
-
     public function getFechaCreacion() {
         return $this->fechaCreacion;
     }
-
     public function getDuracion() {
         return $this->duracion;
     }
-
     public function getFechaInicio() {
         return $this->fechaInicio;
     }
-
     public function getIdJuego() {
         return $this->idJuego;
     }
-
     public function getUserName() {
         return $this->userName;
     }
-    
     public function getFinalizada() {
         return $this->finalizada;
     }
