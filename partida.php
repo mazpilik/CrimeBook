@@ -133,5 +133,18 @@ if (isset($_POST['grabarEquipos'])) {
   }
   header('location:partida.php?id='.$idPartida);
 }
+
+/* Borrar equipos */
+if(isset($_POST['borrarEquipos'])){
+  if(isset($_POST['equipos'])){
+    if(!DB::deleteEquipos($_POST['equipos'])){
+      setAlertMessage('no se han podido borrar los equipos', 'error');
+    }
+  } else {
+    setAlertMessage('selecciona al menos un equipo para borrar', 'error');
+  }
+  header('location:partida.php?id='.$_POST['idPartida']);
+}
+
 $smarty->assign('usuario', $_SESSION['usuario']);
 $smarty->display('partida.tpl');

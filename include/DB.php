@@ -408,6 +408,19 @@ class DB {
     }
 
     /**
+     * borrar equpos
+     * 
+     * @param array $equipos
+     * 
+     * @return boolean
+     */
+    public static function deleteEquipos(array $equipos){
+        $sql = "DELETE FROM equipos WHERE id IN (".join(',', $equipos).")";
+        $result = self::ejecutaConsulta($sql);
+        return $result;
+    }
+
+    /**
      * borrar una partida
      * 
      * @param integer $idPartida

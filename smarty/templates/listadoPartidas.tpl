@@ -44,7 +44,7 @@
         <div class="listButtons">
             <button type="submit" form="editarPartida" formaction="partida.php" value="equiposButton" name="editarPartida" class="button">Editar partida</button>
             <button type="submit" form="editarPartida" value="borrarButton" formaction="borrar-partidas.php" name="borrarPartidas" class="button">Borrar Partida</button>
-            <button type="submit" form="editarPartida" value="estadisticasButton" formaction="estadisticas.php" name="estadisticasButton" class="button">Estadísticas Partida</button>
+            <button type="submit" form="editarPartida" value="estadisticasButton" formaction="estadisticas.php" name="showStadisticas" class="button">Estadísticas Partida</button>
         </div>
     </form>
             

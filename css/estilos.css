@@ -334,6 +334,29 @@ a.button{
   align-items: center;
 }
 
+#crearEditarPartida .section{
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 4rem 0;
+}
+
+#crearEditarPartida .section td h3{
+  text-align: center;
+}
+
+#crearEditarPartida .section .field{
+  justify-content: center;
+}
+#crearEditarPartida .section .field label{
+  width: 30%;
+}
+#crearEditarPartida .section .field input{
+  width: 30%;
+}
+
 /** PRUEBA **/
 #prueba{
   display: flex;
