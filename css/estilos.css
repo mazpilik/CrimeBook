@@ -296,6 +296,36 @@ a.button{
   margin: 2rem 0;
 }
 
+/** juego **/
+#juego{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#juego .section{
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 4rem 0;
+}
+
+#juego .section td h3{
+  text-align: center;
+}
+
+#juego .section .field{
+  justify-content: center;
+}
+#juego .section .field label{
+  width: 30%;
+}
+#juego .section .field input{
+  width: 30%;
+}
+
 /** CREAR PARTIDA **/
 #crearEditarPartida{
   display: flex;

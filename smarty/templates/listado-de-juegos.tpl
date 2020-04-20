@@ -24,7 +24,7 @@
           <td>{$juego->getUsername()}</td>
           <td>
             <div class="actions">
-              <a href="juego.php?edit={$juego->getId()}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="juego.php?id={$juego->getId()}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
               <a href="borrar-juegos.php?id={$juego->getId()}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
             </div>
           </td>

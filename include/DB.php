@@ -183,11 +183,41 @@ class DB {
             // Añadimos un elemento por cada registro obtenido
             $row = $resultado->fetch();
             while ($row != null) {
-                $pruebas[] = new prueba($row);
+                $pruebas[] = new Prueba($row);
                 $row = $resultado->fetch();
             }
 	}     
         return $pruebas;
+    }
+
+    /**
+     * asociar prueba a juego
+     * 
+     * @param int $idPrueba
+     * @param int $idJuego
+     * 
+     * @return boolean
+     */
+    public static function addPruebaToJuego(int $idJuego, int $idPrueba)
+    {
+        $sql = "INSERT INTO pertenencias (idJuego, idPrueba) VALUES ($idJuego, $idPrueba)";
+        $resultado = self::ejecutaConsulta($sql);
+        return $resultado;
+    }
+
+    /**
+     * Borrar asociación de pruebas a juego
+     * 
+     * @param array $pruebas
+     * @param int $idJuego
+     * 
+     * @return boolean
+     */
+    public static function deleteJuegoPruebas(array $pruebas, int $idJuego)   
+    {
+        $sql = "DELETE FROM pertenencias WHERE idJuego = ".$idJuego." AND idPrueba IN (".join(',',$pruebas).")";
+        $result = self::ejecutaConsulta($sql);
+        return $result;
     }
 
     /**
@@ -536,8 +566,6 @@ class DB {
      */
     public static function deletePruebas(array $pruebas)
     {
-        var_dump($pruebas);
-
         $sql = "DELETE FROM pruebas WHERE pruebas.id IN (".join(',',$pruebas).");";
         $resultado = self::ejecutaConsulta($sql);
         return $resultado;

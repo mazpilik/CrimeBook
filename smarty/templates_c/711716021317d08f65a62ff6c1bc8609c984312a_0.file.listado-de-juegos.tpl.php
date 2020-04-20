@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-04-20 16:32:20
+/* Smarty version 3.1.34-dev-7, created on 2020-04-20 18:01:55
   from 'C:\wamp64\www\crimebook\smarty\templates\listado-de-juegos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e9dce9406bc48_06832449',
+  'unifunc' => 'content_5e9de39364af45_70782499',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '711716021317d08f65a62ff6c1bc8609c984312a' => 
     array (
       0 => 'C:\\wamp64\\www\\crimebook\\smarty\\templates\\listado-de-juegos.tpl',
-      1 => 1587365495,
+      1 => 1587405444,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e9dce9406bc48_06832449 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e9de39364af45_70782499 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('pageTitle'=>'listado de juegos','activePage'=>'listado-de-juegos'), 0, false);
 ?>
   <div id="listadoDeJuegos">
@@ -59,7 +59,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['juego']->value) {
 </td>
           <td>
             <div class="actions">
-              <a href="juego.php?edit=<?php echo $_smarty_tpl->tpl_vars['juego']->value->getId();?>
+              <a href="juego.php?id=<?php echo $_smarty_tpl->tpl_vars['juego']->value->getId();?>
 "><i class="fa fa-pencil" aria-hidden="true"></i></a>
               <a href="borrar-juegos.php?id=<?php echo $_smarty_tpl->tpl_vars['juego']->value->getId();?>
 "><i class="fa fa-trash-o" aria-hidden="true"></i></a>
