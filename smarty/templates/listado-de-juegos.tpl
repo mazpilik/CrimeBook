@@ -13,7 +13,6 @@
         <th>Descripción</th>
         <th>Número de pruebas</th>
         <th>Usuario que la creó</th>
-        <th></th>
       </tr>
       {foreach from=$juegos item=juego}
       <tr>
@@ -22,22 +21,16 @@
           <td>{$juego->getdescBreve()}</td>
           <td>{$juego->getNumPruebas()}</td>
           <td>{$juego->getUsername()}</td>
-          <td>
-            <div class="actions">
-              <a href="juego.php?id={$juego->getId()}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a href="borrar-juegos.php?id={$juego->getId()}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-            </div>
-          </td>
       </tr>
       {/foreach}
     </table>
 
     <br />
-    <div style="text-align:center;">
+    <div class="listButtons">
       <a href="partida.php"><button class="button" name="nuevaPartida" value="nuevaPartida" formaction="partida.php">Nueva partida</button></a>
       <a href="juego.php" class="button">Nuevo juego</a>
+      <a href="juego.php"><button class="button" name="editarJuego" formaction="juego.php">Editar Juego</button></a>
       <a href="borrar-juegos.php"><button class="button" name="borrarJuegos" value="borrarJuegos" formaction="borrar-juegos.php">Borrar juegos</button></a>
-      <a href="Pagina2.html" class="button">Ver Partidas</a>
     </div>
     </form>
   </div>

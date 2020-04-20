@@ -17,20 +17,40 @@ $smarty->config_dir = 'smarty/configs/';
 $smarty->cache_dir = 'smarty/cache/';
 
 //Crear o editar
-if(isset($_GET['id'])){
-    $juego = DB::getJuegoById($_GET['id']);
-    $smarty->assign('usuario', $_SESSION['usuario']);
-    if($juego->getId()){
-        $smarty->assign('juego',$juego);
-        $smarty->assign('pruebas',DB::obtienePruebas($juego->getId()));
-        $smarty->assign('allPruebas',DB::getAllPruebas());
-        $smarty->assign('alertMessage', $_SESSION['alertMessage']);
-        unsetAlertMessage();
-        $smarty->assign('formType','edit');
-    } else {
-        setAlertMessage('No se ha podido cargar el juego con id = '.$_GET[$id], 'error');
-        header('location:listado-de-juegos.php');
+if(isset($_GET['id']) || isset($_POST['editarJuego'])){
+    $id = 0;
+    if(isset($_GET['id'])){
+        $id= $_GET['id'];
     }
+    if(isset($_POST['editarJuego'])){
+        if(isset($_POST['juegos'])){
+            if(count($_POST['juegos']) == 1){
+                $id = $_POST['juegos'][0];
+            } else {
+                setAlertMessage('selecciona solamente un juego para editar', 'error');
+                header('location:listado-de-juegos.php');
+            }
+        }else{
+            setAlertMessage('selecciona por lo menos un juego para editar', 'error');
+            header('location:listado-de-juegos.php');
+        }
+    }
+    if($id){
+        $juego = DB::getJuegoById($id);
+        $smarty->assign('usuario', $_SESSION['usuario']);
+        if($juego->getId()){
+            $smarty->assign('juego',$juego);
+            $smarty->assign('pruebas',DB::obtienePruebas($juego->getId()));
+            $smarty->assign('allPruebas',DB::getAllPruebas());
+            $smarty->assign('alertMessage', $_SESSION['alertMessage']);
+            unsetAlertMessage();
+            $smarty->assign('formType','edit');
+        } else {
+            setAlertMessage('No se ha podido cargar el juego con id = '.$_GET[$id], 'error');
+            header('location:listado-de-juegos.php');
+        }
+    }
+    
 } else {
     $smarty->assign('juego', null);
     $smarty->assign('alertMessage', $_SESSION['alertMessage']);
